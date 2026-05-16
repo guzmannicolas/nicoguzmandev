@@ -1,0 +1,143 @@
+---
+import Layout from '../layouts/Layout.astro';
+import es from '../i18n/es.json';
+
+const lang = 'es';
+
+const projects = [
+  {
+    id: 1,
+    title: 'Sistema ERP para Manufactura',
+    description: 'Sistema ERP personalizado para gestionar inventario, producción y ventas',
+    category: 'ERP',
+    image: '📊',
+    year: '2024'
+  },
+  {
+    id: 2,
+    title: 'Plataforma E-commerce',
+    description: 'Tienda online con gestión de inventario integrada y múltiples opciones de pago',
+    category: 'Programación',
+    image: '🛒',
+    year: '2024'
+  },
+  {
+    id: 3,
+    title: 'Sistema de Automatización',
+    description: 'Automatización de procesos de RR.HH. y gestión de documentos',
+    category: 'Automatización',
+    image: '⚙️',
+    year: '2023'
+  },
+  {
+    id: 4,
+    title: 'Rediseño Web Corporativo',
+    description: 'Sitio web moderno con diseño responsive y optimización SEO',
+    category: 'Diseño',
+    image: '🎨',
+    year: '2023'
+  },
+  {
+    id: 5,
+    title: 'App Móvil de Gestión',
+    description: 'Aplicación móvil para gestión de tareas y proyectos en tiempo real',
+    category: 'Programación',
+    image: '📱',
+    year: '2023'
+  },
+  {
+    id: 6,
+    title: 'Dashboard Analítico',
+    description: 'Dashboard interactivo para análisis de datos y reportes en tiempo real',
+    category: 'Programación',
+    image: '📈',
+    year: '2024'
+  }
+];
+---
+
+<Layout title="Portafolio - Nicolás Guzmán Dev" lang={lang}>
+  <!-- Header -->
+  <section class="bg-gradient-to-b from-secondary to-primary py-16 px-4">
+    <div class="max-w-7xl mx-auto text-center">
+      <h1 class="text-4xl md:text-5xl font-bold text-white mb-4">
+        {es.portfolio.title}
+      </h1>
+      <p class="text-xl text-gray-400">
+        {es.portfolio.description}
+      </p>
+    </div>
+  </section>
+
+  <!-- Projects Grid -->
+  <section class="py-20 px-4 bg-primary">
+    <div class="max-w-7xl mx-auto">
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+        {projects.map((project) => (
+          <div class="bg-secondary border border-gray-700 rounded-lg overflow-hidden hover:border-accent transition-all duration-300 hover:shadow-lg hover:shadow-blue-500/20">
+            <div class="h-48 bg-gradient-to-br from-accent/20 to-primary flex items-center justify-center text-6xl">
+              {project.image}
+            </div>
+            <div class="p-6">
+              <div class="flex justify-between items-start mb-2">
+                <h3 class="text-xl font-semibold text-white flex-1">
+                  {project.title}
+                </h3>
+                <span class="text-xs font-semibold text-accent bg-accent/10 px-3 py-1 rounded-full ml-2">
+                  {project.category}
+                </span>
+              </div>
+              <p class="text-gray-400 text-sm mb-4">
+                {project.description}
+              </p>
+              <div class="flex justify-between items-center">
+                <span class="text-gray-500 text-sm">{project.year}</span>
+                <a href="#" class="text-accent text-sm font-semibold hover:underline">
+                  Ver más →
+                </a>
+              </div>
+            </div>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- Stats -->
+  <section class="py-16 px-4 bg-secondary">
+    <div class="max-w-7xl mx-auto">
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-8 text-center">
+        <div>
+          <div class="text-4xl font-bold text-accent mb-2">50+</div>
+          <p class="text-gray-400">Proyectos completados</p>
+        </div>
+        <div>
+          <div class="text-4xl font-bold text-accent mb-2">30+</div>
+          <p class="text-gray-400">Clientes satisfechos</p>
+        </div>
+        <div>
+          <div class="text-4xl font-bold text-accent mb-2">5+</div>
+          <p class="text-gray-400">Años de experiencia</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA -->
+  <section class="py-20 px-4 bg-primary">
+    <div class="max-w-4xl mx-auto text-center">
+      <h2 class="text-4xl font-bold text-white mb-4">
+        ¿Quieres ver tu proyecto en mi portafolio?
+      </h2>
+      <p class="text-gray-400 text-lg mb-8">
+        Estoy disponible para nuevos proyectos desafiantes
+      </p>
+      <a
+        href="/contacto"
+        class="inline-block bg-accent text-white px-8 py-3 rounded-lg hover:bg-blue-600 transition-colors text-lg font-semibold"
+      >
+        Contactame
+      </a>
+    </div>
+  </section>
+</Layout>

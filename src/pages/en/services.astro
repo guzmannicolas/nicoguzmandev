@@ -1,0 +1,130 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import en from '../../i18n/en.json';
+
+const lang = 'en';
+---
+
+<Layout title="Services - Nicolás Guzmán Dev" lang={lang}>
+  <!-- Header -->
+  <section class="bg-gradient-to-b from-secondary to-primary py-16 px-4">
+    <div class="max-w-7xl mx-auto text-center">
+      <h1 class="text-4xl md:text-5xl font-bold text-white mb-4">
+        {en.nav.servicios}
+      </h1>
+      <p class="text-xl text-gray-400">
+        Complete solutions for your business
+      </p>
+    </div>
+  </section>
+
+  <!-- Design -->
+  <section class="py-16 px-4 bg-primary">
+    <div class="max-w-7xl mx-auto">
+      <div class="grid md:grid-cols-2 gap-12 items-center mb-20">
+        <div>
+          <h2 class="text-3xl font-bold text-white mb-4">🎨 {en.services.design.title}</h2>
+          <p class="text-gray-400 text-lg mb-6">
+            I create modern and responsive web designs that not only look great, but convert visitors into customers. Every project is customized to reflect your brand and achieve your business goals.
+          </p>
+          <ul class="space-y-3 text-gray-300">
+            <li class="flex items-center"><span class="text-accent mr-3">✓</span> Responsive and mobile-first design</li>
+            <li class="flex items-center"><span class="text-accent mr-3">✓</span> Optimized UX/UI</li>
+            <li class="flex items-center"><span class="text-accent mr-3">✓</span> Interactive prototypes</li>
+            <li class="flex items-center"><span class="text-accent mr-3">✓</span> Web accessibility</li>
+          </ul>
+        </div>
+        <div class="bg-secondary border border-gray-700 rounded-lg h-96 flex items-center justify-center">
+          <span class="text-6xl">🎨</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Development -->
+  <section class="py-16 px-4 bg-secondary">
+    <div class="max-w-7xl mx-auto">
+      <div class="grid md:grid-cols-2 gap-12 items-center mb-20">
+        <div class="bg-primary border border-gray-700 rounded-lg h-96 flex items-center justify-center">
+          <span class="text-6xl">💻</span>
+        </div>
+        <div>
+          <h2 class="text-3xl font-bold text-white mb-4">💻 {en.services.development.title}</h2>
+          <p class="text-gray-400 text-lg mb-6">
+            Development of scalable web and mobile applications using the latest technologies. From startups to large enterprises, I create solutions that grow with your business.
+          </p>
+          <ul class="space-y-3 text-gray-300">
+            <li class="flex items-center"><span class="text-accent mr-3">✓</span> React, Next.js, Astro</li>
+            <li class="flex items-center"><span class="text-accent mr-3">✓</span> Node.js, Python, Databases</li>
+            <li class="flex items-center"><span class="text-accent mr-3">✓</span> RESTful APIs and GraphQL</li>
+            <li class="flex items-center"><span class="text-accent mr-3">✓</span> Deployment and DevOps</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Automation -->
+  <section class="py-16 px-4 bg-primary">
+    <div class="max-w-7xl mx-auto">
+      <div class="grid md:grid-cols-2 gap-12 items-center mb-20">
+        <div>
+          <h2 class="text-3xl font-bold text-white mb-4">⚙️ {en.services.automation.title}</h2>
+          <p class="text-gray-400 text-lg mb-6">
+            I automate repetitive processes so your team can focus on what matters. From third-party tool integrations to complex workflow automation.
+          </p>
+          <ul class="space-y-3 text-gray-300">
+            <li class="flex items-center"><span class="text-accent mr-3">✓</span> API integrations</li>
+            <li class="flex items-center"><span class="text-accent mr-3">✓</span> Bots and webhooks</li>
+            <li class="flex items-center"><span class="text-accent mr-3">✓</span> Automated workflows</li>
+            <li class="flex items-center"><span class="text-accent mr-3">✓</span> Automated reports</li>
+          </ul>
+        </div>
+        <div class="bg-secondary border border-gray-700 rounded-lg h-96 flex items-center justify-center">
+          <span class="text-6xl">⚙️</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ERP -->
+  <section class="py-16 px-4 bg-secondary">
+    <div class="max-w-7xl mx-auto">
+      <div class="grid md:grid-cols-2 gap-12 items-center mb-20">
+        <div class="bg-primary border border-gray-700 rounded-lg h-96 flex items-center justify-center">
+          <span class="text-6xl">📊</span>
+        </div>
+        <div>
+          <h2 class="text-3xl font-bold text-white mb-4">📊 {en.services.erp.title}</h2>
+          <p class="text-gray-400 text-lg mb-6">
+            Custom ERP systems designed specifically for your business. I integrate all your processes into a single, easy-to-use platform.
+          </p>
+          <ul class="space-y-3 text-gray-300">
+            <li class="flex items-center"><span class="text-accent mr-3">✓</span> Inventory management</li>
+            <li class="flex items-center"><span class="text-accent mr-3">✓</span> Invoicing and accounting</li>
+            <li class="flex items-center"><span class="text-accent mr-3">✓</span> Project management</li>
+            <li class="flex items-center"><span class="text-accent mr-3">✓</span> Reports and analytics</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA -->
+  <section class="py-20 px-4 bg-primary">
+    <div class="max-w-4xl mx-auto text-center">
+      <h2 class="text-4xl font-bold text-white mb-4">
+        Need a custom solution?
+      </h2>
+      <p class="text-gray-400 text-lg mb-8">
+        Contact me to discuss how I can help you
+      </p>
+      <a
+        href="/en/contact"
+        class="inline-block bg-accent text-white px-8 py-3 rounded-lg hover:bg-blue-600 transition-colors text-lg font-semibold"
+      >
+        Schedule a consultation
+      </a>
+    </div>
+  </section>
+</Layout>

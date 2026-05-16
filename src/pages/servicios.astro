@@ -1,0 +1,130 @@
+---
+import Layout from '../layouts/Layout.astro';
+import es from '../i18n/es.json';
+
+const lang = 'es';
+---
+
+<Layout title="Servicios - Nicolás Guzmán Dev" lang={lang}>
+  <!-- Header -->
+  <section class="bg-gradient-to-b from-secondary to-primary py-16 px-4">
+    <div class="max-w-7xl mx-auto text-center">
+      <h1 class="text-4xl md:text-5xl font-bold text-white mb-4">
+        {es.nav.servicios}
+      </h1>
+      <p class="text-xl text-gray-400">
+        Soluciones completas para tu negocio
+      </p>
+    </div>
+  </section>
+
+  <!-- Diseño -->
+  <section class="py-16 px-4 bg-primary">
+    <div class="max-w-7xl mx-auto">
+      <div class="grid md:grid-cols-2 gap-12 items-center mb-20">
+        <div>
+          <h2 class="text-3xl font-bold text-white mb-4">🎨 {es.services.design.title}</h2>
+          <p class="text-gray-400 text-lg mb-6">
+            Creo diseños web modernos y responsivos que no solo se ven bien, sino que convierten visitantes en clientes. Cada proyecto es personalizado para reflejar tu marca y alcanzar tus objetivos de negocio.
+          </p>
+          <ul class="space-y-3 text-gray-300">
+            <li class="flex items-center"><span class="text-accent mr-3">✓</span> Diseño responsivo y mobile-first</li>
+            <li class="flex items-center"><span class="text-accent mr-3">✓</span> UX/UI optimizado</li>
+            <li class="flex items-center"><span class="text-accent mr-3">✓</span> Prototipos interactivos</li>
+            <li class="flex items-center"><span class="text-accent mr-3">✓</span> Accesibilidad web</li>
+          </ul>
+        </div>
+        <div class="bg-secondary border border-gray-700 rounded-lg h-96 flex items-center justify-center">
+          <span class="text-6xl">🎨</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Programación -->
+  <section class="py-16 px-4 bg-secondary">
+    <div class="max-w-7xl mx-auto">
+      <div class="grid md:grid-cols-2 gap-12 items-center mb-20">
+        <div class="bg-primary border border-gray-700 rounded-lg h-96 flex items-center justify-center">
+          <span class="text-6xl">💻</span>
+        </div>
+        <div>
+          <h2 class="text-3xl font-bold text-white mb-4">💻 {es.services.development.title}</h2>
+          <p class="text-gray-400 text-lg mb-6">
+            Desarrollo de aplicaciones web y móviles escalables usando las últimas tecnologías. Desde startups hasta empresas grandes, creo soluciones que crecen con tu negocio.
+          </p>
+          <ul class="space-y-3 text-gray-300">
+            <li class="flex items-center"><span class="text-accent mr-3">✓</span> React, Next.js, Astro</li>
+            <li class="flex items-center"><span class="text-accent mr-3">✓</span> Node.js, Python, Bases de datos</li>
+            <li class="flex items-center"><span class="text-accent mr-3">✓</span> API RESTful y GraphQL</li>
+            <li class="flex items-center"><span class="text-accent mr-3">✓</span> Implementación y DevOps</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Automatización -->
+  <section class="py-16 px-4 bg-primary">
+    <div class="max-w-7xl mx-auto">
+      <div class="grid md:grid-cols-2 gap-12 items-center mb-20">
+        <div>
+          <h2 class="text-3xl font-bold text-white mb-4">⚙️ {es.services.automation.title}</h2>
+          <p class="text-gray-400 text-lg mb-6">
+            Automatizo procesos repetitivos para que tu equipo se enfoque en lo importante. Desde integraciones con herramientas terceras hasta automatización de flujos complejos.
+          </p>
+          <ul class="space-y-3 text-gray-300">
+            <li class="flex items-center"><span class="text-accent mr-3">✓</span> Integración de APIs</li>
+            <li class="flex items-center"><span class="text-accent mr-3">✓</span> Bots y webhooks</li>
+            <li class="flex items-center"><span class="text-accent mr-3">✓</span> Flujos de trabajo automáticos</li>
+            <li class="flex items-center"><span class="text-accent mr-3">✓</span> Reportes automáticos</li>
+          </ul>
+        </div>
+        <div class="bg-secondary border border-gray-700 rounded-lg h-96 flex items-center justify-center">
+          <span class="text-6xl">⚙️</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ERP -->
+  <section class="py-16 px-4 bg-secondary">
+    <div class="max-w-7xl mx-auto">
+      <div class="grid md:grid-cols-2 gap-12 items-center mb-20">
+        <div class="bg-primary border border-gray-700 rounded-lg h-96 flex items-center justify-center">
+          <span class="text-6xl">📊</span>
+        </div>
+        <div>
+          <h2 class="text-3xl font-bold text-white mb-4">📊 {es.services.erp.title}</h2>
+          <p class="text-gray-400 text-lg mb-6">
+            Sistemas ERP personalizados diseñados específicamente para tu negocio. Integro todos tus procesos en una plataforma única y fácil de usar.
+          </p>
+          <ul class="space-y-3 text-gray-300">
+            <li class="flex items-center"><span class="text-accent mr-3">✓</span> Gestión de inventario</li>
+            <li class="flex items-center"><span class="text-accent mr-3">✓</span> Facturación y contabilidad</li>
+            <li class="flex items-center"><span class="text-accent mr-3">✓</span> Gestión de proyectos</li>
+            <li class="flex items-center"><span class="text-accent mr-3">✓</span> Reportes y análisis</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA -->
+  <section class="py-20 px-4 bg-primary">
+    <div class="max-w-4xl mx-auto text-center">
+      <h2 class="text-4xl font-bold text-white mb-4">
+        ¿Necesitas una solución personalizada?
+      </h2>
+      <p class="text-gray-400 text-lg mb-8">
+        Contáctame para discutir cómo puedo ayudarte
+      </p>
+      <a
+        href="/contacto"
+        class="inline-block bg-accent text-white px-8 py-3 rounded-lg hover:bg-blue-600 transition-colors text-lg font-semibold"
+      >
+        Agendar consulta
+      </a>
+    </div>
+  </section>
+</Layout>

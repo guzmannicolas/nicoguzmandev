@@ -1,0 +1,43 @@
+{
+  "nav": {
+    "inicio": "Home",
+    "servicios": "Services",
+    "portafolio": "Portfolio",
+    "contacto": "Contact"
+  },
+  "hero": {
+    "title": "Transform your business with technology",
+    "subtitle": "Custom Design, Development, Automation and ERP solutions",
+    "cta": "Contact me"
+  },
+  "services": {
+    "design": {
+      "title": "Design",
+      "description": "Modern and responsive web design that converts visitors into customers"
+    },
+    "development": {
+      "title": "Development",
+      "description": "Scalable web and mobile applications with cutting-edge technologies"
+    },
+    "automation": {
+      "title": "Automation",
+      "description": "Automate repetitive processes and save time and resources"
+    },
+    "erp": {
+      "title": "Custom ERP",
+      "description": "Personalized ERP systems for your specific business needs"
+    }
+  },
+  "portfolio": {
+    "title": "Portfolio",
+    "description": "Projects completed for satisfied clients"
+  },
+  "contact": {
+    "title": "Contact",
+    "description": "Ready to transform your business? Contact me today"
+  },
+  "footer": {
+    "copyright": "© 2024 Nicolás Guzmán Dev. All rights reserved.",
+    "privacy": "Privacy"
+  }
+}
