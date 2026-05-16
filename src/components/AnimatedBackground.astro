@@ -1,0 +1,254 @@
+---
+// Animated background with electrical circuit effect
+// Very subtle and performant using CSS animations
+---
+
+<div class="animated-bg-container">
+  <svg
+    viewBox="0 0 1920 1080"
+    preserveAspectRatio="xMidYMid slice"
+    class="animated-bg-svg"
+  >
+    <defs>
+      <filter id="glow">
+        <feGaussianBlur stdDeviation="2" result="coloredBlur" />
+        <feMerge>
+          <feMergeNode in="coloredBlur" />
+          <feMergeNode in="SourceGraphic" />
+        </feMerge>
+      </filter>
+
+      <linearGradient id="electricGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+        <stop offset="0%" style="stop-color:#3b82f6;stop-opacity:0.8" />
+        <stop offset="50%" style="stop-color:#8b5cf6;stop-opacity:0.6" />
+        <stop offset="100%" style="stop-color:#3b82f6;stop-opacity:0.4" />
+      </linearGradient>
+    </defs>
+
+    <!-- Circuit lines - Network 1 -->
+    <g class="circuit-group circuit-1" filter="url(#glow)">
+      <path
+        d="M 100,200 L 300,300 L 500,250 L 700,400 L 900,350"
+        class="circuit-line"
+      />
+      <path
+        d="M 200,100 L 400,200 L 600,150 L 800,300"
+        class="circuit-line circuit-line-2"
+      />
+      <path
+        d="M 150,400 L 350,500 L 550,450 L 750,600"
+        class="circuit-line circuit-line-3"
+      />
+    </g>
+
+    <!-- Circuit lines - Network 2 -->
+    <g class="circuit-group circuit-2" filter="url(#glow)">
+      <path
+        d="M 1200,150 L 1400,250 L 1600,200 L 1800,350"
+        class="circuit-line"
+      />
+      <path
+        d="M 1300,400 L 1500,500 L 1700,450 L 1900,600"
+        class="circuit-line circuit-line-2"
+      />
+      <path
+        d="M 1100,600 L 1300,700 L 1500,650 L 1700,800"
+        class="circuit-line circuit-line-3"
+      />
+    </g>
+
+    <!-- Circuit lines - Network 3 -->
+    <g class="circuit-group circuit-3" filter="url(#glow)">
+      <path
+        d="M 500,700 L 700,800 L 900,750 L 1100,900"
+        class="circuit-line"
+      />
+      <path
+        d="M 400,850 L 600,950 L 800,900 L 1000,1050"
+        class="circuit-line circuit-line-2"
+      />
+    </g>
+
+    <!-- Nodes (connection points) -->
+    <g class="nodes" filter="url(#glow)">
+      <circle cx="300" cy="300" r="3" class="node node-1" />
+      <circle cx="500" cy="250" r="3" class="node node-2" />
+      <circle cx="700" cy="400" r="3" class="node node-3" />
+      <circle cx="1400" cy="250" r="3" class="node node-4" />
+      <circle cx="1600" cy="200" r="3" class="node node-5" />
+      <circle cx="700" cy="800" r="3" class="node node-6" />
+      <circle cx="900" cy="750" r="3" class="node node-7" />
+    </g>
+  </svg>
+</div>
+
+<style is:global>
+  .animated-bg-container {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+    z-index: 0;
+    overflow: hidden;
+  }
+
+  .animated-bg-svg {
+    width: 100%;
+    height: 100%;
+    opacity: 0.15;
+  }
+
+  /* Circuit lines styling */
+  .circuit-line {
+    stroke: url(#electricGradient);
+    stroke-width: 1.5;
+    fill: none;
+    stroke-linecap: round;
+    stroke-linejoin: round;
+  }
+
+  .circuit-line-2 {
+    animation: flowEnergy2 8s ease-in-out infinite;
+  }
+
+  .circuit-line-3 {
+    animation: flowEnergy3 10s ease-in-out infinite;
+  }
+
+  /* Different circuits flow at different times */
+  .circuit-1 {
+    animation: flowGlow1 6s ease-in-out infinite;
+  }
+
+  .circuit-2 {
+    animation: flowGlow2 8s ease-in-out infinite 1s;
+  }
+
+  .circuit-3 {
+    animation: flowGlow3 7s ease-in-out infinite 2s;
+  }
+
+  /* Node pulsing */
+  .node {
+    fill: #3b82f6;
+    animation: nodePulse 3s ease-in-out infinite;
+  }
+
+  .node-1 {
+    animation-delay: 0s;
+  }
+  .node-2 {
+    animation-delay: 0.5s;
+  }
+  .node-3 {
+    animation-delay: 1s;
+  }
+  .node-4 {
+    animation-delay: 1.5s;
+  }
+  .node-5 {
+    animation-delay: 2s;
+  }
+  .node-6 {
+    animation-delay: 2.5s;
+  }
+  .node-7 {
+    animation-delay: 3s;
+  }
+
+  /* Animations */
+  @keyframes flowGlow1 {
+    0% {
+      opacity: 0.05;
+      filter: drop-shadow(0 0 2px rgba(59, 130, 246, 0.3));
+    }
+    50% {
+      opacity: 0.25;
+      filter: drop-shadow(0 0 8px rgba(59, 130, 246, 0.6));
+    }
+    100% {
+      opacity: 0.05;
+      filter: drop-shadow(0 0 2px rgba(59, 130, 246, 0.3));
+    }
+  }
+
+  @keyframes flowGlow2 {
+    0% {
+      opacity: 0.08;
+      filter: drop-shadow(0 0 1px rgba(139, 92, 246, 0.2));
+    }
+    50% {
+      opacity: 0.2;
+      filter: drop-shadow(0 0 6px rgba(139, 92, 246, 0.5));
+    }
+    100% {
+      opacity: 0.08;
+      filter: drop-shadow(0 0 1px rgba(139, 92, 246, 0.2));
+    }
+  }
+
+  @keyframes flowGlow3 {
+    0% {
+      opacity: 0.06;
+      filter: drop-shadow(0 0 1px rgba(59, 130, 246, 0.25));
+    }
+    50% {
+      opacity: 0.22;
+      filter: drop-shadow(0 0 7px rgba(59, 130, 246, 0.55));
+    }
+    100% {
+      opacity: 0.06;
+      filter: drop-shadow(0 0 1px rgba(59, 130, 246, 0.25));
+    }
+  }
+
+  @keyframes flowEnergy2 {
+    0%,
+    100% {
+      stroke-width: 1.5;
+      opacity: 0.1;
+    }
+    50% {
+      stroke-width: 2.5;
+      opacity: 0.3;
+    }
+  }
+
+  @keyframes flowEnergy3 {
+    0%,
+    100% {
+      stroke-width: 1.2;
+      opacity: 0.08;
+    }
+    50% {
+      stroke-width: 2;
+      opacity: 0.25;
+    }
+  }
+
+  @keyframes nodePulse {
+    0%,
+    100% {
+      r: 2;
+      opacity: 0.4;
+      filter: drop-shadow(0 0 2px rgba(59, 130, 246, 0.4));
+    }
+    50% {
+      r: 4;
+      opacity: 0.8;
+      filter: drop-shadow(0 0 6px rgba(59, 130, 246, 0.8));
+    }
+  }
+
+  /* Ensure content appears above background */
+  main {
+    position: relative;
+    z-index: 1;
+  }
+
+  body {
+    position: relative;
+  }
+</style>
