@@ -1,115 +1,108 @@
 ---
-// Particles background component using tsparticles
-// Client-side only component
+// Particles background with hexagon path
 ---
 
-<div id="particles-container" style="
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  z-index: 0;
-  pointer-events: none;
-  overflow: hidden;
-"></div>
+<div id="tsparticles"></div>
 
 <script>
-  import { tsParticles } from 'tsparticles-engine';
-  import { loadSlim } from 'tsparticles-slim';
+  import { tsParticles } from "tsparticles-engine";
+  import { loadSlim } from "tsparticles-slim";
 
-  // Initialize particles only once
-  if (!window.particlesInitialized) {
-    window.particlesInitialized = true;
+  (async () => {
+    try {
+      await loadSlim(tsParticles);
 
-    await loadSlim(tsParticles);
-
-    const particlesConfig = {
-      particles: {
-        number: {
-          value: 80,
-          density: {
+      await tsParticles.load("tsparticles", {
+        particles: {
+          paint: {
+            fill: {
+              color: {
+                value: "#3b82f6",
+                animation: {
+                  enable: true,
+                  speed: 10
+                }
+              },
+              enable: true
+            }
+          },
+          move: {
+            direction: "none",
             enable: true,
-            value_area: 800,
+            outModes: {
+              default: "destroy"
+            },
+            path: {
+              clamp: false,
+              enable: true,
+              delay: {
+                value: 0
+              },
+              generator: "polygonPathGenerator",
+              options: {
+                sides: 6,
+                turnSteps: 30,
+                angle: 30
+              }
+            },
+            speed: 3
           },
+          number: {
+            density: {
+              enable: true
+            },
+            value: 0
+          },
+          opacity: {
+            value: 0.8
+          },
+          shape: {
+            type: "circle"
+          },
+          size: {
+            value: 3
+          }
         },
-        color: {
-          value: ['#3b82f6', '#8b5cf6', '#6366f1'],
+        background: {
+          color: "transparent"
         },
-        shape: {
-          type: 'circle',
+        emitters: {
+          direction: "none",
+          rate: {
+            quantity: 1,
+            delay: 0.25
+          },
+          size: {
+            width: 0,
+            height: 0
+          },
+          position: {
+            x: 50,
+            y: 50
+          }
         },
-        opacity: {
-          value: 0.5,
-          random: {
-            enable: true,
-            minimumValue: 0.2,
+        trail: {
+          fill: {
+            color: "#3b82f6"
           },
-          animation: {
-            enable: true,
-            speed: 1,
-            minimumValue: 0.1,
-            sync: false,
-          },
-        },
-        size: {
-          value: {
-            min: 1,
-            max: 5,
-          },
-          random: {
-            enable: true,
-            minimumValue: 1,
-          },
-          animation: {
-            enable: false,
-          },
-        },
-        move: {
-          enable: true,
-          speed: {
-            min: -2,
-            max: 2,
-          },
-          direction: 'none',
-          random: false,
-          straight: false,
-          outModes: {
-            default: 'bounce',
-          },
-          attract: {
-            enable: false,
-            rotateX: 600,
-            rotateY: 1200,
-          },
-        },
-      },
-      interactivity: {
-        events: {
-          onHover: {
-            enable: true,
-            mode: 'repulse',
-          },
-          onClick: {
-            enable: true,
-            mode: 'push',
-          },
-        },
-        modes: {
-          repulse: {
-            distance: 200,
-            duration: 0.4,
-          },
-          push: {
-            quantity: 4,
-          },
-        },
-      },
-      background: {
-        color: 'transparent',
-      },
-    };
-
-    await tsParticles.load('particles-container', particlesConfig);
-  }
+          length: 20,
+          enable: true
+        }
+      });
+    } catch (error) {
+      console.error("Error loading particles:", error);
+    }
+  })();
 </script>
+
+<style>
+  #tsparticles {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+    z-index: 0;
+  }
+</style>
