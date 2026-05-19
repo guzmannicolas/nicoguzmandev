@@ -27,7 +27,7 @@ const lang = 'es';
           {service.plans.map((plan) => (
             <PricingCard
               service={service.service}
-              icon={service.icon}
+              iconType={service.service === 'Diseño Web' ? 'design' : service.service === 'Programación' ? 'development' : service.service === 'Automatización' ? 'automation' : 'erp'}
               plan={plan}
               contactLabel="Consultar"
             />

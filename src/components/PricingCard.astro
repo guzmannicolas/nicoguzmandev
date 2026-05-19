@@ -1,4 +1,6 @@
 ---
+import Icon from './Icon.astro';
+
 interface Plan {
   name: string;
   price: string;
@@ -9,12 +11,12 @@ interface Plan {
 
 interface Props {
   service: string;
-  icon: string;
+  iconType: 'design' | 'development' | 'automation' | 'erp';
   plan: Plan;
   contactLabel: string;
 }
 
-const { service, icon, plan, contactLabel } = Astro.props;
+const { service, iconType, plan, contactLabel } = Astro.props;
 ---
 
 <div class={`reveal relative flex flex-col rounded-xl p-6 border transition-all duration-300 ${
@@ -31,7 +33,10 @@ const { service, icon, plan, contactLabel } = Astro.props;
   )}
 
   <div class="mb-4">
-    <p class="text-gray-400 text-xs mb-1">{icon} {service}</p>
+    <div class="flex items-center gap-2 mb-1">
+      <Icon icon={iconType} />
+      <p class="text-gray-400 text-xs">{service}</p>
+    </div>
     <h3 class="text-xl font-bold text-white">{plan.name}</h3>
     <p class="text-3xl font-bold text-accent mt-2">{plan.price}</p>
     <p class="text-gray-400 text-sm mt-1">{plan.description}</p>

@@ -27,7 +27,7 @@ const lang = 'en';
           {service.plans.map((plan) => (
             <PricingCard
               service={service.service}
-              icon={service.icon}
+              iconType={service.service === 'Web Design' ? 'design' : service.service === 'Development' ? 'development' : service.service === 'Automation' ? 'automation' : 'erp'}
               plan={plan}
               contactLabel="Get a quote"
             />
