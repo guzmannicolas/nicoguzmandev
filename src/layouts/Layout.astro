@@ -1,5 +1,6 @@
 ---
 import '../styles/global.css';
+import '../styles/scroll-reveal.css';
 import Navigation from '../components/Navigation.astro';
 import Footer from '../components/Footer.astro';
 import ParticlesBackground from '../components/ParticlesBackground.astro';
@@ -8,9 +9,18 @@ interface Props {
   title: string;
   description?: string;
   lang: 'es' | 'en';
+  ogImage?: string;
 }
 
-const { title, description = 'Nicolás Guzmán Dev - Diseño, Programación, Automatización y ERP', lang } = Astro.props;
+const {
+  title,
+  description = 'Nicolás Guzmán Dev - Diseño, Programación, Automatización y ERP a medida',
+  lang,
+  ogImage = '/og-image.png',
+} = Astro.props;
+
+const siteUrl = 'https://nicoguzmandev.com';
+const canonicalUrl = new URL(Astro.url.pathname, siteUrl).toString();
 ---
 
 <!doctype html>
@@ -19,6 +29,23 @@ const { title, description = 'Nicolás Guzmán Dev - Diseño, Programación, Aut
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta name="description" content={description} />
+    <link rel="canonical" href={canonicalUrl} />
+
+    <!-- Open Graph -->
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content={canonicalUrl} />
+    <meta property="og:title" content={title} />
+    <meta property="og:description" content={description} />
+    <meta property="og:image" content={`${siteUrl}${ogImage}`} />
+    <meta property="og:locale" content={lang === 'es' ? 'es_AR' : 'en_US'} />
+    <meta property="og:site_name" content="Nicolás Guzmán Dev" />
+
+    <!-- Twitter Card -->
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content={title} />
+    <meta name="twitter:description" content={description} />
+    <meta name="twitter:image" content={`${siteUrl}${ogImage}`} />
+
     <title>{title}</title>
     <link rel="icon" type="image/x-icon" href="/favicon.ico" />
   </head>
@@ -29,5 +56,20 @@ const { title, description = 'Nicolás Guzmán Dev - Diseño, Programación, Aut
       <slot />
     </main>
     <Footer lang={lang} />
+
+    <script>
+      const observer = new IntersectionObserver(
+        (entries) => {
+          entries.forEach((entry) => {
+            if (entry.isIntersecting) {
+              entry.target.classList.add('visible');
+            }
+          });
+        },
+        { threshold: 0.1 }
+      );
+
+      document.querySelectorAll('.reveal').forEach((el) => observer.observe(el));
+    </script>
   </body>
 </html>
