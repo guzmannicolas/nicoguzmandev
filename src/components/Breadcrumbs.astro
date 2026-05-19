@@ -1,0 +1,83 @@
+---
+interface Props {
+  lang: 'es' | 'en';
+}
+
+const { lang } = Astro.props;
+const baseUrl = lang === 'es' ? '' : '/en';
+const currentPath = Astro.url.pathname;
+
+// Map paths to labels
+const pathMap: Record<string, Record<string, string>> = {
+  es: {
+    '/': 'Inicio',
+    '/servicios': 'Servicios',
+    '/portafolio': 'Portafolio',
+    '/contacto': 'Contacto',
+    '/precios': 'Precios',
+    '/testimonios': 'Testimonios',
+  },
+  en: {
+    '/en/': 'Home',
+    '/en/services': 'Services',
+    '/en/portfolio': 'Portfolio',
+    '/en/contact': 'Contact',
+    '/en/pricing': 'Pricing',
+    '/en/testimonials': 'Testimonials',
+  },
+};
+
+// Generate breadcrumbs
+const generateBreadcrumbs = () => {
+  const paths = currentPath.split('/').filter(Boolean);
+  const breadcrumbs: Array<{ label: string; href: string; current: boolean }> = [
+    {
+      label: lang === 'es' ? 'Inicio' : 'Home',
+      href: `${baseUrl}/`,
+      current: currentPath === '/' || currentPath === '/en/',
+    },
+  ];
+
+  let href = baseUrl;
+  for (const path of paths) {
+    if (path === 'en') continue;
+    href += `/${path}`;
+    const label = pathMap[lang][href] || path.charAt(0).toUpperCase() + path.slice(1);
+    breadcrumbs.push({
+      label,
+      href,
+      current: currentPath === href,
+    });
+  }
+
+  return breadcrumbs;
+};
+
+const breadcrumbs = generateBreadcrumbs();
+
+// Hide breadcrumbs on home page
+if (breadcrumbs.length <= 1) {
+  Astro.response?.headers.set('x-hide-breadcrumb', 'true');
+}
+---
+
+{breadcrumbs.length > 1 && (
+  <div class="bg-secondary/50 border-b border-gray-700 sticky top-16 z-40">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-2">
+      <nav class="flex items-center space-x-2 text-sm">
+        {breadcrumbs.map((crumb, idx) => (
+          <>
+            {idx > 0 && <span class="text-gray-600">/</span>}
+            {crumb.current ? (
+              <span class="text-accent font-medium">{crumb.label}</span>
+            ) : (
+              <a href={crumb.href} class="text-gray-400 hover:text-accent transition-colors">
+                {crumb.label}
+              </a>
+            )}
+          </>
+        ))}
+      </nav>
+    </div>
+  </div>
+)}

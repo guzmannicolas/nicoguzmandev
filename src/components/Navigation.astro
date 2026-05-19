@@ -20,13 +20,13 @@ const navLinks = [
 ];
 ---
 
-<nav class="bg-secondary/80 backdrop-blur-sm border-b border-gray-700 sticky top-0 z-50">
+<nav id="navbar" class="bg-secondary/80 backdrop-blur-sm border-b border-gray-700 sticky top-0 z-50 transition-all duration-300">
   <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
     <div class="flex justify-between items-center h-16">
       <!-- Logo -->
       <div class="flex-shrink-0">
-        <a href={`${baseUrl}/`} class="text-xl font-bold text-accent">
-          NG Dev
+        <a href={`${baseUrl}/`} class="flex items-center gap-2">
+          <img src="/logo.png" alt="NG Dev" class="h-10 w-auto" />
         </a>
       </div>
 
@@ -100,8 +100,20 @@ const navLinks = [
 </nav>
 
 <script>
+  const navbar = document.getElementById('navbar');
   const mobileMenuBtn = document.getElementById('mobile-menu-btn');
   const mobileMenu = document.getElementById('mobile-menu');
+
+  // Scroll animation
+  window.addEventListener('scroll', () => {
+    if (window.scrollY > 50) {
+      navbar?.classList.add('bg-secondary/95', 'backdrop-blur-md', 'shadow-lg');
+      navbar?.classList.remove('bg-secondary/80');
+    } else {
+      navbar?.classList.remove('bg-secondary/95', 'backdrop-blur-md', 'shadow-lg');
+      navbar?.classList.add('bg-secondary/80');
+    }
+  });
 
   mobileMenuBtn?.addEventListener('click', () => {
     mobileMenu?.classList.toggle('hidden');
