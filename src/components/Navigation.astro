@@ -27,7 +27,7 @@ const navLinks = [
       <div class="flex-shrink-0 group">
         <a href={`${baseUrl}/`} class="flex items-center gap-2 relative">
           <div class="absolute inset-0 bg-accent/20 rounded-lg blur-lg group-hover:bg-accent/40 transition-all duration-300 -z-10"></div>
-          <img src="/logo.png" alt="NG Dev" class="h-16 w-auto transition-transform duration-300 group-hover:scale-110 drop-shadow-lg" />
+          <img src="/logo.png" alt="NG Dev" class="h-14 w-auto transition-transform duration-300 group-hover:scale-110 drop-shadow-lg" />
         </a>
       </div>
 
@@ -81,28 +81,31 @@ const navLinks = [
         </button>
       </div>
     </div>
+  </div>
 
-    <!-- Mobile Menu -->
-    <div id="mobile-menu" class="hidden md:hidden border-t border-accent/20 py-4 space-y-3 bg-gradient-to-b from-transparent to-secondary/30">
-      {navLinks.map((link) => (
+  <!-- Mobile Menu - Fullscreen -->
+  <div id="mobile-menu" class="hidden fixed inset-0 top-20 md:hidden bg-gradient-to-b from-secondary via-primary to-secondary z-40 overflow-y-auto animate-slide-in">
+    <div class="px-4 py-6 space-y-1">
+      {navLinks.map((link, idx) => (
         <a
           href={link.href}
-          class="block px-4 py-2.5 text-gray-300 hover:text-white hover:bg-accent/10 rounded transition-all duration-300 border-l-2 border-transparent hover:border-accent"
+          class="block px-6 py-4 text-lg text-gray-300 hover:text-white hover:bg-accent/10 rounded-lg transition-all duration-300 border-l-4 border-transparent hover:border-accent transform hover:translate-x-1 animate-fade-in"
+          style={`animation-delay: ${idx * 50}ms`}
         >
           {link.label}
         </a>
       ))}
 
-      <div class="px-4 py-2 border-t border-accent/20 mt-4 space-y-3">
+      <div class="px-6 py-6 border-t border-accent/20 mt-6 space-y-4 animate-fade-in" style="animation-delay: 250ms">
         <a
           href={lang === 'es' ? '/en/' : '/'}
-          class="block text-xs font-semibold text-gray-400 hover:text-accent transition-all duration-300 uppercase px-3 py-2 rounded hover:bg-accent/10"
+          class="block text-sm font-semibold text-gray-400 hover:text-accent transition-all duration-300 uppercase px-4 py-3 rounded hover:bg-accent/10"
         >
           {lang === 'es' ? 'English' : 'Español'}
         </a>
         <a
           href={`${baseUrl}/${lang === 'es' ? 'contacto' : 'contact'}`}
-          class="block w-full text-center bg-gradient-to-r from-accent to-blue-500 text-white px-4 py-2.5 rounded text-sm font-semibold hover:shadow-lg hover:shadow-accent/50 transition-all duration-300"
+          class="block w-full text-center bg-gradient-to-r from-accent to-blue-500 text-white px-6 py-4 rounded-lg text-lg font-semibold hover:shadow-lg hover:shadow-accent/50 transition-all duration-300"
         >
           {t.nav.contacto}
         </a>
@@ -114,6 +117,37 @@ const navLinks = [
 <style>
   .nav-link {
     position: relative;
+  }
+
+  @keyframes slide-in {
+    from {
+      opacity: 0;
+      transform: translateY(-20px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+
+  @keyframes fade-in {
+    from {
+      opacity: 0;
+      transform: translateX(-20px);
+    }
+    to {
+      opacity: 1;
+      transform: translateX(0);
+    }
+  }
+
+  .animate-slide-in {
+    animation: slide-in 0.3s ease-out;
+  }
+
+  .animate-fade-in {
+    animation: fade-in 0.4s ease-out forwards;
+    opacity: 0;
   }
 </style>
 
@@ -134,15 +168,21 @@ const navLinks = [
   });
 
   mobileMenuBtn?.addEventListener('click', () => {
-    mobileMenu?.classList.toggle('hidden');
-    mobileMenuBtn?.classList.toggle('bg-accent/20');
+    const isHidden = mobileMenu?.classList.contains('hidden');
+    if (isHidden) {
+      mobileMenu?.classList.remove('hidden');
+      document.body.style.overflow = 'hidden';
+    } else {
+      mobileMenu?.classList.add('hidden');
+      document.body.style.overflow = 'auto';
+    }
   });
 
   // Close menu on link click
   document.querySelectorAll('#mobile-menu a').forEach((link) => {
     link.addEventListener('click', () => {
       mobileMenu?.classList.add('hidden');
-      mobileMenuBtn?.classList.remove('bg-accent/20');
+      document.body.style.overflow = 'auto';
     });
   });
 </script>

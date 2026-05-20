@@ -8,60 +8,116 @@ interface Props {
 
 const { lang } = Astro.props;
 const t = lang === 'es' ? es : en;
+const baseUrl = lang === 'es' ? '' : '/en';
 ---
 
-<footer class="bg-secondary border-t border-gray-700 mt-20">
-  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
-    <div class="grid grid-cols-1 md:grid-cols-3 gap-8 mb-8">
-      <div>
-        <h3 class="text-lg font-bold text-accent mb-4">NG Dev</h3>
-        <p class="text-gray-400 text-sm">
-          Transformando negocios con tecnología
+<footer class="bg-gradient-to-b from-secondary via-primary to-secondary border-t border-accent/20 mt-20 relative">
+  <div class="absolute inset-0 opacity-30 pointer-events-none">
+    <div class="absolute top-0 right-0 w-96 h-96 bg-accent/10 rounded-full blur-3xl"></div>
+  </div>
+
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16 relative z-10">
+    <div class="grid grid-cols-1 md:grid-cols-4 gap-12 mb-12">
+      <!-- Brand -->
+      <div class="md:col-span-1">
+        <a href={`${baseUrl}/`} class="inline-block group mb-4">
+          <img src="/logo.png" alt="NG Dev" class="h-12 w-auto transition-transform duration-300 group-hover:scale-110" />
+        </a>
+        <p class="text-gray-400 text-sm leading-relaxed">
+          {lang === 'es'
+            ? 'Transformando negocios con diseño, programación, automatización y ERP a medida.'
+            : 'Transforming businesses with design, development, automation and custom ERP solutions.'}
         </p>
       </div>
 
+      <!-- Servicios -->
       <div>
-        <h4 class="font-semibold text-gray-200 mb-4">
-          {lang === 'es' ? 'Enlaces' : 'Links'}
+        <h4 class="font-semibold text-white mb-6 text-sm uppercase tracking-wider">
+          {lang === 'es' ? 'Servicios' : 'Services'}
         </h4>
-        <ul class="space-y-2 text-sm text-gray-400">
+        <ul class="space-y-3 text-sm text-gray-400">
           <li>
-            <a href={lang === 'es' ? '/servicios' : '/en/services'} class="hover:text-accent transition-colors">
+            <a href={`${baseUrl}/${lang === 'es' ? 'servicios' : 'services'}`} class="hover:text-accent transition-colors duration-300 flex items-center gap-2 group">
+              <span class="group-hover:translate-x-1 transition-transform duration-300">→</span>
               {lang === 'es' ? 'Servicios' : 'Services'}
             </a>
           </li>
           <li>
-            <a href={lang === 'es' ? '/portafolio' : '/en/portfolio'} class="hover:text-accent transition-colors">
+            <a href={`${baseUrl}/${lang === 'es' ? 'precios' : 'pricing'}`} class="hover:text-accent transition-colors duration-300 flex items-center gap-2 group">
+              <span class="group-hover:translate-x-1 transition-transform duration-300">→</span>
+              {lang === 'es' ? 'Precios' : 'Pricing'}
+            </a>
+          </li>
+          <li>
+            <a href={`${baseUrl}/${lang === 'es' ? 'portafolio' : 'portfolio'}`} class="hover:text-accent transition-colors duration-300 flex items-center gap-2 group">
+              <span class="group-hover:translate-x-1 transition-transform duration-300">→</span>
               {lang === 'es' ? 'Portafolio' : 'Portfolio'}
             </a>
           </li>
           <li>
-            <a href={lang === 'es' ? '/contacto' : '/en/contact'} class="hover:text-accent transition-colors">
-              {lang === 'es' ? 'Contacto' : 'Contact'}
+            <a href={`${baseUrl}/${lang === 'es' ? 'testimonios' : 'testimonials'}`} class="hover:text-accent transition-colors duration-300 flex items-center gap-2 group">
+              <span class="group-hover:translate-x-1 transition-transform duration-300">→</span>
+              {lang === 'es' ? 'Testimonios' : 'Testimonials'}
             </a>
           </li>
         </ul>
       </div>
 
+      <!-- Contacto -->
       <div>
-        <h4 class="font-semibold text-gray-200 mb-4">
-          {lang === 'es' ? 'Redes Sociales' : 'Social Media'}
+        <h4 class="font-semibold text-white mb-6 text-sm uppercase tracking-wider">
+          {lang === 'es' ? 'Contacto' : 'Contact'}
         </h4>
-        <div class="flex space-x-4">
-          <a href="#" class="text-gray-400 hover:text-accent transition-colors">LinkedIn</a>
-          <a href="#" class="text-gray-400 hover:text-accent transition-colors">GitHub</a>
-          <a href="#" class="text-gray-400 hover:text-accent transition-colors">Twitter</a>
-        </div>
+        <ul class="space-y-3 text-sm text-gray-400">
+          <li>
+            <a href="mailto:hola@nicoguzmandev.com" class="hover:text-accent transition-colors duration-300">
+              hola@nicoguzmandev.com
+            </a>
+          </li>
+          <li>
+            <a href="https://linkedin.com" target="_blank" rel="noopener noreferrer" class="hover:text-accent transition-colors duration-300">
+              LinkedIn
+            </a>
+          </li>
+          <li>
+            <a href="https://github.com" target="_blank" rel="noopener noreferrer" class="hover:text-accent transition-colors duration-300">
+              GitHub
+            </a>
+          </li>
+          <li>
+            <a href="https://twitter.com" target="_blank" rel="noopener noreferrer" class="hover:text-accent transition-colors duration-300">
+              Twitter
+            </a>
+          </li>
+        </ul>
+      </div>
+
+      <!-- CTA -->
+      <div>
+        <h4 class="font-semibold text-white mb-6 text-sm uppercase tracking-wider">
+          {lang === 'es' ? '¿Listo?' : 'Ready?'}
+        </h4>
+        <a
+          href={`${baseUrl}/${lang === 'es' ? 'contacto' : 'contact'}`}
+          class="inline-block w-full text-center bg-gradient-to-r from-accent to-blue-500 text-white px-4 py-3 rounded-lg font-semibold hover:shadow-lg hover:shadow-accent/50 transition-all duration-300 hover:scale-105 mb-4"
+        >
+          {lang === 'es' ? 'Contactame' : 'Contact me'}
+        </a>
+        <p class="text-xs text-gray-500">
+          {lang === 'es'
+            ? 'Respondo en 24 horas'
+            : 'Responding within 24 hours'}
+        </p>
       </div>
     </div>
 
-    <hr class="border-gray-700 mb-6" />
-
-    <div class="flex justify-between items-center text-sm text-gray-400">
-      <p>{t.footer.copyright}</p>
-      <a href="#" class="hover:text-accent transition-colors">
-        {t.footer.privacy}
-      </a>
+    <div class="border-t border-accent/20 pt-8">
+      <div class="flex flex-col md:flex-row justify-between items-center text-sm text-gray-400 gap-4">
+        <p>{t.footer.copyright}</p>
+        <a href="#" class="hover:text-accent transition-colors duration-300">
+          {t.footer.privacy}
+        </a>
+      </div>
     </div>
   </div>
 </footer>
