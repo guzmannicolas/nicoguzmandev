@@ -1,0 +1,36 @@
+---
+interface Props {
+  name: string;
+  role: string;
+  company: string;
+  service: string;
+  text: string;
+  avatar: string;
+  rating: number;
+}
+
+const { name, role, company, service, text, avatar, rating } = Astro.props;
+---
+
+<div class="reveal bg-secondary border border-gray-700 rounded-xl p-6 hover:border-accent transition-all duration-300 flex flex-col gap-4">
+  <div class="flex items-start justify-between">
+    <div class="flex items-center gap-3">
+      <div class="w-12 h-12 rounded-full bg-accent/20 border border-accent/40 flex items-center justify-center text-accent font-bold text-sm flex-shrink-0">
+        {avatar}
+      </div>
+      <div>
+        <p class="font-semibold text-white text-sm">{name}</p>
+        <p class="text-gray-400 text-xs">{role} · {company}</p>
+      </div>
+    </div>
+    <span class="text-xs text-accent bg-accent/10 px-2 py-1 rounded-full whitespace-nowrap">{service}</span>
+  </div>
+
+  <p class="text-gray-300 text-sm leading-relaxed italic">"{text}"</p>
+
+  <div class="flex gap-1">
+    {Array.from({ length: rating }).map(() => (
+      <span class="text-yellow-400 text-sm">★</span>
+    ))}
+  </div>
+</div>

@@ -1,0 +1,54 @@
+---
+import Layout from '../layouts/Layout.astro';
+import PricingCard from '../components/PricingCard.astro';
+import { pricingEs } from '../data/pricing.js';
+
+const lang = 'es';
+---
+
+<Layout title="Precios - Nicolás Guzmán Dev" lang={lang} description="Precios y paquetes de servicios de Diseño, Programación, Automatización y ERP a medida.">
+  <section class="py-16 px-4">
+    <div class="max-w-7xl mx-auto text-center">
+      <h1 class="reveal text-4xl md:text-5xl font-bold text-white mb-4">Precios</h1>
+      <p class="reveal text-xl text-gray-400 max-w-2xl mx-auto">
+        Inversión clara y transparente para cada servicio. Todos los precios en USD.
+      </p>
+    </div>
+  </section>
+
+  {pricingEs.map((service) => (
+    <section class="py-12 px-4">
+      <div class="max-w-7xl mx-auto">
+        <h2 class="reveal text-3xl font-bold text-white mb-2 text-center">
+          {service.icon} {service.service}
+        </h2>
+        <p class="reveal text-gray-400 text-center mb-10">Elegí el plan que mejor se adapte a tu proyecto</p>
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-6 items-center">
+          {service.plans.map((plan) => (
+            <PricingCard
+              service={service.service}
+              iconType={service.service === 'Diseño Web' ? 'design' : service.service === 'Programación' ? 'development' : service.service === 'Automatización' ? 'automation' : 'erp'}
+              plan={plan}
+              contactLabel="Consultar"
+            />
+          ))}
+        </div>
+      </div>
+    </section>
+  ))}
+
+  <section class="py-20 px-4">
+    <div class="max-w-3xl mx-auto text-center">
+      <h2 class="reveal text-3xl font-bold text-white mb-4">¿Proyecto fuera de estos rangos?</h2>
+      <p class="reveal text-gray-400 text-lg mb-8">
+        Contactame para una cotización personalizada. No hay proyecto demasiado grande ni demasiado pequeño.
+      </p>
+      <a
+        href="/contacto"
+        class="reveal inline-block bg-accent text-white px-8 py-3 rounded-lg hover:bg-blue-600 transition-colors text-lg font-semibold"
+      >
+        Hablar con Nicolás
+      </a>
+    </div>
+  </section>
+</Layout>

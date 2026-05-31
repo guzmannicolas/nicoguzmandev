@@ -1,0 +1,182 @@
+---
+// Advanced particles component with full configuration control
+// This demonstrates using hexagon particles with custom emitters
+
+interface ParticleConfig {
+  particleCount?: number;
+  particleColor?: string;
+  particleSize?: number;
+  linkDistance?: number;
+  moveSpeed?: number;
+  linkOpacity?: number;
+  useEmitters?: boolean;
+  emitterPositions?: Array<{ x: number; y: number; direction: string }>;
+}
+
+interface Props {
+  config?: ParticleConfig;
+}
+
+const {
+  config = {},
+} = Astro.props as Props;
+
+const defaults: ParticleConfig = {
+  particleCount: 80,
+  particleColor: "#ffffff",
+  particleSize: 3,
+  linkDistance: 150,
+  moveSpeed: 2,
+  linkOpacity: 0.4,
+  useEmitters: false,
+  emitterPositions: [],
+};
+
+const finalConfig = { ...defaults, ...config };
+---
+
+<div id="tsparticles"></div>
+
+<script define:vars={{ finalConfig }}>
+  import { tsParticles } from "tsparticles-engine";
+  import { loadSlim } from "tsparticles-slim";
+
+  (async () => {
+    try {
+      await loadSlim(tsParticles);
+
+      // Build emitters if enabled
+      const emitters = finalConfig.useEmitters 
+        ? finalConfig.emitterPositions.map(pos => ({
+            position: {
+              x: pos.x,
+              y: pos.y,
+            },
+            rate: {
+              delay: 0.25,
+              quantity: 2,
+            },
+            direction: pos.direction || "top",
+            size: {
+              mode: "percent",
+              height: 0,
+              width: 100,
+            },
+          }))
+        : [];
+
+      const baseConfig = {
+        particles: {
+          number: {
+            value: finalConfig.particleCount,
+          },
+          shape: {
+            type: "polygon",
+            polygon: {
+              sides: 6, // Hexagon
+            },
+          },
+          opacity: {
+            value: 0.5,
+            animation: {
+              enable: true,
+              minimumValue: 0.1,
+              speed: 1,
+              startValue: "max",
+              destroy: "min",
+            },
+          },
+          color: {
+            value: finalConfig.particleColor,
+          },
+          size: {
+            value: finalConfig.particleSize,
+            random: {
+              enable: true,
+              minimumValue: 1,
+            },
+          },
+          links: {
+            enable: true,
+            distance: finalConfig.linkDistance,
+            color: finalConfig.particleColor,
+            opacity: finalConfig.linkOpacity,
+            width: 1,
+          },
+          move: {
+            enable: true,
+            speed: finalConfig.moveSpeed,
+            direction: "none",
+            outModes: {
+              default: "bounce",
+            },
+          },
+          zIndex: {
+            value: 1,
+          },
+        },
+        interactivity: {
+          events: {
+            onHover: {
+              enable: true,
+              mode: "repulse",
+            },
+            onClick: {
+              enable: true,
+              mode: "push",
+            },
+            resize: {
+              enable: true,
+            },
+          },
+          modes: {
+            repulse: {
+              distance: 200,
+              duration: 0.4,
+            },
+            push: {
+              quantity: 4,
+            },
+          },
+        },
+        background: {
+          color: "transparent",
+        },
+        fullScreen: {
+          enable: true,
+          zIndex: -1,
+        },
+        detectRetina: true,
+        fpsLimit: 60,
+      };
+
+      // Add emitters if enabled
+      if (finalConfig.useEmitters && emitters.length > 0) {
+        baseConfig.particles.number.value = 0; // Let emitters spawn particles
+        baseConfig.emitters = emitters;
+        baseConfig.particles.life = {
+          duration: {
+            sync: false,
+            value: 3,
+          },
+        };
+      }
+
+      await tsParticles.load("tsparticles", baseConfig);
+    } catch (error) {
+      console.error("Error loading particles:", error);
+    }
+  })();
+</script>
+
+<style>
+  #tsparticles {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+    z-index: -1;
+  }
+</style>

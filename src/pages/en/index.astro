@@ -8,7 +8,7 @@ const lang = 'en';
 
 <Layout title="Nicolás Guzmán Dev - Home" lang={lang}>
   <!-- Hero Section -->
-  <section class="bg-gradient-to-b from-secondary to-primary py-20 px-4">
+  <section class="py-20 px-4">
     <div class="max-w-7xl mx-auto text-center">
       <h1 class="text-5xl md:text-6xl font-bold text-white mb-4 fade-in">
         {en.hero.title}
@@ -26,7 +26,7 @@ const lang = 'en';
   </section>
 
   <!-- Services Section -->
-  <section class="py-20 px-4 bg-primary">
+  <section class="py-20 px-4">
     <div class="max-w-7xl mx-auto">
       <h2 class="text-4xl font-bold text-center text-white mb-4">
         {en.nav.servicios}
@@ -37,22 +37,22 @@ const lang = 'en';
 
       <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
         <ServiceCard
-          icon="🎨"
+          iconType="design"
           title={en.services.design.title}
           description={en.services.design.description}
         />
         <ServiceCard
-          icon="💻"
+          iconType="development"
           title={en.services.development.title}
           description={en.services.development.description}
         />
         <ServiceCard
-          icon="⚙️"
+          iconType="automation"
           title={en.services.automation.title}
           description={en.services.automation.description}
         />
         <ServiceCard
-          icon="📊"
+          iconType="erp"
           title={en.services.erp.title}
           description={en.services.erp.description}
         />
@@ -61,7 +61,7 @@ const lang = 'en';
   </section>
 
   <!-- CTA Section -->
-  <section class="py-20 px-4 bg-secondary">
+  <section class="py-20 px-4">
     <div class="max-w-4xl mx-auto text-center">
       <h2 class="text-4xl font-bold text-white mb-4">
         Ready to transform your business?

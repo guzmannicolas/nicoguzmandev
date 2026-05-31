@@ -1,0 +1,250 @@
+---
+// Specialized hexagon pattern particles component
+// Creates particles that emit from hexagon vertices and flow toward center
+// Ideal for geometric, tech-focused designs
+
+export interface Props {
+  particleColor?: string;
+  particleCount?: number;
+  hexagonSize?: 'small' | 'medium' | 'large';
+  flowTowardCenter?: boolean;
+  emitterIntensity?: 'low' | 'medium' | 'high';
+}
+
+const {
+  particleColor = '#3b82f6',
+  particleCount = 100,
+  hexagonSize = 'large',
+  flowTowardCenter = true,
+  emitterIntensity = 'medium',
+} = Astro.props;
+
+// Map sizes to radius values
+const radiusMap = {
+  small: 100,
+  medium: 150,
+  large: 200,
+};
+
+const emitterRateMap = {
+  low: 1,
+  medium: 2,
+  high: 4,
+};
+
+const radius = radiusMap[hexagonSize];
+const emitterQuantity = emitterRateMap[emitterIntensity];
+---
+
+<div
+  id="particles-hexagon-container"
+  data-particle-color={particleColor}
+  data-particle-count={particleCount}
+  data-hex-radius={radius}
+  data-emitter-quantity={emitterQuantity}
+  data-flow-to-center={flowTowardCenter}
+  style="
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 0;
+    pointer-events: none;
+    overflow: hidden;
+  "
+></div>
+
+<script>
+  import { tsParticles } from 'tsparticles-engine';
+  import { loadSlim } from 'tsparticles-slim';
+
+  if (!window.particlesHexagonInitialized) {
+    window.particlesHexagonInitialized = true;
+
+    await loadSlim(tsParticles);
+
+    const container = document.getElementById('particles-hexagon-container');
+
+    if (container) {
+      const particleColor = container.dataset.particleColor || '#3b82f6';
+      const particleCount = parseInt(container.dataset.particleCount || '100');
+      const hexRadius = parseInt(container.dataset.hexRadius || '200');
+      const emitterQuantity = parseInt(container.dataset.emitterQuantity || '2');
+      const flowToCenter = container.dataset.flowToCenter === 'true';
+
+      // Calculate hexagon vertices
+      const centerX = window.innerWidth / 2;
+      const centerY = window.innerHeight / 2;
+
+      const getHexagonPoints = (cx: number, cy: number, rad: number) => {
+        const points = [];
+        for (let i = 0; i < 6; i++) {
+          const angle = (i * Math.PI) / 3;
+          points.push({
+            x: cx + rad * Math.cos(angle),
+            y: cy + rad * Math.sin(angle),
+            angle: angle,
+          });
+        }
+        return points;
+      };
+
+      const hexPoints = getHexagonPoints(centerX, centerY, hexRadius);
+
+      // Create config with custom emitters at hexagon vertices
+      const particlesConfig = {
+        particles: {
+          number: {
+            value: particleCount,
+            density: {
+              enable: true,
+              value_area: 1500,
+            },
+          },
+          color: {
+            value: particleColor,
+          },
+          shape: {
+            type: 'circle',
+          },
+          opacity: {
+            value: {
+              min: 0.2,
+              max: 0.8,
+            },
+            random: {
+              enable: true,
+              minimumValue: 0.1,
+            },
+            animation: {
+              enable: true,
+              speed: 1.2,
+              minimumValue: 0,
+              sync: false,
+            },
+          },
+          size: {
+            value: {
+              min: 1,
+              max: 4,
+            },
+            random: {
+              enable: true,
+              minimumValue: 1,
+            },
+            animation: {
+              enable: true,
+              speed: 2,
+              minimumValue: 0.5,
+              sync: false,
+            },
+          },
+          move: {
+            enable: true,
+            speed: {
+              min: 1,
+              max: 3,
+            },
+            direction: flowToCenter ? 'center' : 'none',
+            random: !flowToCenter,
+            straight: false,
+            outModes: {
+              default: 'bounce',
+            },
+            attract: {
+              enable: flowToCenter,
+              rotateX: 300,
+              rotateY: 300,
+            },
+          },
+          life: {
+            count: 0,
+            duration: {
+              sync: false,
+              value: 0,
+            },
+          },
+        },
+        interactivity: {
+          events: {
+            onHover: {
+              enable: true,
+              mode: 'repulse',
+            },
+            onClick: {
+              enable: true,
+              mode: 'push',
+            },
+          },
+          modes: {
+            repulse: {
+              distance: 180,
+              duration: 0.5,
+            },
+            push: {
+              quantity: 5,
+            },
+          },
+        },
+        // Emitters at hexagon vertices
+        emitters: hexPoints.map((point) => ({
+          position: {
+            x: point.x,
+            y: point.y,
+          },
+          rate: {
+            delay: 0,
+            quantity: emitterQuantity,
+          },
+          life: {
+            count: 0,
+            duration: 0,
+          },
+        })),
+        background: {
+          color: 'transparent',
+        },
+      };
+
+      await tsParticles.load('particles-hexagon-container', particlesConfig);
+
+      // Optional: Draw hexagon outline for visual reference (invisible in production)
+      if (false) {
+        // Enable this for debugging to see the hexagon shape
+        const canvas = document.createElement('canvas');
+        canvas.style.cssText = 'position: fixed; top: 0; left: 0; width: 100%; height: 100%; z-index: -1;';
+        document.body.appendChild(canvas);
+
+        const ctx = canvas.getContext('2d');
+        if (ctx) {
+          canvas.width = window.innerWidth;
+          canvas.height = window.innerHeight;
+
+          ctx.strokeStyle = 'rgba(59, 130, 246, 0.2)';
+          ctx.lineWidth = 1;
+          ctx.beginPath();
+
+          hexPoints.forEach((point, index) => {
+            if (index === 0) {
+              ctx.moveTo(point.x, point.y);
+            } else {
+              ctx.lineTo(point.x, point.y);
+            }
+          });
+
+          ctx.closePath();
+          ctx.stroke();
+
+          // Draw vertices
+          hexPoints.forEach((point) => {
+            ctx.fillStyle = 'rgba(59, 130, 246, 0.3)';
+            ctx.beginPath();
+            ctx.arc(point.x, point.y, 8, 0, Math.PI * 2);
+            ctx.fill();
+          });
+        }
+      }
+    }
+  }
+</script>

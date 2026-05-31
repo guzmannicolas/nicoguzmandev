@@ -22,25 +22,21 @@ body {
   overflow-x: hidden;
 }
 
-/* Navigation z-index */
 nav {
   position: relative;
   z-index: 50;
 }
 
-/* Main content z-index */
 main {
   position: relative;
   z-index: 1;
 }
 
-/* Footer z-index */
 footer {
   position: relative;
   z-index: 1;
 }
 
-/* Animaciones */
 @keyframes fadeIn {
   from {
     opacity: 0;

@@ -1,0 +1,41 @@
+---
+import Layout from '../layouts/Layout.astro';
+import TestimonialCard from '../components/TestimonialCard.astro';
+import { testimonials } from '../data/testimonials.js';
+
+const lang = 'es';
+---
+
+<Layout title="Testimonios - Nicolás Guzmán Dev" lang={lang} description="Lo que dicen los clientes sobre los servicios de Nicolás Guzmán Dev.">
+  <section class="py-16 px-4">
+    <div class="max-w-7xl mx-auto text-center">
+      <h1 class="reveal text-4xl md:text-5xl font-bold text-white mb-4">Testimonios</h1>
+      <p class="reveal text-xl text-gray-400 max-w-2xl mx-auto">
+        Lo que dicen los clientes que confiaron en mí
+      </p>
+    </div>
+  </section>
+
+  <section class="py-12 px-4">
+    <div class="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+      {testimonials.map((t) => (
+        <TestimonialCard {...t} />
+      ))}
+    </div>
+  </section>
+
+  <section class="py-20 px-4">
+    <div class="max-w-3xl mx-auto text-center">
+      <h2 class="reveal text-3xl font-bold text-white mb-4">¿Querés ser el próximo?</h2>
+      <p class="reveal text-gray-400 text-lg mb-8">
+        Sumate a la lista de clientes satisfechos y transformá tu negocio.
+      </p>
+      <a
+        href="/contacto"
+        class="reveal inline-block bg-accent text-white px-8 py-3 rounded-lg hover:bg-blue-600 transition-colors text-lg font-semibold"
+      >
+        Empezar proyecto
+      </a>
+    </div>
+  </section>
+</Layout>

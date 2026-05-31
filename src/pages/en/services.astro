@@ -1,5 +1,6 @@
 ---
 import Layout from '../../layouts/Layout.astro';
+import Icon from '../../components/Icon.astro';
 import en from '../../i18n/en.json';
 
 const lang = 'en';
@@ -7,57 +8,71 @@ const lang = 'en';
 
 <Layout title="Services - Nicolás Guzmán Dev" lang={lang}>
   <!-- Header -->
-  <section class="bg-gradient-to-b from-secondary to-primary py-16 px-4">
+  <section class="py-16 px-4">
     <div class="max-w-7xl mx-auto text-center">
-      <h1 class="text-4xl md:text-5xl font-bold text-white mb-4">
+      <h1 class="reveal text-4xl md:text-5xl font-bold text-white mb-4">
         {en.nav.servicios}
       </h1>
-      <p class="text-xl text-gray-400">
+      <p class="reveal text-xl text-gray-400">
         Complete solutions for your business
       </p>
     </div>
   </section>
 
   <!-- Design -->
-  <section class="py-16 px-4 bg-primary">
+  <section class="py-16 px-4">
     <div class="max-w-7xl mx-auto">
       <div class="grid md:grid-cols-2 gap-12 items-center mb-20">
         <div>
-          <h2 class="text-3xl font-bold text-white mb-4">🎨 {en.services.design.title}</h2>
+          <div class="flex items-center gap-3 mb-4">
+            <div class="text-4xl">
+              <Icon icon="design" />
+            </div>
+            <h2 class="text-3xl font-bold text-white">{en.services.design.title}</h2>
+          </div>
           <p class="text-gray-400 text-lg mb-6">
             I create modern and responsive web designs that not only look great, but convert visitors into customers. Every project is customized to reflect your brand and achieve your business goals.
           </p>
           <ul class="space-y-3 text-gray-300">
-            <li class="flex items-center"><span class="text-accent mr-3">✓</span> Responsive and mobile-first design</li>
-            <li class="flex items-center"><span class="text-accent mr-3">✓</span> Optimized UX/UI</li>
-            <li class="flex items-center"><span class="text-accent mr-3">✓</span> Interactive prototypes</li>
-            <li class="flex items-center"><span class="text-accent mr-3">✓</span> Web accessibility</li>
+            <li class="flex items-center"><Icon icon="check" /><span class="ml-3">Responsive and mobile-first design</span></li>
+            <li class="flex items-center"><Icon icon="check" /><span class="ml-3">Optimized UX/UI</span></li>
+            <li class="flex items-center"><Icon icon="check" /><span class="ml-3">Interactive prototypes</span></li>
+            <li class="flex items-center"><Icon icon="check" /><span class="ml-3">Web accessibility</span></li>
           </ul>
         </div>
-        <div class="bg-secondary border border-gray-700 rounded-lg h-96 flex items-center justify-center">
-          <span class="text-6xl">🎨</span>
+        <div class="reveal bg-secondary border border-gray-700 rounded-lg h-96 flex items-center justify-center">
+          <div class="text-8xl">
+            <Icon icon="design" />
+          </div>
         </div>
       </div>
     </div>
   </section>
 
   <!-- Development -->
-  <section class="py-16 px-4 bg-secondary">
+  <section class="py-16 px-4">
     <div class="max-w-7xl mx-auto">
       <div class="grid md:grid-cols-2 gap-12 items-center mb-20">
-        <div class="bg-primary border border-gray-700 rounded-lg h-96 flex items-center justify-center">
-          <span class="text-6xl">💻</span>
+        <div class="reveal bg-secondary border border-gray-700 rounded-lg h-96 flex items-center justify-center">
+          <div class="text-8xl">
+            <Icon icon="development" />
+          </div>
         </div>
         <div>
-          <h2 class="text-3xl font-bold text-white mb-4">💻 {en.services.development.title}</h2>
+          <div class="flex items-center gap-3 mb-4">
+            <div class="text-4xl">
+              <Icon icon="development" />
+            </div>
+            <h2 class="text-3xl font-bold text-white">{en.services.development.title}</h2>
+          </div>
           <p class="text-gray-400 text-lg mb-6">
             Development of scalable web and mobile applications using the latest technologies. From startups to large enterprises, I create solutions that grow with your business.
           </p>
           <ul class="space-y-3 text-gray-300">
-            <li class="flex items-center"><span class="text-accent mr-3">✓</span> React, Next.js, Astro</li>
-            <li class="flex items-center"><span class="text-accent mr-3">✓</span> Node.js, Python, Databases</li>
-            <li class="flex items-center"><span class="text-accent mr-3">✓</span> RESTful APIs and GraphQL</li>
-            <li class="flex items-center"><span class="text-accent mr-3">✓</span> Deployment and DevOps</li>
+            <li class="flex items-center"><Icon icon="check" /><span class="ml-3">React, Next.js, Astro</span></li>
+            <li class="flex items-center"><Icon icon="check" /><span class="ml-3">Node.js, Python, Databases</span></li>
+            <li class="flex items-center"><Icon icon="check" /><span class="ml-3">RESTful APIs and GraphQL</span></li>
+            <li class="flex items-center"><Icon icon="check" /><span class="ml-3">Deployment and DevOps</span></li>
           </ul>
         </div>
       </div>
@@ -65,45 +80,59 @@ const lang = 'en';
   </section>
 
   <!-- Automation -->
-  <section class="py-16 px-4 bg-primary">
+  <section class="py-16 px-4">
     <div class="max-w-7xl mx-auto">
       <div class="grid md:grid-cols-2 gap-12 items-center mb-20">
         <div>
-          <h2 class="text-3xl font-bold text-white mb-4">⚙️ {en.services.automation.title}</h2>
+          <div class="flex items-center gap-3 mb-4">
+            <div class="text-4xl">
+              <Icon icon="automation" />
+            </div>
+            <h2 class="text-3xl font-bold text-white">{en.services.automation.title}</h2>
+          </div>
           <p class="text-gray-400 text-lg mb-6">
             I automate repetitive processes so your team can focus on what matters. From third-party tool integrations to complex workflow automation.
           </p>
           <ul class="space-y-3 text-gray-300">
-            <li class="flex items-center"><span class="text-accent mr-3">✓</span> API integrations</li>
-            <li class="flex items-center"><span class="text-accent mr-3">✓</span> Bots and webhooks</li>
-            <li class="flex items-center"><span class="text-accent mr-3">✓</span> Automated workflows</li>
-            <li class="flex items-center"><span class="text-accent mr-3">✓</span> Automated reports</li>
+            <li class="flex items-center"><Icon icon="check" /><span class="ml-3">API integrations</span></li>
+            <li class="flex items-center"><Icon icon="check" /><span class="ml-3">Bots and webhooks</span></li>
+            <li class="flex items-center"><Icon icon="check" /><span class="ml-3">Automated workflows</span></li>
+            <li class="flex items-center"><Icon icon="check" /><span class="ml-3">Automated reports</span></li>
           </ul>
         </div>
-        <div class="bg-secondary border border-gray-700 rounded-lg h-96 flex items-center justify-center">
-          <span class="text-6xl">⚙️</span>
+        <div class="reveal bg-secondary border border-gray-700 rounded-lg h-96 flex items-center justify-center">
+          <div class="text-8xl">
+            <Icon icon="automation" />
+          </div>
         </div>
       </div>
     </div>
   </section>
 
   <!-- ERP -->
-  <section class="py-16 px-4 bg-secondary">
+  <section class="py-16 px-4">
     <div class="max-w-7xl mx-auto">
       <div class="grid md:grid-cols-2 gap-12 items-center mb-20">
-        <div class="bg-primary border border-gray-700 rounded-lg h-96 flex items-center justify-center">
-          <span class="text-6xl">📊</span>
+        <div class="reveal bg-secondary border border-gray-700 rounded-lg h-96 flex items-center justify-center">
+          <div class="text-8xl">
+            <Icon icon="erp" />
+          </div>
         </div>
         <div>
-          <h2 class="text-3xl font-bold text-white mb-4">📊 {en.services.erp.title}</h2>
+          <div class="flex items-center gap-3 mb-4">
+            <div class="text-4xl">
+              <Icon icon="erp" />
+            </div>
+            <h2 class="text-3xl font-bold text-white">{en.services.erp.title}</h2>
+          </div>
           <p class="text-gray-400 text-lg mb-6">
             Custom ERP systems designed specifically for your business. I integrate all your processes into a single, easy-to-use platform.
           </p>
           <ul class="space-y-3 text-gray-300">
-            <li class="flex items-center"><span class="text-accent mr-3">✓</span> Inventory management</li>
-            <li class="flex items-center"><span class="text-accent mr-3">✓</span> Invoicing and accounting</li>
-            <li class="flex items-center"><span class="text-accent mr-3">✓</span> Project management</li>
-            <li class="flex items-center"><span class="text-accent mr-3">✓</span> Reports and analytics</li>
+            <li class="flex items-center"><Icon icon="check" /><span class="ml-3">Inventory management</span></li>
+            <li class="flex items-center"><Icon icon="check" /><span class="ml-3">Invoicing and accounting</span></li>
+            <li class="flex items-center"><Icon icon="check" /><span class="ml-3">Project management</span></li>
+            <li class="flex items-center"><Icon icon="check" /><span class="ml-3">Reports and analytics</span></li>
           </ul>
         </div>
       </div>
@@ -111,17 +140,17 @@ const lang = 'en';
   </section>
 
   <!-- CTA -->
-  <section class="py-20 px-4 bg-primary">
+  <section class="py-20 px-4">
     <div class="max-w-4xl mx-auto text-center">
-      <h2 class="text-4xl font-bold text-white mb-4">
+      <h2 class="reveal text-4xl font-bold text-white mb-4">
         Need a custom solution?
       </h2>
-      <p class="text-gray-400 text-lg mb-8">
+      <p class="reveal text-gray-400 text-lg mb-8">
         Contact me to discuss how I can help you
       </p>
       <a
         href="/en/contact"
-        class="inline-block bg-accent text-white px-8 py-3 rounded-lg hover:bg-blue-600 transition-colors text-lg font-semibold"
+        class="reveal inline-block bg-accent text-white px-8 py-3 rounded-lg hover:bg-blue-600 transition-colors text-lg font-semibold"
       >
         Schedule a consultation
       </a>
