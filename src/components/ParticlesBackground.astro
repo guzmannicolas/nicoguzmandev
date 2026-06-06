@@ -1,80 +1,65 @@
 ---
-// Particles background with proper styling
+// Optimized particles background.
+// - No interactivity (so the canvas never captures clicks => fixes mobile menu freeze)
+// - Responsive particle count (far fewer on mobile => fixes lag)
+// - FPS limited for battery/perf
 ---
 
-<div id="tsparticles" style="
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  z-index: 0;
-  pointer-events: none;
-"></div>
+<div id="tsparticles" aria-hidden="true"></div>
+
+<style>
+  #tsparticles,
+  #tsparticles canvas {
+    position: fixed !important;
+    inset: 0;
+    width: 100% !important;
+    height: 100% !important;
+    z-index: 0;
+    pointer-events: none !important;
+  }
+</style>
 
 <script>
-  import { tsParticles } from "tsparticles-engine";
-  import { loadSlim } from "tsparticles-slim";
+  import { tsParticles } from 'tsparticles-engine';
+  import { loadSlim } from 'tsparticles-slim';
 
+  const isMobile = window.matchMedia('(max-width: 768px)').matches;
+  const prefersReduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+  // Lightweight config — heavy enough to look good, light enough to not lag a phone.
   const config = {
-    fullScreen: {
-      enable: true,
-      zIndex: 0
-    },
+    fullScreen: { enable: false },
+    fpsLimit: isMobile ? 30 : 60,
+    detectRetina: true,
+    pauseOnBlur: true,
+    pauseOnOutsideViewport: true,
     particles: {
-      color: {
-        value: "#3b82f6"
+      number: {
+        value: isMobile ? 22 : 55,
+        density: { enable: true, area: 900 },
+      },
+      color: { value: '#3b82f6' },
+      links: {
+        color: '#3b82f6',
+        distance: isMobile ? 120 : 150,
+        enable: true,
+        opacity: 0.25,
+        width: 1,
       },
       move: {
-        enable: true,
-        speed: 2
+        enable: !prefersReduced,
+        speed: isMobile ? 0.6 : 1,
+        outModes: { default: 'bounce' },
       },
-      number: {
-        value: 80
-      },
-      opacity: {
-        value: 0.5
-      },
-      shape: {
-        type: "circle"
-      },
-      size: {
-        value: { min: 1, max: 3 }
-      },
-      links: {
-        color: "#3b82f6",
-        distance: 150,
-        enable: true,
-        opacity: 0.5,
-        width: 1
-      }
+      opacity: { value: 0.35 },
+      shape: { type: 'circle' },
+      size: { value: { min: 1, max: 2.5 } },
     },
-    interactivity: {
-      events: {
-        onClick: {
-          enable: true,
-          mode: "push"
-        },
-        onHover: {
-          enable: true,
-          mode: "repulse"
-        }
-      },
-      modes: {
-        push: {
-          quantity: 4
-        },
-        repulse: {
-          distance: 200,
-          duration: 0.4
-        }
-      }
-    },
-    detectRetina: true
+    // No interactivity at all -> canvas stays pointer-events:none and never blocks UI.
+    interactivity: { events: {} },
   };
 
-  (async () => {
-    await loadSlim(tsParticles);
-    await tsParticles.load("tsparticles", config);
-  })();
+  loadSlim(tsParticles).then(() => {
+    tsParticles.load({ id: 'tsparticles', options: config });
+  });
 </script>

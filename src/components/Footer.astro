@@ -1,6 +1,7 @@
 ---
 import es from '../i18n/es.json';
 import en from '../i18n/en.json';
+import Icon from './Icon.astro';
 
 interface Props {
   lang: 'es' | 'en';
@@ -38,25 +39,25 @@ const baseUrl = lang === 'es' ? '' : '/en';
         <ul class="space-y-3 text-sm text-gray-400">
           <li>
             <a href={`${baseUrl}/${lang === 'es' ? 'servicios' : 'services'}`} class="hover:text-accent transition-colors duration-300 flex items-center gap-2 group">
-              <span class="group-hover:translate-x-1 transition-transform duration-300">→</span>
+              <span class="group-hover:translate-x-1 transition-transform duration-300"><Icon icon="arrow" class="w-4 h-4" /></span>
               {lang === 'es' ? 'Servicios' : 'Services'}
             </a>
           </li>
           <li>
             <a href={`${baseUrl}/${lang === 'es' ? 'precios' : 'pricing'}`} class="hover:text-accent transition-colors duration-300 flex items-center gap-2 group">
-              <span class="group-hover:translate-x-1 transition-transform duration-300">→</span>
+              <span class="group-hover:translate-x-1 transition-transform duration-300"><Icon icon="arrow" class="w-4 h-4" /></span>
               {lang === 'es' ? 'Precios' : 'Pricing'}
             </a>
           </li>
           <li>
             <a href={`${baseUrl}/${lang === 'es' ? 'portafolio' : 'portfolio'}`} class="hover:text-accent transition-colors duration-300 flex items-center gap-2 group">
-              <span class="group-hover:translate-x-1 transition-transform duration-300">→</span>
+              <span class="group-hover:translate-x-1 transition-transform duration-300"><Icon icon="arrow" class="w-4 h-4" /></span>
               {lang === 'es' ? 'Portafolio' : 'Portfolio'}
             </a>
           </li>
           <li>
             <a href={`${baseUrl}/${lang === 'es' ? 'testimonios' : 'testimonials'}`} class="hover:text-accent transition-colors duration-300 flex items-center gap-2 group">
-              <span class="group-hover:translate-x-1 transition-transform duration-300">→</span>
+              <span class="group-hover:translate-x-1 transition-transform duration-300"><Icon icon="arrow" class="w-4 h-4" /></span>
               {lang === 'es' ? 'Testimonios' : 'Testimonials'}
             </a>
           </li>

@@ -1,7 +1,6 @@
 export const pricingEs = [
   {
     service: "Diseño Web",
-    icon: "🎨",
     plans: [
       {
         name: "Básico",
@@ -48,7 +47,6 @@ export const pricingEs = [
   },
   {
     service: "Programación",
-    icon: "💻",
     plans: [
       {
         name: "Básico",
@@ -95,7 +93,6 @@ export const pricingEs = [
   },
   {
     service: "Automatización",
-    icon: "⚙️",
     plans: [
       {
         name: "Básico",
@@ -142,7 +139,6 @@ export const pricingEs = [
   },
   {
     service: "ERP a Medida",
-    icon: "📊",
     plans: [
       {
         name: "Módulo",
@@ -192,7 +188,6 @@ export const pricingEs = [
 export const pricingEn = [
   {
     service: "Web Design",
-    icon: "🎨",
     plans: [
       {
         name: "Basic",
@@ -239,7 +234,6 @@ export const pricingEn = [
   },
   {
     service: "Development",
-    icon: "💻",
     plans: [
       {
         name: "Basic",
@@ -286,7 +280,6 @@ export const pricingEn = [
   },
   {
     service: "Automation",
-    icon: "⚙️",
     plans: [
       {
         name: "Basic",
@@ -333,7 +326,6 @@ export const pricingEn = [
   },
   {
     service: "Custom ERP",
-    icon: "📊",
     plans: [
       {
         name: "Module",

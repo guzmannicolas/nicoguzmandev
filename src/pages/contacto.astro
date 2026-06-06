@@ -1,5 +1,6 @@
 ---
 import Layout from '../layouts/Layout.astro';
+import Icon from '../components/Icon.astro';
 import es from '../i18n/es.json';
 
 const lang = 'es';
@@ -26,37 +27,52 @@ const lang = 'es';
         <h2 class="text-3xl font-bold text-white mb-8">Información de Contacto</h2>
 
         <div class="space-y-8">
-          <div>
-            <h3 class="text-lg font-semibold text-accent mb-2">📧 Email</h3>
-            <a href="mailto:hola@nicoguzmandev.com" class="text-gray-400 hover:text-accent transition-colors">
-              hola@nicoguzmandev.com
-            </a>
+          <div class="flex items-start gap-4">
+            <span class="text-accent mt-1"><Icon icon="email" class="w-6 h-6" /></span>
+            <div>
+              <h3 class="text-lg font-semibold text-white mb-1">Email</h3>
+              <a href="mailto:hola@nicoguzmandev.com" class="text-gray-400 hover:text-accent transition-colors">
+                hola@nicoguzmandev.com
+              </a>
+            </div>
           </div>
 
-          <div>
-            <h3 class="text-lg font-semibold text-accent mb-2">💼 LinkedIn</h3>
-            <a href="https://linkedin.com" target="_blank" rel="noopener noreferrer" class="text-gray-400 hover:text-accent transition-colors">
-              linkedin.com/in/nicoguzmandev
-            </a>
+          <div class="flex items-start gap-4">
+            <span class="text-accent mt-1"><Icon icon="linkedin" class="w-6 h-6" /></span>
+            <div>
+              <h3 class="text-lg font-semibold text-white mb-1">LinkedIn</h3>
+              <a href="https://linkedin.com" target="_blank" rel="noopener noreferrer" class="text-gray-400 hover:text-accent transition-colors">
+                linkedin.com/in/nicoguzmandev
+              </a>
+            </div>
           </div>
 
-          <div>
-            <h3 class="text-lg font-semibold text-accent mb-2">👨‍💻 GitHub</h3>
-            <a href="https://github.com" target="_blank" rel="noopener noreferrer" class="text-gray-400 hover:text-accent transition-colors">
-              github.com/guzmannicolas
-            </a>
+          <div class="flex items-start gap-4">
+            <span class="text-accent mt-1"><Icon icon="github" class="w-6 h-6" /></span>
+            <div>
+              <h3 class="text-lg font-semibold text-white mb-1">GitHub</h3>
+              <a href="https://github.com" target="_blank" rel="noopener noreferrer" class="text-gray-400 hover:text-accent transition-colors">
+                github.com/guzmannicolas
+              </a>
+            </div>
           </div>
 
-          <div>
-            <h3 class="text-lg font-semibold text-accent mb-2">📱 WhatsApp</h3>
-            <a href="https://wa.me/1234567890" target="_blank" rel="noopener noreferrer" class="text-gray-400 hover:text-accent transition-colors">
-              +1 (234) 567-890
-            </a>
+          <div class="flex items-start gap-4">
+            <span class="text-accent mt-1"><Icon icon="whatsapp" class="w-6 h-6" /></span>
+            <div>
+              <h3 class="text-lg font-semibold text-white mb-1">WhatsApp</h3>
+              <a href="https://wa.me/1234567890" target="_blank" rel="noopener noreferrer" class="text-gray-400 hover:text-accent transition-colors">
+                +1 (234) 567-890
+              </a>
+            </div>
           </div>
         </div>
 
         <div class="mt-12 p-6 bg-secondary border border-gray-700 rounded-lg">
-          <h3 class="text-lg font-semibold text-white mb-2">⏱️ Disponibilidad</h3>
+          <h3 class="flex items-center gap-2 text-lg font-semibold text-white mb-2">
+            <span class="text-accent"><Icon icon="clock" class="w-5 h-5" /></span>
+            Disponibilidad
+          </h3>
           <p class="text-gray-400 text-sm">
             Respondo a la mayoría de mensajes dentro de 24 horas. Para proyectos urgentes, podemos agendar una llamada rápida.
           </p>

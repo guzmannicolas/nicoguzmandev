@@ -1,5 +1,6 @@
 ---
 import Layout from '../../layouts/Layout.astro';
+import Icon from '../../components/Icon.astro';
 import en from '../../i18n/en.json';
 
 const lang = 'en';
@@ -10,7 +11,7 @@ const projects = [
     title: 'Manufacturing ERP System',
     description: 'Custom ERP system to manage inventory, production and sales',
     category: 'ERP',
-    image: '📊',
+    icon: 'erp',
     year: '2024'
   },
   {
@@ -18,7 +19,7 @@ const projects = [
     title: 'E-commerce Platform',
     description: 'Online store with integrated inventory management and multiple payment options',
     category: 'Development',
-    image: '🛒',
+    icon: 'ecommerce',
     year: '2024'
   },
   {
@@ -26,7 +27,7 @@ const projects = [
     title: 'Automation System',
     description: 'Process automation for HR and document management',
     category: 'Automation',
-    image: '⚙️',
+    icon: 'automation',
     year: '2023'
   },
   {
@@ -34,7 +35,7 @@ const projects = [
     title: 'Corporate Website Redesign',
     description: 'Modern website with responsive design and SEO optimization',
     category: 'Design',
-    image: '🎨',
+    icon: 'design',
     year: '2023'
   },
   {
@@ -42,7 +43,7 @@ const projects = [
     title: 'Task Management Mobile App',
     description: 'Mobile application for real-time task and project management',
     category: 'Development',
-    image: '📱',
+    icon: 'mobile',
     year: '2023'
   },
   {
@@ -50,7 +51,7 @@ const projects = [
     title: 'Analytical Dashboard',
     description: 'Interactive dashboard for data analysis and real-time reporting',
     category: 'Development',
-    image: '📈',
+    icon: 'analytics',
     year: '2024'
   }
 ];
@@ -74,9 +75,9 @@ const projects = [
     <div class="max-w-7xl mx-auto">
       <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
         {projects.map((project) => (
-          <div class="bg-secondary border border-gray-700 rounded-lg overflow-hidden hover:border-accent transition-all duration-300 hover:shadow-lg hover:shadow-blue-500/20">
-            <div class="h-48 bg-gradient-to-br from-accent/20 to-primary flex items-center justify-center text-6xl">
-              {project.image}
+          <div class="reveal bg-secondary border border-gray-700 rounded-lg overflow-hidden hover:border-accent transition-all duration-300 hover:shadow-lg hover:shadow-blue-500/20 hover:-translate-y-1">
+            <div class="h-48 bg-gradient-to-br from-accent/20 to-primary flex items-center justify-center text-accent">
+              <Icon icon={project.icon} class="w-16 h-16" />
             </div>
             <div class="p-6">
               <div class="flex justify-between items-start mb-2">
@@ -92,8 +93,9 @@ const projects = [
               </p>
               <div class="flex justify-between items-center">
                 <span class="text-gray-500 text-sm">{project.year}</span>
-                <a href="#" class="text-accent text-sm font-semibold hover:underline">
-                  Learn more →
+                <a href="#" class="group inline-flex items-center gap-1 text-accent text-sm font-semibold hover:underline">
+                  Learn more
+                  <span class="group-hover:translate-x-1 transition-transform duration-300"><Icon icon="arrow" class="w-4 h-4" /></span>
                 </a>
               </div>
             </div>

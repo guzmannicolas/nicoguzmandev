@@ -1,4 +1,6 @@
 ---
+import Icon from './Icon.astro';
+
 interface Props {
   name: string;
   role: string;
@@ -28,9 +30,9 @@ const { name, role, company, service, text, avatar, rating } = Astro.props;
 
   <p class="text-gray-300 text-sm leading-relaxed italic">"{text}"</p>
 
-  <div class="flex gap-1">
+  <div class="flex gap-1 text-yellow-400">
     {Array.from({ length: rating }).map(() => (
-      <span class="text-yellow-400 text-sm">★</span>
+      <Icon icon="star" class="w-4 h-4" />
     ))}
   </div>
 </div>

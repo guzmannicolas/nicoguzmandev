@@ -1,6 +1,7 @@
 ---
 import es from '../i18n/es.json';
 import en from '../i18n/en.json';
+import Icon from './Icon.astro';
 
 interface Props {
   lang: 'es' | 'en';
@@ -64,50 +65,61 @@ const navLinks = [
           <div class="absolute inset-0 bg-gradient-to-r from-blue-600 to-accent opacity-0 group-hover:opacity-100 transition-all duration-300"></div>
           <span class="relative text-white flex items-center gap-2">
             {t.nav.contacto}
-            <span class="group-hover:translate-x-1 transition-transform duration-300">→</span>
+            <span class="group-hover:translate-x-1 transition-transform duration-300">
+              <Icon icon="arrow" class="w-4 h-4" />
+            </span>
           </span>
         </a>
 
-        <!-- Mobile Menu Button -->
+        <!-- Mobile Menu Button (hamburger -> X) -->
         <button
           id="mobile-menu-btn"
-          class="md:hidden p-2.5 rounded-lg hover:bg-accent/20 transition-all duration-300 relative group"
+          class="md:hidden p-2.5 rounded-lg hover:bg-accent/20 transition-all duration-300 relative z-50"
           aria-label="Toggle menu"
+          aria-expanded="false"
         >
-          <div class="absolute inset-0 bg-accent/0 group-hover:bg-accent/10 rounded-lg transition-all duration-300"></div>
-          <svg class="w-6 h-6 text-gray-300 relative z-10 transition-colors duration-300 group-hover:text-accent" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>
-          </svg>
+          <span class="hamburger-box">
+            <span class="hamburger-line"></span>
+            <span class="hamburger-line"></span>
+            <span class="hamburger-line"></span>
+          </span>
         </button>
       </div>
     </div>
   </div>
 
-  <!-- Mobile Menu - Fullscreen -->
-  <div id="mobile-menu" class="hidden fixed inset-0 top-20 md:hidden bg-gradient-to-b from-secondary via-primary to-secondary z-40 overflow-y-auto animate-slide-in">
-    <div class="px-4 py-6 space-y-1">
-      {navLinks.map((link, idx) => (
-        <a
-          href={link.href}
-          class="block px-6 py-4 text-lg text-gray-300 hover:text-white hover:bg-accent/10 rounded-lg transition-all duration-300 border-l-4 border-transparent hover:border-accent transform hover:translate-x-1 animate-fade-in"
-          style={`animation-delay: ${idx * 50}ms`}
-        >
-          {link.label}
-        </a>
-      ))}
+  <!-- Mobile Menu - Fullscreen overlay -->
+  <div
+    id="mobile-menu"
+    class="mobile-menu md:hidden fixed inset-0 z-40 bg-gradient-to-b from-secondary via-primary to-secondary"
+  >
+    <div class="flex flex-col h-full pt-24 px-6 pb-8 overflow-y-auto">
+      <div class="flex-1 space-y-2">
+        {navLinks.map((link, idx) => (
+          <a
+            href={link.href}
+            class="menu-item flex items-center gap-3 px-6 py-4 text-2xl font-semibold text-gray-200 hover:text-white hover:bg-accent/10 rounded-xl transition-all duration-300 border-l-4 border-transparent hover:border-accent"
+            style={`--i: ${idx}`}
+          >
+            <span class="text-accent"><Icon icon="arrow" class="w-5 h-5" /></span>
+            {link.label}
+          </a>
+        ))}
+      </div>
 
-      <div class="px-6 py-6 border-t border-accent/20 mt-6 space-y-4 animate-fade-in" style="animation-delay: 250ms">
+      <div class="space-y-4 pt-6 border-t border-accent/20">
         <a
           href={lang === 'es' ? '/en/' : '/'}
-          class="block text-sm font-semibold text-gray-400 hover:text-accent transition-all duration-300 uppercase px-4 py-3 rounded hover:bg-accent/10"
+          class="block text-center text-sm font-semibold text-gray-400 hover:text-accent transition-all duration-300 uppercase px-4 py-3 rounded-lg hover:bg-accent/10"
         >
           {lang === 'es' ? 'English' : 'Español'}
         </a>
         <a
           href={`${baseUrl}/${lang === 'es' ? 'contacto' : 'contact'}`}
-          class="block w-full text-center bg-gradient-to-r from-accent to-blue-500 text-white px-6 py-4 rounded-lg text-lg font-semibold hover:shadow-lg hover:shadow-accent/50 transition-all duration-300"
+          class="flex items-center justify-center gap-2 w-full text-center bg-gradient-to-r from-accent to-blue-500 text-white px-6 py-4 rounded-xl text-lg font-semibold hover:shadow-lg hover:shadow-accent/50 transition-all duration-300"
         >
           {t.nav.contacto}
+          <Icon icon="arrow" class="w-5 h-5" />
         </a>
       </div>
     </div>
@@ -115,74 +127,99 @@ const navLinks = [
 </nav>
 
 <style>
-  .nav-link {
+  /* Hamburger icon */
+  .hamburger-box {
+    display: block;
     position: relative;
+    width: 24px;
+    height: 18px;
   }
-
-  @keyframes slide-in {
-    from {
-      opacity: 0;
-      transform: translateY(-20px);
-    }
-    to {
-      opacity: 1;
-      transform: translateY(0);
-    }
+  .hamburger-line {
+    position: absolute;
+    left: 0;
+    width: 100%;
+    height: 2px;
+    border-radius: 2px;
+    background: #d1d5db;
+    transition: transform 0.3s ease, opacity 0.2s ease, background 0.3s ease;
   }
+  .hamburger-line:nth-child(1) { top: 0; }
+  .hamburger-line:nth-child(2) { top: 8px; }
+  .hamburger-line:nth-child(3) { top: 16px; }
 
-  @keyframes fade-in {
-    from {
-      opacity: 0;
-      transform: translateX(-20px);
-    }
-    to {
-      opacity: 1;
-      transform: translateX(0);
-    }
-  }
+  /* Animate to X when open */
+  .menu-open .hamburger-line { background: #3b82f6; }
+  .menu-open .hamburger-line:nth-child(1) { transform: translateY(8px) rotate(45deg); }
+  .menu-open .hamburger-line:nth-child(2) { opacity: 0; }
+  .menu-open .hamburger-line:nth-child(3) { transform: translateY(-8px) rotate(-45deg); }
 
-  .animate-slide-in {
-    animation: slide-in 0.3s ease-out;
-  }
-
-  .animate-fade-in {
-    animation: fade-in 0.4s ease-out forwards;
+  /* Fullscreen mobile menu */
+  .mobile-menu {
     opacity: 0;
+    visibility: hidden;
+    transform: translateY(-12px);
+    transition: opacity 0.3s ease, transform 0.3s ease, visibility 0.3s;
+  }
+  .mobile-menu.open {
+    opacity: 1;
+    visibility: visible;
+    transform: translateY(0);
+  }
+
+  /* Staggered link entrance */
+  .mobile-menu .menu-item {
+    opacity: 0;
+    transform: translateX(-24px);
+  }
+  .mobile-menu.open .menu-item {
+    animation: menu-item-in 0.4s ease forwards;
+    animation-delay: calc(var(--i) * 60ms + 100ms);
+  }
+  @keyframes menu-item-in {
+    to { opacity: 1; transform: translateX(0); }
   }
 </style>
 
 <script>
   const navbar = document.getElementById('navbar');
-  const mobileMenuBtn = document.getElementById('mobile-menu-btn');
-  const mobileMenu = document.getElementById('mobile-menu');
+  const btn = document.getElementById('mobile-menu-btn');
+  const menu = document.getElementById('mobile-menu');
 
-  // Scroll animation
-  window.addEventListener('scroll', () => {
-    if (window.scrollY > 50) {
-      navbar?.classList.add('bg-secondary/95', 'backdrop-blur-lg', 'shadow-xl', 'shadow-accent/20');
-      navbar?.classList.remove('bg-gradient-to-r', 'from-secondary/90', 'via-secondary/85', 'to-secondary/90', 'shadow-lg', 'shadow-accent/10');
-    } else {
-      navbar?.classList.remove('bg-secondary/95', 'backdrop-blur-lg', 'shadow-xl', 'shadow-accent/20');
-      navbar?.classList.add('bg-gradient-to-r', 'from-secondary/90', 'via-secondary/85', 'to-secondary/90', 'shadow-lg', 'shadow-accent/10');
-    }
+  const setMenu = (open: boolean) => {
+    if (!menu || !btn) return;
+    menu.classList.toggle('open', open);
+    btn.classList.toggle('menu-open', open);
+    btn.setAttribute('aria-expanded', String(open));
+    document.body.style.overflow = open ? 'hidden' : '';
+  };
+
+  btn?.addEventListener('click', () => {
+    setMenu(!menu?.classList.contains('open'));
   });
 
-  mobileMenuBtn?.addEventListener('click', () => {
-    const isHidden = mobileMenu?.classList.contains('hidden');
-    if (isHidden) {
-      mobileMenu?.classList.remove('hidden');
-      document.body.style.overflow = 'hidden';
-    } else {
-      mobileMenu?.classList.add('hidden');
-      document.body.style.overflow = 'auto';
-    }
+  // Close on link click
+  menu?.querySelectorAll('a').forEach((link) => {
+    link.addEventListener('click', () => setMenu(false));
   });
 
-  // Close menu on link click
-  document.querySelectorAll('#mobile-menu a').forEach((link) => {
-    link.addEventListener('click', () => {
-      mobileMenu?.classList.add('hidden');
-      document.body.style.overflow = 'auto';
-    });
+  // Close on Escape
+  document.addEventListener('keydown', (e) => {
+    if (e.key === 'Escape') setMenu(false);
   });
+
+  // Navbar scroll effect
+  window.addEventListener(
+    'scroll',
+    () => {
+      if (!navbar) return;
+      if (window.scrollY > 50) {
+        navbar.classList.add('bg-secondary/95', 'shadow-xl', 'shadow-accent/20');
+        navbar.classList.remove('shadow-lg', 'shadow-accent/10');
+      } else {
+        navbar.classList.remove('bg-secondary/95', 'shadow-xl', 'shadow-accent/20');
+        navbar.classList.add('shadow-lg', 'shadow-accent/10');
+      }
+    },
+    { passive: true }
+  );
 </script>
