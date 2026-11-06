@@ -1,24 +1,29 @@
 import React, { useState } from 'react';
-import { Send, CheckCircle2, MessageSquare, ArrowRight, ShieldCheck, Sparkles } from 'lucide-react';
 
 export default function ContactForm() {
-  const [service, setService] = useState<'webs' | 'ai' | 'erp' | 'custom'>('webs');
+  const [division, setDivision] = useState<'webs' | 'ai' | 'erp' | 'custom'>('webs');
   const [name, setName] = useState('');
-  const [business, setBusiness] = useState('');
-  const [phone, setPhone] = useState('');
-  const [message, setMessage] = useState('');
+  const [company, setCompany] = useState('');
+  const [contact, setContact] = useState('');
+  const [scope, setScope] = useState('');
   const [submitted, setSubmitted] = useState(false);
 
-  const serviceLabels = {
-    webs: '🌐 Rama 1: Web de Alto Rendimiento para Local / Comercio',
-    ai: '🤖 Rama 2: Automatización, Chatbot IA y Turnero de WhatsApp',
-    erp: '🏢 Rama 3: Consultoría y Sistema ERP a Medida para Pyme',
-    custom: '✨ Proyecto Especial / Otro Requerimiento'
+  const divisionLabels = {
+    webs: '01 / Presencia Web Comercial (48-72h)',
+    ai: '02 / Automatización & Agentes IA (WhatsApp / Turnos)',
+    erp: '03 / Consultoría & Sistemas ERP a Medida',
+    custom: '04 / Ingeniería de Software Especializada'
   };
 
-  const generateWhatsAppUrl = () => {
-    const text = `Hola Nico! Te contacto desde nicoguzmandev.com\n\n*Servicio de interés:* ${serviceLabels[service]}\n*Nombre:* ${name || 'No especificado'}\n*Negocio/Empresa:* ${business || 'No especificado'}\n*Detalle:* ${message || 'Quisiera coordinar una llamada de diagnóstico.'}`;
-    return `https://wa.me/5491100000000?text=${encodeURIComponent(text)}`;
+  const buildWhatsAppUrl = () => {
+    const body = [
+      `Hola Nicolás. Solicito relevamiento técnico desde nicoguzmandev.com`,
+      `— Área: ${divisionLabels[division]}`,
+      `— Nombre: ${name || 'A confirmar'}`,
+      `— Empresa / Rubro: ${company || 'A confirmar'}`,
+      `— Detalle: ${scope || 'Coordinar evaluación inicial.'}`
+    ].join('\n');
+    return `https://wa.me/5491100000000?text=${encodeURIComponent(body)}`;
   };
 
   const handleSubmit = (e: React.FormEvent) => {
@@ -27,137 +32,153 @@ export default function ContactForm() {
   };
 
   return (
-    <div className="w-full max-w-2xl mx-auto glass-card rounded-3xl p-6 md:p-10 border border-white/10 shadow-2xl relative overflow-hidden">
-      {/* Background glow */}
-      <div className="absolute top-0 right-0 w-80 h-80 bg-sky-500/10 blur-3xl pointer-events-none rounded-full" />
-
+    <div className="w-full border border-[#222220] bg-[#0C0C0B]">
       {submitted ? (
-        <div className="text-center py-10 space-y-4">
-          <div className="w-16 h-16 rounded-full bg-emerald-500/20 border border-emerald-500/30 flex items-center justify-center text-emerald-400 mx-auto">
-            <CheckCircle2 className="w-8 h-8" />
+        <div className="p-12 md:p-16 text-center space-y-6">
+          <div className="font-mono-tech text-[11px] tracking-[0.16em] text-[#9A9994] uppercase">
+            SOLICITUD REGISTRADA CORRECTAMENTE
           </div>
-          <h3 className="text-2xl font-bold text-white">¡Mensaje Enviado con Éxito!</h3>
-          <p className="text-sm text-zinc-300 max-w-md mx-auto">
-            Muchas gracias por tu consulta. Te voy a responder en menos de 2 horas. Si querés una respuesta inmediata, podés escribirme directo por WhatsApp:
+          <h3 className="text-2xl md:text-3xl font-normal tracking-[-0.02em] text-[#EDEDEC]">
+            Relevamiento en Proceso de Revisión
+          </h3>
+          <p className="text-xs text-[#9A9994] max-w-md mx-auto leading-relaxed">
+            Su consulta ha sido ingresada. Si desea iniciar la conversación de forma inmediata con los parámetros cargados, utilice el canal directo de WhatsApp a continuación.
           </p>
-          <a
-            href={generateWhatsAppUrl()}
-            target="_blank"
-            rel="noopener noreferrer"
-            className="inline-flex items-center gap-2 px-6 py-3.5 rounded-xl bg-emerald-500 hover:bg-emerald-400 text-white font-semibold text-sm transition-all shadow-lg shadow-emerald-500/20"
-          >
-            <MessageSquare className="w-4 h-4" />
-            <span>Abrir en WhatsApp Ahora</span>
-          </a>
+          <div className="pt-4">
+            <a
+              href={buildWhatsAppUrl()}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="inline-flex items-center justify-between gap-12 px-8 py-4 bg-[#EDEDEC] text-[#0C0C0B] text-xs font-medium tracking-[0.04em] hover:bg-white transition-colors"
+            >
+              <span>CONTINUAR EN WHATSAPP EJECUTIVO</span>
+              <span className="font-mono-tech">—</span>
+            </a>
+          </div>
         </div>
       ) : (
-        <form onSubmit={handleSubmit} className="space-y-6 relative z-10">
-          <div>
-            <label className="block text-xs font-semibold uppercase tracking-wider text-zinc-300 mb-2">
-              ¿En qué rama estás interesado?
-            </label>
-            <div className="grid grid-cols-1 sm:grid-cols-2 gap-2.5">
+        <form onSubmit={handleSubmit} className="divide-y divide-[#222220]">
+          {/* Section 1: Division Selector */}
+          <div className="p-8 md:p-10">
+            <div className="font-mono-tech text-[10px] tracking-[0.16em] text-[#5E5D59] uppercase mb-5">
+              01. SELECCIONE EL ÁREA DE INTERVENCIÓN
+            </div>
+            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 border border-[#222220] divide-y sm:divide-y-0 sm:divide-x divide-[#222220]">
               {[
-                { id: 'webs', label: '🌐 Webs para Locales', desc: 'Demos listas en 48hs' },
-                { id: 'ai', label: '🤖 Automatización & IA', desc: 'WhatsApp & turnos 24/7' },
-                { id: 'erp', label: '🏢 Consultoría & ERP', desc: 'Pymes y multi-sucursal' },
-                { id: 'custom', label: '✨ Proyecto a Medida', desc: 'Software especializado' }
-              ].map(opt => (
-                <button
-                  type="button"
-                  key={opt.id}
-                  onClick={() => setService(opt.id as any)}
-                  className={`p-3.5 rounded-xl text-left border transition-all cursor-pointer ${
-                    service === opt.id
-                      ? 'bg-zinc-800/90 border-sky-400/80 text-white shadow-md'
-                      : 'bg-zinc-900/50 border-zinc-800 text-zinc-400 hover:text-zinc-200 hover:bg-zinc-800/40'
-                  }`}
-                >
-                  <div className="font-semibold text-xs text-white">{opt.label}</div>
-                  <div className="text-[11px] text-zinc-400">{opt.desc}</div>
-                </button>
-              ))}
+                { id: 'webs', num: '01', title: 'Presencia Web', sub: 'Comercios & Locales' },
+                { id: 'ai', num: '02', title: 'Automatización IA', sub: 'WhatsApp & Agenda' },
+                { id: 'erp', num: '03', title: 'Sistemas & ERP', sub: 'Pymes & Sucursales' },
+                { id: 'custom', num: '04', title: 'Desarrollo a Medida', sub: 'Arquitectura Especial' }
+              ].map((opt) => {
+                const isSelected = division === opt.id;
+                return (
+                  <button
+                    key={opt.id}
+                    type="button"
+                    onClick={() => setDivision(opt.id as any)}
+                    className={`p-5 text-left transition-colors cursor-pointer relative ${
+                      isSelected ? 'bg-[#161614]' : 'bg-[#0C0C0B] hover:bg-[#111110]'
+                    }`}
+                  >
+                    {isSelected && <div className="absolute top-0 left-0 right-0 h-[2px] bg-[#EDEDEC]" />}
+                    <div className="font-mono-tech text-[10px] text-[#5E5D59] mb-2">
+                      [{opt.num}]
+                    </div>
+                    <div className="text-xs font-medium text-[#EDEDEC]">
+                      {opt.title}
+                    </div>
+                    <div className="text-[11px] text-[#9A9994] mt-0.5">
+                      {opt.sub}
+                    </div>
+                  </button>
+                );
+              })}
             </div>
           </div>
 
-          <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
-            <div>
-              <label className="block text-xs font-semibold uppercase tracking-wider text-zinc-300 mb-2">
-                Tu Nombre
+          {/* Section 2: Client Identification */}
+          <div className="grid grid-cols-1 md:grid-cols-3 divide-y md:divide-y-0 md:divide-x divide-[#222220]">
+            <div className="p-8">
+              <label className="block font-mono-tech text-[10px] tracking-[0.16em] text-[#5E5D59] uppercase mb-3">
+                02. NOMBRE Y APELLIDO
               </label>
               <input
                 type="text"
                 required
                 value={name}
-                onChange={e => setName(e.target.value)}
-                placeholder="Ej. Martín Gómez"
-                className="w-full px-4 py-3 rounded-xl bg-zinc-900/80 border border-zinc-800 text-sm text-white placeholder-zinc-500 focus:outline-none focus:border-sky-500 transition-colors"
+                onChange={(e) => setName(e.target.value)}
+                placeholder="Ej. Martín Alcorta"
+                className="w-full bg-transparent border-b border-[#2A2A27] py-2.5 text-sm text-[#EDEDEC] placeholder-[#484844] focus:outline-none focus:border-[#EDEDEC] transition-colors"
               />
             </div>
-            <div>
-              <label className="block text-xs font-semibold uppercase tracking-wider text-zinc-300 mb-2">
-                Negocio o Empresa
+
+            <div className="p-8">
+              <label className="block font-mono-tech text-[10px] tracking-[0.16em] text-[#5E5D59] uppercase mb-3">
+                03. EMPRESA O RUBRO COMERCIAL
               </label>
               <input
                 type="text"
-                value={business}
-                onChange={e => setBusiness(e.target.value)}
-                placeholder="Ej. Barbería Capital / Distribuidora X"
-                className="w-full px-4 py-3 rounded-xl bg-zinc-900/80 border border-zinc-800 text-sm text-white placeholder-zinc-500 focus:outline-none focus:border-sky-500 transition-colors"
+                value={company}
+                onChange={(e) => setCompany(e.target.value)}
+                placeholder="Ej. Distribuidora Norte S.R.L."
+                className="w-full bg-transparent border-b border-[#2A2A27] py-2.5 text-sm text-[#EDEDEC] placeholder-[#484844] focus:outline-none focus:border-[#EDEDEC] transition-colors"
+              />
+            </div>
+
+            <div className="p-8">
+              <label className="block font-mono-tech text-[10px] tracking-[0.16em] text-[#5E5D59] uppercase mb-3">
+                04. TELÉFONO / WHATSAPP
+              </label>
+              <input
+                type="tel"
+                required
+                value={contact}
+                onChange={(e) => setContact(e.target.value)}
+                placeholder="+54 9 11 0000-0000"
+                className="w-full bg-transparent border-b border-[#2A2A27] py-2.5 text-sm text-[#EDEDEC] placeholder-[#484844] focus:outline-none focus:border-[#EDEDEC] transition-colors"
               />
             </div>
           </div>
 
-          <div>
-            <label className="block text-xs font-semibold uppercase tracking-wider text-zinc-300 mb-2">
-              Teléfono o WhatsApp
-            </label>
-            <input
-              type="tel"
-              required
-              value={phone}
-              onChange={e => setPhone(e.target.value)}
-              placeholder="Ej. +54 9 11 1234-5678"
-              className="w-full px-4 py-3 rounded-xl bg-zinc-900/80 border border-zinc-800 text-sm text-white placeholder-zinc-500 focus:outline-none focus:border-sky-500 transition-colors"
-            />
-          </div>
-
-          <div>
-            <label className="block text-xs font-semibold uppercase tracking-wider text-zinc-300 mb-2">
-              Contame brevemente tu situación o qué te gustaría resolver
+          {/* Section 3: Technical Scope */}
+          <div className="p-8 md:p-10">
+            <label className="block font-mono-tech text-[10px] tracking-[0.16em] text-[#5E5D59] uppercase mb-3">
+              05. DESCRIPCIÓN DEL REQUERIMIENTO OPERATIVO
             </label>
             <textarea
               rows={3}
-              value={message}
-              onChange={e => setMessage(e.target.value)}
-              placeholder="Ej. Tengo una cafetería y quiero una web para mostrar el menú y pedidos, o tengo una empresa y quiero automatizar los turnos..."
-              className="w-full px-4 py-3 rounded-xl bg-zinc-900/80 border border-zinc-800 text-sm text-white placeholder-zinc-500 focus:outline-none focus:border-sky-500 transition-colors resize-none"
+              value={scope}
+              onChange={(e) => setScope(e.target.value)}
+              placeholder="Describa brevemente la situación actual de su negocio, volumen de operaciones o el objetivo que busca resolver..."
+              className="w-full bg-[#111110] border border-[#222220] p-4 text-sm text-[#EDEDEC] placeholder-[#484844] focus:outline-none focus:border-[#EDEDEC] transition-colors resize-none"
             />
           </div>
 
-          <div className="flex flex-col sm:flex-row gap-3 pt-2">
-            <button
-              type="submit"
-              className="flex-1 inline-flex items-center justify-center gap-2 px-6 py-3.5 rounded-xl bg-white text-zinc-950 hover:bg-zinc-200 font-semibold text-sm transition-all shadow-lg shadow-white/5 cursor-pointer"
-            >
-              <span>Enviar Consulta de Diagnóstico</span>
-              <Send className="w-4 h-4" />
-            </button>
-
-            <a
-              href={generateWhatsAppUrl()}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="inline-flex items-center justify-center gap-2 px-5 py-3.5 rounded-xl bg-emerald-500/10 text-emerald-400 hover:bg-emerald-500/20 border border-emerald-500/30 font-semibold text-sm transition-all cursor-pointer"
-            >
-              <MessageSquare className="w-4 h-4" />
-              <span>Enviar por WhatsApp</span>
-            </a>
-          </div>
-
-          <div className="flex items-center gap-2 text-zinc-400 text-xs justify-center pt-2">
-            <ShieldCheck className="w-4 h-4 text-emerald-400" />
-            <span>Sin spam ni compromisos. Recibís un análisis técnico directo.</span>
+          {/* Section 4: Actions */}
+          <div className="grid grid-cols-1 md:grid-cols-12 divide-y md:divide-y-0 md:divide-x divide-[#222220] bg-[#111110]">
+            <div className="md:col-span-5 p-6 px-8 flex items-center font-mono-tech text-[11px] text-[#5E5D59]">
+              RESPUESTA DIRECTA EN MENOS DE 2 HORAS HÁBILES
+            </div>
+            <div className="md:col-span-3">
+              <a
+                href={buildWhatsAppUrl()}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="w-full h-full py-5 px-6 flex items-center justify-between font-mono-tech text-[11px] tracking-[0.08em] text-[#EDEDEC] hover:bg-[#191917] transition-colors"
+              >
+                <span>VÍA WHATSAPP</span>
+                <span>/</span>
+              </a>
+            </div>
+            <div className="md:col-span-4">
+              <button
+                type="submit"
+                className="w-full h-full py-5 px-8 flex items-center justify-between bg-[#EDEDEC] text-[#0C0C0B] text-xs font-medium tracking-[0.04em] hover:bg-white transition-colors cursor-pointer"
+              >
+                <span>ENVIAR ESPECIFICACIÓN</span>
+                <span className="font-mono-tech">—</span>
+              </button>
+            </div>
           </div>
         </form>
       )}

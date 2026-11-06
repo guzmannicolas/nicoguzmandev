@@ -1,203 +1,296 @@
 import React, { useState } from 'react';
-import { Globe, Bot, Layers, ArrowRight, CheckCircle2, Zap, Clock, ShieldCheck, ChevronRight } from 'lucide-react';
 
-interface PillarOption {
+interface PracticeArea {
   id: 'webs' | 'ai' | 'erp';
-  icon: any;
-  badge: string;
-  badgeColor: string;
+  numeral: string;
+  code: string;
+  label: string;
   title: string;
-  targetUser: string;
-  mainPain: string;
-  solution: string;
-  deliverables: string[];
-  deliveryTime: string;
-  ctaText: string;
-  ctaLink: string;
+  subtitle: string;
+  clientProfile: string;
+  diagnosis: string;
+  architecture: string;
+  deliverables: { index: string; title: string; spec: string }[];
+  timeline: string;
+  primaryCtaText: string;
+  primaryCtaLink: string;
   whatsappMessage: string;
 }
 
-const PILLARS: PillarOption[] = [
+const AREAS: PracticeArea[] = [
   {
     id: 'webs',
-    icon: Globe,
-    badge: 'Rama 1: Webs para Locales',
-    badgeColor: 'bg-sky-500/10 text-sky-400 border-sky-500/20',
-    title: 'Presencia Web de Alto Rendimiento para Comercios y Negocios',
-    targetUser: 'Negocios sin web, que dependen solo de Instagram o con sitios lentos en WordPress.',
-    mainPain: 'El 80% de los clientes busca en Google antes de ir a un local. Si no tenés una web rápida, le compraron a tu competencia.',
-    solution: 'Desarrollamos una web moderna, ultra veloz y adaptada a móvil con catálogo, fotos, mapa y botón directo a tu WhatsApp.',
+    numeral: 'I',
+    code: '01 / PRESENCIA WEB COMERCIAL',
+    label: 'Comercios & Profesionales',
+    title: 'Infraestructura Web de Alta Conversión para Negocios Físicos y Servicios',
+    subtitle: 'Para empresas y locales comerciales que carecen de presencia propia en buscadores o dependen exclusivamente de redes sociales.',
+    clientProfile: 'Gastronomía, estudios profesionales, comercios minoristas, inmobiliarias y servicios técnicos.',
+    diagnosis: 'La dependencia exclusiva de Instagram o de sitios obsoletos impide captar la demanda activa en Google. Cuando un potencial cliente busca un servicio en su zona y no encuentra información estructurada, precios ni contacto inmediato, la venta se transfiere a la competencia.',
+    architecture: 'Implementamos sitios estáticos de respuesta instantánea bajo arquitectura Astro. Diseñados para dispositivos móviles, estructurados para posicionamiento local en Google Maps y vinculados directamente al canal de cierre en WhatsApp.',
     deliverables: [
-      'Diseño personalizado acorde a tu rubro (Basado en nuestros 8 templates comerciales probados)',
-      '100% optimizado para celulares y carga en menos de 1 segundo',
-      'Integración con Google Maps, horarios y enlace directo a WhatsApp',
-      'Dominio propio, certificado SSL y hosting en la nube incluido'
+      {
+        index: '01',
+        title: 'Arquitectura Sectorial Probada',
+        spec: 'Adaptación sobre 8 matrices comerciales diseñadas específicamente según los flujos de compra de cada rubro.'
+      },
+      {
+        index: '02',
+        title: 'Rendimiento Sub-Segundo',
+        spec: 'Carga inmediata en redes móviles sin bases de datos vulnerables ni mantenimiento de plugins.'
+      },
+      {
+        index: '03',
+        title: 'Indexación Local & Catálogo',
+        spec: 'Estructura semántica para buscadores, integración cartográfica, horarios operativos y carta/catálogo digital.'
+      },
+      {
+        index: '04',
+        title: 'Despliegue Llave en Mano',
+        spec: 'Configuración integral de dominio propio, certificados de seguridad SSL y distribución global en Vercel.'
+      }
     ],
-    deliveryTime: 'Entrega lista para vender en 48 a 72 horas',
-    ctaText: 'Ver Showroom de Templates en Vivo',
-    ctaLink: 'https://templates.nicoguzmandev.com',
-    whatsappMessage: 'Hola Nico! Me interesa una web profesional para mi local/negocio. ¿Podemos coordinar?'
+    timeline: '48 A 72 HORAS HÁBILES',
+    primaryCtaText: 'EXPLORAR CATÁLOGO DE DEMOS',
+    primaryCtaLink: 'https://templates.nicoguzmandev.com',
+    whatsappMessage: 'Hola Nicolás. Me interesa implementar una web comercial para mi negocio (Rama 01).'
   },
   {
     id: 'ai',
-    icon: Bot,
-    badge: 'Rama 2: Automatización & IA',
-    badgeColor: 'bg-emerald-500/10 text-emerald-400 border-emerald-500/20',
-    title: 'Agentes de Inteligencia Artificial & Turneros Automáticos',
-    targetUser: 'Negocios que SÍ tienen redes o web, pero tardan horas en responder o pierden ventas fuera de horario.',
-    mainPain: 'El 78% de las compras se las lleva el primer negocio que responde. Responder con 30 minutos de demora es regalar el cliente.',
-    solution: 'Implementamos un asistente inteligente que responde WhatsApp, cotiza en base a tu catálogo y agenda citas en Google Calendar 24/7.',
+    numeral: 'II',
+    code: '02 / AUTOMATIZACIÓN & AGENTES IA',
+    label: 'Atención & Agenda 24/7',
+    title: 'Sistemas Conversacionales y Gestión Autónoma de Turnos sobre WhatsApp',
+    subtitle: 'Para negocios con flujo constante de consultas en redes o web que pierden cierres por demoras en la atención o coordinación manual.',
+    clientProfile: 'Clínicas, centros de estética, estudios, talleres, comercios con alto volumen de consulta diaria.',
+    diagnosis: 'El 78% de las operaciones comerciales se concretan con el primer proveedor que responde con precisión. Demorar horas en contestar mensajes, cotizar manualmente o coordinar horarios de forma artesanal genera una pérdida silenciosa de facturación todos los días.',
+    architecture: 'Desplegamos agentes de inteligencia artificial entrenados sobre la base de conocimiento real del negocio. Operan las 24 horas en WhatsApp con lenguaje natural, resuelven consultas comerciales, cotizan servicios y registran reservas en Google Calendar sin intervención humana.',
     deliverables: [
-      'Agente IA entrenado con las preguntas y políticas exactas de tu negocio',
-      'Atención automática 24/7 en WhatsApp (sin menús rígidos, responde con lenguaje natural)',
-      'Sistema de turnos y reservas autogestionado con confirmación en Google Calendar',
-      'Panel de registro de leads y notificaciones automáticas para reducir ausentismo'
+      {
+        index: '01',
+        title: 'Entrenamiento con Datos Propios',
+        spec: 'Configuración del modelo sobre tarifas, condiciones comerciales, catálogo y criterios reales de la empresa.'
+      },
+      {
+        index: '02',
+        title: 'Sincronización de Agenda en Vivo',
+        spec: 'Lectura de disponibilidad y creación automática de eventos en Google Calendar con confirmación instantánea.'
+      },
+      {
+        index: '03',
+        title: 'Atención en Lenguaje Natural',
+        spec: 'Comprensión contextual avanzada que reemplaza los antiguos menús numéricos rígidos y frustrantes.'
+      },
+      {
+        index: '04',
+        title: 'Protocolo de Derivación Humana',
+        spec: 'Transferencia ordenada al equipo comercial cuando una operación requiere intervención personalizada.'
+      }
     ],
-    deliveryTime: 'Configurado y en producción en 5 a 7 días hábiles',
-    ctaText: 'Ver Demo de Asistente IA',
-    ctaLink: '#demo-ia',
-    whatsappMessage: 'Hola Nico! Quiero automatizar la atención y turnos de mi negocio con un agente de WhatsApp/IA.'
+    timeline: '5 A 7 DÍAS HÁBILES',
+    primaryCtaText: 'VER TRANSCRIPCIÓN OPERATIVA',
+    primaryCtaLink: '#protocolo-ia',
+    whatsappMessage: 'Hola Nicolás. Quiero evaluar la automatización de atención y agenda con IA en WhatsApp (Rama 02).'
   },
   {
     id: 'erp',
-    icon: Layers,
-    badge: 'Rama 3: Consultoría & ERP',
-    badgeColor: 'bg-purple-500/10 text-purple-400 border-purple-500/20',
-    title: 'Sistemas de Gestión & ERP a Medida para Pymes',
-    targetUser: 'Empresas con múltiples sucursales, depósitos o donde las planillas de Excel ya no dan abasto.',
-    mainPain: 'Stock desfasado, ventas duplicadas y falta de visibilidad operativa frenan el crecimiento de tu empresa.',
-    solution: 'Construimos un software de gestión a la medida exacta de tus procesos operativos, sin pagar licencias abusivas por usuario en dólares.',
+    numeral: 'III',
+    code: '03 / CONSULTORÍA & SISTEMAS ERP',
+    label: 'Pymes & Multi-Sucursal',
+    title: 'Ingeniería de Software a Medida y Control Operativo Centralizado',
+    subtitle: 'Para pequeñas y medianas empresas con múltiples sucursales, depósitos o procesos críticos donde las planillas de cálculo resultan inviables.',
+    clientProfile: 'Distribuidoras, cadenas comerciales, industrias ligeras, logística y empresas de servicios con personal en campo.',
+    diagnosis: 'A medida que una empresa escala en volumen o puntos de venta, el uso de planillas aisladas y software enlatado rígido produce diferencias de inventario, falta de trazabilidad en caja y ceguera gerencial para tomar decisiones.',
+    architecture: 'Diseñamos y construimos sistemas de gestión (ERP / CRM / Intranets) adaptados exactamente a la lógica operativa de su organización. Propiedad total del código fuente, sin costos de licencias mensuales por cantidad de usuarios.',
     deliverables: [
-      'Control centralizado de inventario y stock sincronizado entre sucursales',
-      'Módulo de ventas, facturación y seguimiento de pedidos en tiempo real',
-      'Perfiles de acceso con permisos granulares para empleados y administradores',
-      'Dashboard analítico con KPIs financieros y reportes exportables'
+      {
+        index: '01',
+        title: 'Control de Stock Multi-Depósito',
+        spec: 'Trazabilidad exacta de mercadería, transferencias internas, alertas de reposición y auditoría de movimientos.'
+      },
+      {
+        index: '02',
+        title: 'Gestión Comercial y Tesorería',
+        spec: 'Consolidación de órdenes de venta, cuentas corrientes de clientes/proveedores y arqueos de caja por sucursal.'
+      },
+      {
+        index: '03',
+        title: 'Permisos y Roles Jerárquicos',
+        spec: 'Vistas restringidas según función operativa: operadores de mostrador, encargados de planta y dirección general.'
+      },
+      {
+        index: '04',
+        title: 'Tablero Ejecutivo en Tiempo Real',
+        spec: 'Métricas financieras, rentabilidad por línea de producto y reportes exportables para contabilidad.'
+      }
     ],
-    deliveryTime: 'Planificado en sprints ágiles (2 a 4 semanas para versión 1.0)',
-    ctaText: 'Agendar Consulta de Diagnóstico ERP',
-    ctaLink: '#contacto',
-    whatsappMessage: 'Hola Nico! Tengo una empresa/pyme y necesito consultoría para desarrollar un sistema ERP/gestión a medida.'
+    timeline: 'SPRINTS DE 2 A 4 SEMANAS',
+    primaryCtaText: 'EXAMINAR ARQUITECTURA ERP',
+    primaryCtaLink: '#sistema-erp',
+    whatsappMessage: 'Hola Nicolás. Necesito consultoría para desarrollar un sistema de gestión / ERP a medida (Rama 03).'
   }
 ];
 
 export default function DiagnosticSelector() {
-  const [selectedPillar, setSelectedPillar] = useState<'webs' | 'ai' | 'erp'>('webs');
-  const active = PILLARS.find(p => p.id === selectedPillar) || PILLARS[0];
+  const [selectedId, setSelectedId] = useState<'webs' | 'ai' | 'erp'>('webs');
+  const current = AREAS.find(a => a.id === selectedId) || AREAS[0];
 
   return (
-    <div className="w-full max-w-6xl mx-auto">
-      {/* Selector Tabs */}
-      <div className="grid grid-cols-1 md:grid-cols-3 gap-3 p-2 rounded-2xl bg-zinc-900/80 border border-zinc-800/80 backdrop-blur-md mb-8">
-        {PILLARS.map((pillar) => {
-          const Icon = pillar.icon;
-          const isSelected = selectedPillar === pillar.id;
+    <div className="w-full border border-[#222220] bg-[#0C0C0B]">
+      {/* Top Selector Bar */}
+      <div className="grid grid-cols-1 md:grid-cols-3 divide-y md:divide-y-0 md:divide-x divide-[#222220] border-b border-[#222220]">
+        {AREAS.map((area) => {
+          const isActive = area.id === selectedId;
           return (
             <button
-              key={pillar.id}
-              onClick={() => setSelectedPillar(pillar.id)}
-              className={`flex items-center gap-3.5 p-4 rounded-xl text-left transition-all cursor-pointer ${
-                isSelected
-                  ? 'bg-zinc-800/90 text-white shadow-lg border border-white/10'
-                  : 'text-zinc-400 hover:text-zinc-200 hover:bg-zinc-800/30 border border-transparent'
+              key={area.id}
+              type="button"
+              onClick={() => setSelectedId(area.id)}
+              className={`p-6 md:p-8 text-left transition-colors cursor-pointer relative ${
+                isActive ? 'bg-[#141412]' : 'bg-[#0C0C0B] hover:bg-[#111110]'
               }`}
             >
-              <div className={`p-2.5 rounded-lg ${
-                pillar.id === 'webs' ? 'bg-sky-500/15 text-sky-400' :
-                pillar.id === 'ai' ? 'bg-emerald-500/15 text-emerald-400' :
-                'bg-purple-500/15 text-purple-400'
-              }`}>
-                <Icon className="w-5 h-5" />
+              {isActive && (
+                <div className="absolute top-0 left-0 right-0 h-[2px] bg-[#EDEDEC]" />
+              )}
+              <div className="flex items-baseline justify-between mb-3">
+                <span className="font-mono-tech text-[11px] tracking-[0.14em] text-[#9A9994]">
+                  {area.code}
+                </span>
+                <span className="font-serif-editorial italic text-xl text-[#5E5D59]">
+                  {area.numeral}
+                </span>
               </div>
-              <div className="flex-1 min-w-0">
-                <div className="text-xs font-medium text-zinc-400">{pillar.badge.split(':')[0]}</div>
-                <div className="font-semibold text-sm truncate text-white">{pillar.id === 'webs' ? 'Webs para Locales' : pillar.id === 'ai' ? 'Automatización & IA' : 'Consultoría & ERP'}</div>
+              <div className="text-base font-medium text-[#EDEDEC] tracking-[-0.01em]">
+                {area.label}
               </div>
             </button>
           );
         })}
       </div>
 
-      {/* Main Content Box */}
-      <div className="glass-card rounded-3xl p-6 md:p-10 border border-white/10 relative overflow-hidden">
-        {/* Ambient Top Glow */}
-        <div className={`absolute top-0 right-0 w-96 h-96 blur-3xl opacity-20 pointer-events-none rounded-full ${
-          active.id === 'webs' ? 'bg-sky-500' : active.id === 'ai' ? 'bg-emerald-500' : 'bg-purple-500'
-        }`} />
+      {/* Main Dossier Body */}
+      <div className="grid grid-cols-1 lg:grid-cols-12 divide-y lg:divide-y-0 lg:divide-x divide-[#222220]">
+        {/* Left Column: Summary & Metadata */}
+        <div className="lg:col-span-5 p-8 md:p-12 flex flex-col justify-between bg-[#0C0C0B]">
+          <div>
+            <div className="flex items-baseline justify-between border-b border-[#222220] pb-4 mb-8">
+              <span className="font-mono-tech text-[11px] tracking-[0.14em] text-[#5E5D59] uppercase">
+                ESPECIFICACIÓN DE ÁREA
+              </span>
+              <span className="font-mono-tech text-[11px] tracking-[0.1em] text-[#EDEDEC]">
+                {current.code.split(' ')[0]} / 03
+              </span>
+            </div>
 
-        <div className="relative z-10">
-          <div className="flex flex-wrap items-center justify-between gap-4 mb-6">
-            <span className={`px-3 py-1 text-xs font-semibold rounded-full border ${active.badgeColor}`}>
-              {active.badge}
-            </span>
-            <div className="flex items-center gap-2 text-xs text-zinc-400 bg-zinc-900/60 px-3 py-1 rounded-full border border-zinc-800">
-              <Clock className="w-3.5 h-3.5 text-zinc-300" />
-              <span>{active.deliveryTime}</span>
+            <h3 className="text-2xl md:text-3xl font-normal tracking-[-0.02em] text-[#EDEDEC] leading-[1.2] mb-5">
+              {current.title}
+            </h3>
+
+            <p className="text-sm text-[#9A9994] leading-relaxed mb-8">
+              {current.subtitle}
+            </p>
+
+            <div className="border-t border-[#222220] pt-6 space-y-4">
+              <div>
+                <div className="font-mono-tech text-[10px] tracking-[0.14em] text-[#5E5D59] uppercase mb-1">
+                  PERFIL DE IMPLEMENTACIÓN
+                </div>
+                <div className="text-xs text-[#EDEDEC]">
+                  {current.clientProfile}
+                </div>
+              </div>
+              <div>
+                <div className="font-mono-tech text-[10px] tracking-[0.14em] text-[#5E5D59] uppercase mb-1">
+                  TIEMPO ESTIMADO DE PUESTA EN MARCHA
+                </div>
+                <div className="font-mono-tech text-xs text-[#EDEDEC]">
+                  {current.timeline}
+                </div>
+              </div>
             </div>
           </div>
 
-          <h3 className="text-2xl md:text-3xl font-bold text-white mb-4 leading-snug">
-            {active.title}
-          </h3>
+          <div className="pt-10 mt-10 border-t border-[#222220] space-y-3">
+            <a
+              href={`https://wa.me/5491100000000?text=${encodeURIComponent(current.whatsappMessage)}`}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="flex items-center justify-between w-full px-6 py-4 bg-[#EDEDEC] text-[#0C0C0B] text-xs font-medium tracking-[0.04em] hover:bg-white transition-colors"
+            >
+              <span>SOLICITAR PROPUESTA POR WHATSAPP</span>
+              <span className="font-mono-tech">—</span>
+            </a>
 
-          {/* Context comparison */}
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mb-8">
-            <div className="p-4 rounded-xl bg-red-950/20 border border-red-500/20">
-              <div className="text-xs font-semibold uppercase tracking-wider text-red-400 mb-1">
-                El problema que estás teniendo
+            <a
+              href={current.primaryCtaLink}
+              target={current.primaryCtaLink.startsWith('http') ? '_blank' : '_self'}
+              rel="noopener noreferrer"
+              className="flex items-center justify-between w-full px-6 py-4 border border-[#363632] text-[#EDEDEC] text-xs font-mono-tech tracking-[0.08em] hover:bg-[#141412] transition-colors"
+            >
+              <span>{current.primaryCtaText}</span>
+              <span>/</span>
+            </a>
+          </div>
+        </div>
+
+        {/* Right Column: Diagnosis, Architecture & Deliverables */}
+        <div className="lg:col-span-7 divide-y divide-[#222220] bg-[#0C0C0B]">
+          {/* Problem vs Solution */}
+          <div className="grid grid-cols-1 md:grid-cols-2 divide-y md:divide-y-0 md:divide-x divide-[#222220]">
+            <div className="p-8 md:p-10">
+              <div className="font-mono-tech text-[10px] tracking-[0.16em] text-[#5E5D59] uppercase mb-3">
+                A. DIAGNÓSTICO DE SITUACIÓN
               </div>
-              <p className="text-sm text-zinc-300 leading-relaxed">
-                {active.mainPain}
+              <p className="text-xs text-[#9A9994] leading-relaxed">
+                {current.diagnosis}
               </p>
             </div>
-            <div className="p-4 rounded-xl bg-emerald-950/20 border border-emerald-500/20">
-              <div className="text-xs font-semibold uppercase tracking-wider text-emerald-400 mb-1">
-                Nuestra solución directa
+            <div className="p-8 md:p-10 bg-[#111110]">
+              <div className="font-mono-tech text-[10px] tracking-[0.16em] text-[#EDEDEC] uppercase mb-3">
+                B. ARQUITECTURA DE SOLUCIÓN
               </div>
-              <p className="text-sm text-zinc-300 leading-relaxed">
-                {active.solution}
+              <p className="text-xs text-[#EDEDEC] leading-relaxed">
+                {current.architecture}
               </p>
             </div>
           </div>
 
-          {/* Deliverables List */}
-          <div className="mb-8">
-            <h4 className="text-sm font-semibold uppercase tracking-wider text-zinc-400 mb-4 flex items-center gap-2">
-              <Zap className="w-4 h-4 text-amber-400" />
-              Qué incluye este servicio:
-            </h4>
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-3">
-              {active.deliverables.map((item, idx) => (
-                <div key={idx} className="flex items-start gap-3 p-3 rounded-lg bg-zinc-900/40 border border-zinc-800/60">
-                  <CheckCircle2 className={`w-4 h-4 mt-0.5 shrink-0 ${
-                    active.id === 'webs' ? 'text-sky-400' : active.id === 'ai' ? 'text-emerald-400' : 'text-purple-400'
-                  }`} />
-                  <span className="text-sm text-zinc-300">{item}</span>
+          {/* Deliverables 2x2 Grid */}
+          <div>
+            <div className="px-8 py-4 border-b border-[#222220] font-mono-tech text-[10px] tracking-[0.16em] text-[#5E5D59] uppercase">
+              ALCANCE TÉCNICO Y ENTREGABLES
+            </div>
+            <div className="grid grid-cols-1 sm:grid-cols-2 divide-y sm:divide-y-0 sm:divide-x divide-[#222220]">
+              {current.deliverables.slice(0, 2).map((item) => (
+                <div key={item.index} className="p-8">
+                  <div className="font-mono-tech text-[11px] text-[#5E5D59] mb-2">
+                    [{item.index}]
+                  </div>
+                  <div className="text-sm font-medium text-[#EDEDEC] mb-2">
+                    {item.title}
+                  </div>
+                  <p className="text-xs text-[#9A9994] leading-relaxed">
+                    {item.spec}
+                  </p>
                 </div>
               ))}
             </div>
-          </div>
-
-          {/* Action CTAs */}
-          <div className="flex flex-wrap items-center gap-4 pt-4 border-t border-zinc-800/80">
-            <a
-              href={`https://wa.me/5491100000000?text=${encodeURIComponent(active.whatsappMessage)}`}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="inline-flex items-center gap-2 px-6 py-3.5 rounded-xl font-semibold text-sm bg-white text-zinc-950 hover:bg-zinc-200 transition-colors shadow-lg shadow-white/5 cursor-pointer"
-            >
-              <span>Consultar por WhatsApp</span>
-              <ArrowRight className="w-4 h-4" />
-            </a>
-
-            <a
-              href={active.ctaLink}
-              target={active.ctaLink.startsWith('http') ? '_blank' : '_self'}
-              rel="noopener noreferrer"
-              className="inline-flex items-center gap-2 px-5 py-3.5 rounded-xl font-medium text-sm text-zinc-300 hover:text-white bg-zinc-900/80 hover:bg-zinc-800 border border-zinc-700/80 transition-colors cursor-pointer"
-            >
-              <span>{active.ctaText}</span>
-              <ChevronRight className="w-4 h-4" />
-            </a>
+            <div className="grid grid-cols-1 sm:grid-cols-2 divide-y sm:divide-y-0 sm:divide-x divide-[#222220] border-t border-[#222220]">
+              {current.deliverables.slice(2, 4).map((item) => (
+                <div key={item.index} className="p-8">
+                  <div className="font-mono-tech text-[11px] text-[#5E5D59] mb-2">
+                    [{item.index}]
+                  </div>
+                  <div className="text-sm font-medium text-[#EDEDEC] mb-2">
+                    {item.title}
+                  </div>
+                  <p className="text-xs text-[#9A9994] leading-relaxed">
+                    {item.spec}
+                  </p>
+                </div>
+              ))}
+            </div>
           </div>
         </div>
       </div>

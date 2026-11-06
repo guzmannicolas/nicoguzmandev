@@ -1,6 +1,5 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100">
-  <rect width="100" height="100" rx="24" fill="#090a0f"/>
-  <rect x="2" y="2" width="96" height="96" rx="22" fill="none" stroke="#38bdf8" stroke-width="3" stroke-opacity="0.4"/>
-  <path d="M28 72V28L54 72V28" stroke="#38bdf8" stroke-width="7" stroke-linecap="round" stroke-linejoin="round"/>
-  <path d="M72 44H62C58 44 56 46 56 50V64C56 68 58 72 64 72H72V56H64" stroke="#ffffff" stroke-width="7" stroke-linecap="round" stroke-linejoin="round"/>
+  <rect width="100" height="100" fill="#0C0C0B"/>
+  <rect x="4" y="4" width="92" height="92" fill="none" stroke="#222220" stroke-width="2"/>
+  <text x="50" y="64" font-family="Georgia, serif" font-style="italic" font-size="48" fill="#EDEDEC" text-anchor="middle">NG</text>
 </svg>

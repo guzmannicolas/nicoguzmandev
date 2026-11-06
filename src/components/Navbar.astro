@@ -1,66 +1,80 @@
 ---
-import { ArrowUpRight, MessageSquare, Menu, X } from 'lucide-react';
+const pathname = Astro.url.pathname;
 ---
 
-<header class="sticky top-0 z-50 w-full border-b border-white/5 bg-zinc-950/80 backdrop-blur-xl transition-all">
-  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-20 flex items-center justify-between">
-    <!-- Brand / Logo -->
-    <a href="/" class="flex items-center gap-3 group">
-      <div class="w-10 h-10 rounded-xl bg-gradient-to-br from-sky-500 to-indigo-600 flex items-center justify-center text-white font-black text-lg shadow-lg shadow-sky-500/20 group-hover:scale-105 transition-transform">
-        NG
-      </div>
-      <div>
-        <div class="font-bold text-sm tracking-tight text-white group-hover:text-sky-300 transition-colors">
-          Nicolás Guzmán
+<header class="sticky top-0 z-50 w-full bg-[#0C0C0B]/95 backdrop-blur-sm border-b border-[#222220]">
+  <div class="grid grid-cols-12 items-stretch min-h-[68px]">
+    <!-- Brand Cell -->
+    <div class="col-span-7 md:col-span-3 px-6 flex items-center border-r border-[#222220]">
+      <a href="/" class="block group">
+        <div class="text-sm font-medium tracking-[-0.02em] text-[#EDEDEC] group-hover:text-white transition-colors">
+          NICOLÁS GUZMÁN
         </div>
-        <div class="text-[11px] text-zinc-400 flex items-center gap-1.5">
-          <span class="w-2 h-2 rounded-full bg-emerald-400 animate-pulse"></span>
-          <span>Dev & Automation Studio</span>
+        <div class="font-mono-tech text-[10px] tracking-[0.14em] text-[#5E5D59] uppercase mt-0.5">
+          INGENIERÍA &amp; SISTEMAS
         </div>
-      </div>
-    </a>
+      </a>
+    </div>
 
-    <!-- Desktop Navigation Links -->
-    <nav class="hidden md:flex items-center gap-1 text-xs font-medium text-zinc-300">
-      <a href="/#soluciones" class="px-3.5 py-2 rounded-lg hover:text-white hover:bg-zinc-800/60 transition-colors">
-        Soluciones
+    <!-- Navigation Cells (Desktop) -->
+    <nav class="hidden md:grid md:col-span-6 grid-cols-4 divide-x divide-[#222220] border-r border-[#222220]">
+      <a
+        href="/webs"
+        class={`px-4 flex flex-col justify-center hover:bg-[#131311] transition-colors ${pathname.startsWith('/webs') ? 'bg-[#131311]' : ''}`}
+      >
+        <span class="font-mono-tech text-[10px] text-[#5E5D59] tracking-[0.1em]">01</span>
+        <span class="text-xs font-medium text-[#EDEDEC] mt-0.5">Presencia Web</span>
       </a>
-      <a href="/webs" class="px-3.5 py-2 rounded-lg hover:text-white hover:bg-zinc-800/60 transition-colors flex items-center gap-1.5">
-        <span class="w-1.5 h-1.5 rounded-full bg-sky-400"></span>
-        Webs Locales
+      <a
+        href="/automatizacion"
+        class={`px-4 flex flex-col justify-center hover:bg-[#131311] transition-colors ${pathname.startsWith('/automatizacion') ? 'bg-[#131311]' : ''}`}
+      >
+        <span class="font-mono-tech text-[10px] text-[#5E5D59] tracking-[0.1em]">02</span>
+        <span class="text-xs font-medium text-[#EDEDEC] mt-0.5">Automatización IA</span>
       </a>
-      <a href="/automatizacion" class="px-3.5 py-2 rounded-lg hover:text-white hover:bg-zinc-800/60 transition-colors flex items-center gap-1.5">
-        <span class="w-1.5 h-1.5 rounded-full bg-emerald-400"></span>
-        Automatización & IA
+      <a
+        href="/erp"
+        class={`px-4 flex flex-col justify-center hover:bg-[#131311] transition-colors ${pathname.startsWith('/erp') ? 'bg-[#131311]' : ''}`}
+      >
+        <span class="font-mono-tech text-[10px] text-[#5E5D59] tracking-[0.1em]">03</span>
+        <span class="text-xs font-medium text-[#EDEDEC] mt-0.5">Sistemas &amp; ERP</span>
       </a>
-      <a href="/erp" class="px-3.5 py-2 rounded-lg hover:text-white hover:bg-zinc-800/60 transition-colors flex items-center gap-1.5">
-        <span class="w-1.5 h-1.5 rounded-full bg-purple-400"></span>
-        Consultoría & ERP
-      </a>
-      <a href="https://templates.nicoguzmandev.com" target="_blank" rel="noopener noreferrer" class="px-3.5 py-2 rounded-lg text-sky-400 hover:text-sky-300 hover:bg-sky-500/10 transition-colors inline-flex items-center gap-1">
-        <span>Templates</span>
-        <ArrowUpRight className="w-3.5 h-3.5" />
+      <a
+        href="https://templates.nicoguzmandev.com"
+        target="_blank"
+        rel="noopener noreferrer"
+        class="px-4 flex flex-col justify-center hover:bg-[#131311] transition-colors"
+      >
+        <span class="font-mono-tech text-[10px] text-[#5E5D59] tracking-[0.1em]">CATÁLOGO</span>
+        <span class="text-xs font-medium text-[#9A9994] hover:text-[#EDEDEC] mt-0.5">Catálogo Web</span>
       </a>
     </nav>
 
-    <!-- Right Actions -->
-    <div class="flex items-center gap-3">
+    <!-- Action Cell -->
+    <div class="col-span-5 md:col-span-3 flex items-stretch justify-end">
       <a
-        href="https://wa.me/5491100000000?text=Hola%20Nico!%20Vi%20tu%20sitio%20web%20y%20me%20gustar%C3%ADa%20hacerte%20una%20consulta."
-        target="_blank"
-        rel="noopener noreferrer"
-        class="hidden sm:inline-flex items-center gap-2 px-4 py-2.5 rounded-xl text-xs font-semibold bg-emerald-500/10 text-emerald-400 hover:bg-emerald-500/20 border border-emerald-500/30 transition-colors shadow-sm"
+        href="/contacto"
+        class="w-full px-6 flex items-center justify-between text-xs font-medium tracking-[0.02em] bg-[#EDEDEC] text-[#0C0C0B] hover:bg-white transition-colors"
       >
-        <MessageSquare className="w-3.5 h-3.5" />
-        <span>WhatsApp Directo</span>
-      </a>
-
-      <a
-        href="/#contacto"
-        class="inline-flex items-center gap-2 px-4 py-2.5 rounded-xl text-xs font-semibold bg-white text-zinc-950 hover:bg-zinc-200 transition-colors shadow-lg shadow-white/5"
-      >
-        <span>Cotizar Proyecto</span>
+        <span>INICIAR CONSULTA</span>
+        <span class="font-mono-tech text-[11px]">—</span>
       </a>
     </div>
   </div>
+
+  <!-- Mobile Sub-navigation Bar -->
+  <nav class="grid grid-cols-4 md:hidden divide-x divide-[#222220] border-t border-[#222220] bg-[#0C0C0B]">
+    <a href="/webs" class="py-2.5 px-2 text-center text-[11px] font-medium text-[#9A9994] hover:text-[#EDEDEC]">
+      01. Webs
+    </a>
+    <a href="/automatizacion" class="py-2.5 px-2 text-center text-[11px] font-medium text-[#9A9994] hover:text-[#EDEDEC]">
+      02. IA
+    </a>
+    <a href="/erp" class="py-2.5 px-2 text-center text-[11px] font-medium text-[#9A9994] hover:text-[#EDEDEC]">
+      03. ERP
+    </a>
+    <a href="https://templates.nicoguzmandev.com" target="_blank" rel="noopener noreferrer" class="py-2.5 px-2 text-center text-[11px] font-medium text-[#9A9994] hover:text-[#EDEDEC]">
+      Catálogo
+    </a>
+  </nav>
 </header>

@@ -2,103 +2,99 @@
 import Layout from '../layouts/Layout.astro';
 import AiChatSimulator from '../components/AiChatSimulator.tsx';
 import ContactForm from '../components/ContactForm.tsx';
-import { Bot, MessageSquare, Clock, Calendar, CheckCircle2, Zap, ArrowRight } from 'lucide-react';
 ---
 
 <Layout
-  title="Automatización & Asistentes de IA para WhatsApp — Nicolás Guzmán"
-  description="Automatizá la atención al cliente, turnos y cotizaciones en WhatsApp con agentes de Inteligencia Artificial 24/7. Cero demoras, más ventas."
+  title="División 02: Automatización & Agentes IA — Nicolás Guzmán"
+  description="Sistemas conversacionales de inteligencia artificial y gestión autónoma de turnos sobre WhatsApp Business API sincronizados con Google Calendar."
 >
-  <!-- Hero -->
-  <section class="pt-24 pb-16 px-4">
-    <div class="max-w-4xl mx-auto text-center">
-      <div class="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-emerald-500/10 border border-emerald-500/20 text-xs font-semibold text-emerald-400 mb-6">
-        <Bot className="w-4 h-4" />
-        <span>Rama 2 • Automatización de Atención & Ventas</span>
+  <!-- Header Section -->
+  <section class="border-b border-[#222220] p-8 sm:p-12 md:p-20">
+    <div class="max-w-4xl">
+      <div class="font-mono-tech text-[11px] tracking-[0.18em] text-[#5E5D59] uppercase mb-6">
+        DIVISIÓN 02 / AUTOMATIZACIÓN COMERCIAL &amp; AGENTES IA
       </div>
-
-      <h1 class="text-4xl sm:text-5xl md:text-6xl font-black text-white tracking-tight mb-6 leading-tight">
-        No Pierdas Clientes por <span class="text-gradient-emerald">Responder Tarde</span>
+      <h1 class="text-4xl sm:text-5xl md:text-6xl font-normal tracking-[-0.03em] text-[#EDEDEC] leading-[1.08] mb-8">
+        Elimine la pérdida de clientes por <span class="font-serif-editorial italic">demoras en la atención</span> y gestión manual de turnos.
       </h1>
-
-      <p class="text-lg text-zinc-400 max-w-2xl mx-auto mb-10 leading-relaxed">
-        El 78% de los prospectos le compra al primer negocio que responde. Implementamos un asistente inteligente en WhatsApp que atiende consultas, informa precios y agenda citas en Google Calendar las 24hs del día.
+      <p class="text-base sm:text-lg text-[#9A9994] max-w-2xl leading-relaxed font-light mb-10">
+        Implementamos agentes de inteligencia artificial entrenados sobre el conocimiento real de su negocio. Operan las 24 horas en WhatsApp, responden con lenguaje natural, cotizan servicios y registran turnos en Google Calendar sin intervención humana.
       </p>
 
-      <div class="flex flex-wrap items-center justify-center gap-4">
+      <div class="flex flex-col sm:flex-row items-stretch sm:items-center gap-4">
         <a
-          href="#demo"
-          class="inline-flex items-center gap-2 px-6 py-3.5 rounded-xl font-bold text-sm bg-emerald-500 text-white hover:bg-emerald-400 transition-colors shadow-lg shadow-emerald-500/20"
+          href="#protocolo"
+          class="px-8 py-4 bg-[#EDEDEC] text-[#0C0C0B] text-xs font-medium tracking-[0.04em] hover:bg-white transition-colors flex items-center justify-between gap-8"
         >
-          <span>Probar el Simulador en Vivo</span>
-          <ArrowRight className="w-4 h-4" />
+          <span>EXAMINAR PROTOCOLO EN VIVO</span>
+          <span class="font-mono-tech">—</span>
         </a>
-
         <a
-          href="https://wa.me/5491100000000?text=Hola%20Nico!%20Quiero%20automatizar%20la%20atenci%C3%B3n%20y%20turnos%20de%20mi%20negocio%20con%20IA."
+          href="https://wa.me/5491100000000?text=Hola%20Nicol%C3%A1s.%20Quiero%20evaluar%20la%20automatizaci%C3%B3n%20con%20IA%20para%20mi%20negocio%20(Divisi%C3%B3n%2002)."
           target="_blank"
           rel="noopener noreferrer"
-          class="inline-flex items-center gap-2 px-6 py-3.5 rounded-xl font-semibold text-sm bg-zinc-900 text-zinc-200 hover:text-white border border-zinc-700/80 transition-colors"
+          class="px-8 py-4 border border-[#363632] text-[#EDEDEC] font-mono-tech text-[11px] tracking-[0.08em] hover:bg-[#141412] transition-colors flex items-center justify-between gap-8"
         >
-          <MessageSquare className="w-4 h-4" />
-          <span>Coordinar Diagnóstico por WhatsApp</span>
+          <span>COORDINAR DIAGNÓSTICO POR WHATSAPP</span>
+          <span>/</span>
         </a>
       </div>
     </div>
   </section>
 
-  <!-- Live Demo Simulator -->
-  <section id="demo" class="py-16 px-4 border-t border-white/5 bg-zinc-950/40">
-    <div class="max-w-6xl mx-auto">
-      <div class="text-center max-w-2xl mx-auto mb-10">
-        <h2 class="text-2xl md:text-3xl font-bold text-white mb-2">Simulador de Agente WhatsApp</h2>
-        <p class="text-xs text-zinc-400">Probá hacer clic en las consultas de ejemplo para ver cómo interactúa con un cliente real:</p>
+  <!-- Technical Pillars -->
+  <section class="border-b border-[#222220] grid grid-cols-1 md:grid-cols-3 divide-y md:divide-y-0 md:divide-x divide-[#222220]">
+    <div class="p-8 sm:p-12">
+      <div class="font-mono-tech text-[10px] tracking-[0.16em] text-[#5E5D59] uppercase mb-3">
+        CAPACIDAD 01 — TIEMPO REAL
       </div>
+      <h2 class="text-lg font-medium text-[#EDEDEC] mb-3">
+        Respuesta en Menos de un Segundo
+      </h2>
+      <p class="text-xs text-[#9A9994] leading-relaxed">
+        El 78% de los cierres comerciales se producen con el primer proveedor que contesta. Su canal de WhatsApp responde al instante las 24 horas, incluidos fines de semana y feriados.
+      </p>
+    </div>
 
-      <AiChatSimulator client:load />
+    <div class="p-8 sm:p-12">
+      <div class="font-mono-tech text-[10px] tracking-[0.16em] text-[#5E5D59] uppercase mb-3">
+        CAPACIDAD 02 — SINCRONIZACIÓN
+      </div>
+      <h2 class="text-lg font-medium text-[#EDEDEC] mb-3">
+        Integración Nativa con Google Calendar
+      </h2>
+      <p class="text-xs text-[#9A9994] leading-relaxed">
+        El agente consulta los espacios disponibles de cada profesional o sucursal, reserva el turno sin superposiciones y emite recordatorios automáticos para reducir el ausentismo.
+      </p>
+    </div>
+
+    <div class="p-8 sm:p-12">
+      <div class="font-mono-tech text-[10px] tracking-[0.16em] text-[#5E5D59] uppercase mb-3">
+        CAPACIDAD 03 — CRITERIO COMERCIAL
+      </div>
+      <h2 class="text-lg font-medium text-[#EDEDEC] mb-3">
+        Entrenamiento Contextual y Derivación
+      </h2>
+      <p class="text-xs text-[#9A9994] leading-relaxed">
+        Sin menús numéricos rígidos. Comprende audios y textos libres aplicando sus tarifas y políticas reales, y transfiere la conversación a un humano cuando detecta casos especiales.
+      </p>
     </div>
   </section>
 
-  <!-- Detailed Features -->
-  <section class="py-20 px-4 border-t border-white/5">
-    <div class="max-w-6xl mx-auto grid grid-cols-1 md:grid-cols-3 gap-6">
-      <div class="glass-card rounded-2xl p-6 border border-white/10">
-        <div class="w-10 h-10 rounded-xl bg-emerald-500/15 text-emerald-400 flex items-center justify-center mb-4">
-          <Clock className="w-5 h-5" />
-        </div>
-        <h3 class="text-lg font-bold text-white mb-2">Respuestas en Segundos</h3>
-        <p class="text-xs text-zinc-400 leading-relaxed">
-          Ya sea a las 3 de la tarde o a las 2 de la madrugada, tu bot responde al instante con información certera de tus servicios y precios.
-        </p>
-      </div>
-
-      <div class="glass-card rounded-2xl p-6 border border-white/10">
-        <div class="w-10 h-10 rounded-xl bg-emerald-500/15 text-emerald-400 flex items-center justify-center mb-4">
-          <Calendar className="w-5 h-5" />
-        </div>
-        <h3 class="text-lg font-bold text-white mb-2">Agenda Automatizada</h3>
-        <p class="text-xs text-zinc-400 leading-relaxed">
-          Revisa disponibilidad en tiempo real en tu Google Calendar, reserva el espacio y envía recordatorios antes de la cita para eliminar cancelaciones.
-        </p>
-      </div>
-
-      <div class="glass-card rounded-2xl p-6 border border-white/10">
-        <div class="w-10 h-10 rounded-xl bg-emerald-500/15 text-emerald-400 flex items-center justify-center mb-4">
-          <Zap className="w-5 h-5" />
-        </div>
-        <h3 class="text-lg font-bold text-white mb-2">Derivación Inteligente</h3>
-        <p class="text-xs text-zinc-400 leading-relaxed">
-          Cuando una consulta requiere criterio humano especial o se trata de una urgencia, el bot etiqueta la conversación y te notifica de inmediato.
-        </p>
-      </div>
-    </div>
+  <!-- Live Simulator -->
+  <section id="protocolo" class="p-8 sm:p-12 md:p-16 border-b border-[#222220]">
+    <AiChatSimulator client:load />
   </section>
 
-  <!-- Contact Form -->
-  <section class="py-20 px-4 border-t border-white/5 bg-zinc-950/60">
-    <div class="max-w-4xl mx-auto text-center mb-10">
-      <h2 class="text-3xl font-extrabold text-white mb-3">Automatizá tu Negocio en 5 Días</h2>
-      <p class="text-sm text-zinc-400">Dejanos tu información y coordinamos la integración con tus canales actuales.</p>
+  <!-- Briefing Form -->
+  <section class="p-8 sm:p-12 md:p-16">
+    <div class="max-w-2xl mb-10">
+      <div class="font-mono-tech text-[10px] tracking-[0.18em] text-[#5E5D59] uppercase mb-2">
+        INICIO DE IMPLEMENTACIÓN
+      </div>
+      <h2 class="text-2xl sm:text-3xl font-normal tracking-[-0.02em] text-[#EDEDEC]">
+        Solicitar Relevamiento de Automatización
+      </h2>
     </div>
     <ContactForm client:load />
   </section>

@@ -1,153 +1,205 @@
 import React, { useState } from 'react';
-import { Layers, Store, TrendingUp, AlertTriangle, Users, PackageCheck, BarChart3, RefreshCw } from 'lucide-react';
 
-interface BranchData {
+interface BranchNode {
   id: string;
+  code: string;
   name: string;
   location: string;
-  stockCount: number;
-  ordersToday: number;
-  revenueToday: string;
-  status: 'optimal' | 'low_stock' | 'syncing';
+  billingToday: string;
+  monthlyProjection: string;
+  activeSkus: string;
+  criticalAlerts: string;
+  auditStatus: string;
+  recentLogs: { time: string; ref: string; detail: string; role: string }[];
 }
 
-const BRANCHES: BranchData[] = [
+const NODES: BranchNode[] = [
   {
-    id: 'b1',
-    name: 'Sucursal Centro',
-    location: 'Av. Corrientes 1840',
-    stockCount: 1420,
-    ordersToday: 68,
-    revenueToday: '$1.480.000',
-    status: 'optimal'
+    id: 'all',
+    code: '00',
+    name: 'Consolidado Corporativo',
+    location: '3 Unidades Operativas Conectadas',
+    billingToday: '$ 5.640.000 ARS',
+    monthlyProjection: '$ 148.200.000 ARS',
+    activeSkus: '10.760 UNIDADES',
+    criticalAlerts: '02 ÍTEMS BAJO MÍNIMO',
+    auditStatus: 'CONCILIADO EN TIEMPO REAL',
+    recentLogs: [
+      { time: '16:14:02', ref: 'TR-9041', detail: 'Transferencia de stock aprobada: Depósito Sur -> Sucursal Norte (120 u.)', role: 'LOGÍSTICA' },
+      { time: '16:11:48', ref: 'FC-A004', detail: 'Emisión de factura electrónica mayorista ARCA/AFIP — Cliente #309', role: 'TESORERÍA' },
+      { time: '16:05:19', ref: 'AU-1102', detail: 'Cierre parcial de caja auditado sin diferencias — Terminal 02', role: 'MOSTRADOR' }
+    ]
   },
   {
-    id: 'b2',
-    name: 'Sucursal Norte',
-    location: 'Av. Cabildo 2210',
-    stockCount: 890,
-    ordersToday: 42,
-    revenueToday: '$920.000',
-    status: 'optimal'
+    id: 'central',
+    code: '01',
+    name: 'Casa Central',
+    location: 'Av. Corrientes 1840, CABA',
+    billingToday: '$ 2.180.000 ARS',
+    monthlyProjection: '$ 58.400.000 ARS',
+    activeSkus: '1.420 UNIDADES',
+    criticalAlerts: 'SIN ALERTAS ACTIVAS',
+    auditStatus: 'CAJA ABIERTA — 4 TERMINALES',
+    recentLogs: [
+      { time: '16:12:10', ref: 'VT-4410', detail: 'Orden de venta mostrador cobrada vía QR integrado — $145.000', role: 'CAJA 01' },
+      { time: '15:54:30', ref: 'RM-0812', detail: 'Recepción de mercadería desde Centro de Distribución confirmada', role: 'ENCARGADO' },
+      { time: '15:30:00', ref: 'CT-0192', detail: 'Actualización automática de lista de precios gremio (+4.5%)', role: 'DIRECCIÓN' }
+    ]
   },
   {
-    id: 'b3',
-    name: 'Depósito Central',
-    location: 'Parque Industrial Sur',
-    stockCount: 8450,
-    ordersToday: 114,
-    revenueToday: '$3.240.000',
-    status: 'low_stock'
+    id: 'norte',
+    code: '02',
+    name: 'Sucursal Zona Norte',
+    location: 'Av. del Libertador 14200, Martínez',
+    billingToday: '$ 1.420.000 ARS',
+    monthlyProjection: '$ 39.800.000 ARS',
+    activeSkus: '890 UNIDADES',
+    criticalAlerts: '01 REPOSICIÓN AUTOMÁTICA',
+    auditStatus: 'CAJA ABIERTA — 2 TERMINALES',
+    recentLogs: [
+      { time: '16:08:44', ref: 'AL-0019', detail: 'Solicitud automática de reposición enviada a Depósito Central', role: 'SISTEMA' },
+      { time: '15:41:12', ref: 'VT-4408', detail: 'Presupuesto convertido en orden de entrega a domicilio', role: 'VENTAS' },
+      { time: '14:20:05', ref: 'US-0041', detail: 'Apertura de turno tarde registrada por operador autorizado', role: 'SUPERVISOR' }
+    ]
+  },
+  {
+    id: 'deposito',
+    code: '03',
+    name: 'Centro de Distribución',
+    location: 'Parque Industrial Sur, Nave 4',
+    billingToday: '$ 2.040.000 ARS',
+    monthlyProjection: '$ 50.000.000 ARS',
+    activeSkus: '8.450 UNIDADES',
+    criticalAlerts: '01 ORDEN DE COMPRA PROVEEDOR',
+    auditStatus: 'DESPACHO ACTIVO',
+    recentLogs: [
+      { time: '16:14:02', ref: 'DP-7721', detail: 'Preparación de pedido mayorista #892 auditada por lector óptico', role: 'EXPEDICIÓN' },
+      { time: '15:18:55', ref: 'OC-0331', detail: 'Ingreso de lote proveedor nacional — Alta de 1.500 unidades en stock', role: 'COMPRAS' },
+      { time: '14:00:00', ref: 'IN-0012', detail: 'Control cíclico de inventario sector B finalizado (100% exactitud)', role: 'AUDITORÍA' }
+    ]
   }
 ];
 
 export default function ErpMetricsSimulator() {
-  const [activeBranch, setActiveBranch] = useState<string>('b1');
-  const [isSyncing, setIsSyncing] = useState(false);
-
-  const current = BRANCHES.find(b => b.id === activeBranch) || BRANCHES[0];
-
-  const triggerSync = () => {
-    setIsSyncing(true);
-    setTimeout(() => setIsSyncing(false), 800);
-  };
+  const [selectedId, setSelectedId] = useState<string>('all');
+  const current = NODES.find(n => n.id === selectedId) || NODES[0];
 
   return (
-    <div className="w-full max-w-4xl mx-auto rounded-3xl glass-card border border-white/10 overflow-hidden shadow-2xl">
-      {/* Top Bar */}
-      <div className="bg-zinc-900/90 px-6 py-4 border-b border-zinc-800 flex flex-wrap items-center justify-between gap-3">
-        <div className="flex items-center gap-3">
-          <div className="p-2.5 rounded-xl bg-purple-500/15 border border-purple-500/30 text-purple-400">
-            <Layers className="w-5 h-5" />
-          </div>
-          <div>
-            <div className="flex items-center gap-2">
-              <span className="font-semibold text-sm text-white">Panel ERP Multi-Sucursal</span>
-              <span className="bg-purple-500/10 text-purple-400 border border-purple-500/20 text-[10px] px-2 py-0.5 rounded-full font-medium">
-                En vivo
-              </span>
-            </div>
-            <p className="text-xs text-zinc-400">Control unificado de stock, caja y pedidos en tiempo real</p>
-          </div>
+    <div className="w-full border border-[#222220] bg-[#0C0C0B]">
+      {/* Header Bar */}
+      <div className="px-8 py-5 border-b border-[#222220] flex flex-col sm:flex-row sm:items-center justify-between gap-4 bg-[#111110]">
+        <div>
+          <span className="font-mono-tech text-[10px] tracking-[0.16em] text-[#5E5D59] uppercase block">
+            ARQUITECTURA DE CONTROL CENTRALIZADO
+          </span>
+          <span className="text-sm font-medium text-[#EDEDEC]">
+            Tablero de Operaciones, Stock Multi-Depósito y Auditoría de Caja
+          </span>
         </div>
-
-        <button
-          onClick={triggerSync}
-          disabled={isSyncing}
-          className="flex items-center gap-1.5 text-xs text-zinc-300 hover:text-white bg-zinc-800/80 px-3 py-1.5 rounded-lg border border-zinc-700 hover:bg-zinc-700 transition-colors cursor-pointer"
-        >
-          <RefreshCw className={`w-3.5 h-3.5 ${isSyncing ? 'animate-spin text-purple-400' : ''}`} />
-          <span>{isSyncing ? 'Sincronizando...' : 'Actualizar Stock'}</span>
-        </button>
+        <div className="font-mono-tech text-[11px] text-[#9A9994]">
+          LICENCIAS POR USUARIO: $0 (PROPIEDAD DE LA EMPRESA)
+        </div>
       </div>
 
-      {/* Main Body */}
-      <div className="p-6 bg-zinc-950/70">
-        {/* Branch Selector Tabs */}
-        <div className="flex flex-wrap gap-2 mb-6">
-          {BRANCHES.map(b => (
+      {/* Node Selector Tabs */}
+      <div className="grid grid-cols-2 lg:grid-cols-4 divide-y sm:divide-y-0 divide-x divide-[#222220] border-b border-[#222220]">
+        {NODES.map((node) => {
+          const isActive = node.id === selectedId;
+          return (
             <button
-              key={b.id}
-              onClick={() => setActiveBranch(b.id)}
-              className={`flex items-center gap-2 px-4 py-2 rounded-xl text-xs font-medium transition-all cursor-pointer ${
-                activeBranch === b.id
-                  ? 'bg-purple-600 text-white shadow-md'
-                  : 'bg-zinc-900 text-zinc-400 hover:text-zinc-200 border border-zinc-800'
+              key={node.id}
+              type="button"
+              onClick={() => setSelectedId(node.id)}
+              className={`p-5 text-left transition-colors cursor-pointer relative ${
+                isActive ? 'bg-[#151513]' : 'bg-[#0C0C0B] hover:bg-[#111110]'
               }`}
             >
-              <Store className="w-3.5 h-3.5" />
-              <span>{b.name}</span>
+              {isActive && <div className="absolute top-0 left-0 right-0 h-[2px] bg-[#EDEDEC]" />}
+              <div className="flex items-center justify-between mb-1.5">
+                <span className="font-mono-tech text-[10px] tracking-[0.14em] text-[#5E5D59]">
+                  NODO [{node.code}]
+                </span>
+                {isActive && (
+                  <span className="font-mono-tech text-[10px] text-[#EDEDEC]">ACTIVO</span>
+                )}
+              </div>
+              <div className="text-xs font-medium text-[#EDEDEC] truncate">{node.name}</div>
+              <div className="text-[11px] text-[#5E5D59] truncate mt-0.5">{node.location}</div>
             </button>
+          );
+        })}
+      </div>
+
+      {/* KPI Telemetry Strip */}
+      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 divide-y sm:divide-y-0 sm:divide-x divide-[#222220] border-b border-[#222220]">
+        <div className="p-7 bg-[#0C0C0B]">
+          <div className="font-mono-tech text-[10px] tracking-[0.14em] text-[#5E5D59] uppercase mb-2">
+            FACTURACIÓN DIARIA
+          </div>
+          <div className="font-mono-tech text-xl font-medium text-[#EDEDEC] tabular-nums">
+            {current.billingToday}
+          </div>
+          <div className="font-mono-tech text-[10px] text-[#5E5D59] mt-2">
+            PROYECCIÓN MENSUAL: {current.monthlyProjection}
+          </div>
+        </div>
+
+        <div className="p-7 bg-[#0C0C0B]">
+          <div className="font-mono-tech text-[10px] tracking-[0.14em] text-[#5E5D59] uppercase mb-2">
+            INVENTARIO AUDITADO
+          </div>
+          <div className="font-mono-tech text-xl font-medium text-[#EDEDEC] tabular-nums">
+            {current.activeSkus}
+          </div>
+          <div className="font-mono-tech text-[10px] text-[#5E5D59] mt-2">
+            SINCRONIZACIÓN EN TIEMPO REAL
+          </div>
+        </div>
+
+        <div className="p-7 bg-[#0C0C0B]">
+          <div className="font-mono-tech text-[10px] tracking-[0.14em] text-[#5E5D59] uppercase mb-2">
+            ALERTAS DE STOCK
+          </div>
+          <div className="font-mono-tech text-sm font-medium text-[#EDEDEC] mt-1">
+            {current.criticalAlerts}
+          </div>
+          <div className="font-mono-tech text-[10px] text-[#5E5D59] mt-3">
+            UMBRAL DE REPOSICIÓN AUTOMÁTICO
+          </div>
+        </div>
+
+        <div className="p-7 bg-[#0C0C0B]">
+          <div className="font-mono-tech text-[10px] tracking-[0.14em] text-[#5E5D59] uppercase mb-2">
+            ESTADO DE AUDITORÍA
+          </div>
+          <div className="font-mono-tech text-sm font-medium text-[#EDEDEC] mt-1">
+            {current.auditStatus}
+          </div>
+          <div className="font-mono-tech text-[10px] text-[#5E5D59] mt-3">
+            PERMISOS JERÁRQUICOS ACTIVOS
+          </div>
+        </div>
+      </div>
+
+      {/* Audit Log Table */}
+      <div className="bg-[#0C0C0B]">
+        <div className="px-8 py-4 border-b border-[#222220] font-mono-tech text-[10px] tracking-[0.16em] text-[#5E5D59] uppercase">
+          REGISTRO DE MOVIMIENTOS Y TRAZABILIDAD ({current.name.toUpperCase()})
+        </div>
+        <div className="divide-y divide-[#1C1C1A]">
+          {current.recentLogs.map((log) => (
+            <div key={log.ref} className="px-8 py-4 grid grid-cols-1 md:grid-cols-12 gap-2 items-center text-xs hover:bg-[#111110]">
+              <div className="md:col-span-2 font-mono-tech text-[11px] text-[#5E5D59]">
+                {log.time} — [{log.ref}]
+              </div>
+              <div className="md:col-span-8 text-[#EDEDEC]">
+                {log.detail}
+              </div>
+              <div className="md:col-span-2 md:text-right font-mono-tech text-[10px] tracking-[0.12em] text-[#9A9994]">
+                ROL: {log.role}
+              </div>
+            </div>
           ))}
-        </div>
-
-        {/* Real-time KPI Grid */}
-        <div className="grid grid-cols-1 sm:grid-cols-3 gap-4 mb-6">
-          <div className="p-4 rounded-2xl bg-zinc-900/60 border border-zinc-800">
-            <div className="flex items-center justify-between text-zinc-400 text-xs mb-2">
-              <span>Ventas Hoy</span>
-              <TrendingUp className="w-4 h-4 text-emerald-400" />
-            </div>
-            <div className="text-2xl font-bold text-white">{current.revenueToday}</div>
-            <div className="text-[11px] text-zinc-400 mt-1">{current.ordersToday} órdenes emitidas</div>
-          </div>
-
-          <div className="p-4 rounded-2xl bg-zinc-900/60 border border-zinc-800">
-            <div className="flex items-center justify-between text-zinc-400 text-xs mb-2">
-              <span>Unidades en Stock</span>
-              <PackageCheck className="w-4 h-4 text-purple-400" />
-            </div>
-            <div className="text-2xl font-bold text-white">{current.stockCount.toLocaleString()}</div>
-            <div className="text-[11px] text-zinc-400 mt-1">Conteo auditado en tiempo real</div>
-          </div>
-
-          <div className="p-4 rounded-2xl bg-zinc-900/60 border border-zinc-800">
-            <div className="flex items-center justify-between text-zinc-400 text-xs mb-2">
-              <span>Estado Operativo</span>
-              {current.status === 'low_stock' ? (
-                <AlertTriangle className="w-4 h-4 text-amber-400" />
-              ) : (
-                <BarChart3 className="w-4 h-4 text-sky-400" />
-              )}
-            </div>
-            <div className="text-lg font-bold text-white">
-              {current.status === 'low_stock' ? 'Alerta Reposición' : 'Operación Normal'}
-            </div>
-            <div className="text-[11px] text-zinc-400 mt-1">
-              {current.status === 'low_stock' ? 'Stock por debajo del mínimo' : 'Sucursal balanceada'}
-            </div>
-          </div>
-        </div>
-
-        {/* Feature Highlights */}
-        <div className="p-4 rounded-2xl bg-purple-950/20 border border-purple-500/20 text-xs text-zinc-300 flex flex-wrap items-center justify-between gap-3">
-          <div className="flex items-center gap-2">
-            <Users className="w-4 h-4 text-purple-400 shrink-0" />
-            <span>Usuarios activos con permisos restringidos por sucursal (cajeros, encargados, administración).</span>
-          </div>
-          <span className="text-[10px] uppercase font-semibold text-purple-400 tracking-wider">
-            Arquitectura Escalable
-          </span>
         </div>
       </div>
     </div>

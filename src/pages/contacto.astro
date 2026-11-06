@@ -1,69 +1,85 @@
 ---
 import Layout from '../layouts/Layout.astro';
 import ContactForm from '../components/ContactForm.tsx';
-import { MessageSquare, Mail, MapPin, Clock, ShieldCheck } from 'lucide-react';
 ---
 
 <Layout
-  title="Contacto & Diagnóstico — Nicolás Guzmán Dev"
-  description="Contactate directamente con Nicolás Guzmán. Cotizaciones rápidas en menos de 2 horas para sitios web, agentes de IA y sistemas ERP."
+  title="Contacto & Relevamiento Técnico — Nicolás Guzmán"
+  description="Canal directo de contacto para evaluación técnica y cotización de proyectos web, automatización con inteligencia artificial y sistemas ERP."
 >
-  <section class="pt-24 pb-16 px-4">
-    <div class="max-w-4xl mx-auto text-center mb-12">
-      <div class="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-zinc-900 border border-zinc-700 text-xs font-semibold text-zinc-300 mb-6">
-        <span>Canal Directo de Asesoramiento</span>
+  <section class="border-b border-[#222220] p-8 sm:p-12 md:p-20">
+    <div class="max-w-3xl">
+      <div class="font-mono-tech text-[11px] tracking-[0.18em] text-[#5E5D59] uppercase mb-6">
+        CANAL EJECUTIVO DE CONSULTA
       </div>
-
-      <h1 class="text-4xl sm:text-5xl font-black text-white tracking-tight mb-4 leading-tight">
-        Hablemos Sobre Tu Proyecto
+      <h1 class="text-4xl sm:text-5xl font-normal tracking-[-0.03em] text-[#EDEDEC] leading-[1.08] mb-6">
+        Relevamiento técnico y <span class="font-serif-editorial italic">presupuesto formal</span>.
       </h1>
-
-      <p class="text-base text-zinc-400 max-w-xl mx-auto">
-        Completá el formulario o escribime directamente por WhatsApp para coordinar una llamada de diagnóstico gratuita.
+      <p class="text-base text-[#9A9994] leading-relaxed font-light">
+        Todas las consultas son evaluadas directamente sin intermediarios comerciales. Complete el formulario de especificación o inicie una conversación por WhatsApp para coordinar una reunión de diagnóstico.
       </p>
     </div>
+  </section>
 
-    <div class="max-w-5xl mx-auto grid grid-cols-1 lg:grid-cols-12 gap-8 items-start mb-16">
-      <!-- Contact Info Cards -->
-      <div class="lg:col-span-5 space-y-4">
-        <div class="glass-card rounded-2xl p-6 border border-white/10 space-y-4">
-          <div class="text-xs font-semibold uppercase tracking-wider text-emerald-400">Canal Rápido</div>
-          <div class="flex items-center gap-3">
-            <div class="w-10 h-10 rounded-xl bg-emerald-500/15 text-emerald-400 flex items-center justify-center shrink-0">
-              <MessageSquare className="w-5 h-5" />
-            </div>
-            <div>
-              <div class="font-bold text-sm text-white">WhatsApp Directo</div>
-              <p class="text-xs text-zinc-400">Respuesta promedio en menos de 2 horas</p>
-            </div>
-          </div>
+  <section class="grid grid-cols-1 lg:grid-cols-12 divide-y lg:divide-y-0 lg:divide-x divide-[#222220]">
+    <!-- Left Column: Direct Parameters -->
+    <div class="lg:col-span-4 divide-y divide-[#222220] bg-[#0E0E0D]">
+      <div class="p-8 md:p-10 space-y-4">
+        <div class="font-mono-tech text-[10px] tracking-[0.16em] text-[#5E5D59] uppercase">
+          COMUNICACIÓN INMEDIATA
+        </div>
+        <h2 class="text-lg font-medium text-[#EDEDEC]">
+          WhatsApp Directo
+        </h2>
+        <p class="text-xs text-[#9A9994] leading-relaxed">
+          Para consultas urgentes, envío de requerimientos por audio o coordinación directa de llamadas técnicas.
+        </p>
+        <div class="pt-3">
           <a
-            href="https://wa.me/5491100000000?text=Hola%20Nico!%20Te%20escribo%20desde%20nicoguzmandev.com%20para%20hacerte%20una%20consulta."
+            href="https://wa.me/5491100000000?text=Hola%20Nicol%C3%A1s.%20Me%20contacto%20desde%20nicoguzmandev.com%20para%20evaluar%20un%20proyecto."
             target="_blank"
             rel="noopener noreferrer"
-            class="block text-center py-2.5 px-4 rounded-xl text-xs font-semibold bg-emerald-500/10 hover:bg-emerald-500/20 text-emerald-400 border border-emerald-500/30 transition-colors"
+            class="flex items-center justify-between w-full px-6 py-4 bg-[#EDEDEC] text-[#0C0C0B] text-xs font-medium tracking-[0.04em] hover:bg-white transition-colors"
           >
-            Abrir Chat de WhatsApp
+            <span>ABRIR WHATSAPP</span>
+            <span class="font-mono-tech">—</span>
           </a>
         </div>
+      </div>
 
-        <div class="glass-card rounded-2xl p-6 border border-white/10 space-y-3 text-xs text-zinc-300">
-          <div class="text-xs font-semibold uppercase tracking-wider text-zinc-400">Compromiso Profesional</div>
-          <div class="flex items-start gap-2.5">
-            <ShieldCheck className="w-4 h-4 text-emerald-400 shrink-0 mt-0.5" />
-            <span>Presupuestos claros y cerrados antes de iniciar, sin costos ocultos.</span>
+      <div class="p-8 md:p-10 space-y-4">
+        <div class="font-mono-tech text-[10px] tracking-[0.16em] text-[#5E5D59] uppercase">
+          PLAZOS DE REFERENCIA
+        </div>
+        <div class="space-y-3 text-xs">
+          <div class="flex justify-between border-b border-[#1C1C1A] pb-2">
+            <span class="text-[#9A9994]">01. Presencia Web</span>
+            <span class="font-mono-tech text-[#EDEDEC]">48 A 72 HORAS</span>
           </div>
-          <div class="flex items-start gap-2.5">
-            <Clock className="w-4 h-4 text-sky-400 shrink-0 mt-0.5" />
-            <span>Plazos de entrega estrictos: 48-72hs para webs, 5 días para bots IA.</span>
+          <div class="flex justify-between border-b border-[#1C1C1A] pb-2">
+            <span class="text-[#9A9994]">02. Agentes IA WhatsApp</span>
+            <span class="font-mono-tech text-[#EDEDEC]">5 A 7 DÍAS</span>
+          </div>
+          <div class="flex justify-between pb-1">
+            <span class="text-[#9A9994]">03. Sistemas ERP</span>
+            <span class="font-mono-tech text-[#EDEDEC]">2 A 4 SEMANAS</span>
           </div>
         </div>
       </div>
 
-      <!-- Form -->
-      <div class="lg:col-span-7">
-        <ContactForm client:load />
+      <div class="p-8 md:p-10 space-y-2">
+        <div class="font-mono-tech text-[10px] tracking-[0.16em] text-[#5E5D59] uppercase">
+          MODALIDAD DE TRABAJO
+        </div>
+        <p class="text-xs text-[#9A9994] leading-relaxed">
+          Presupuestos cerrados por objetivo, entregas parciales auditables y transferencia total de código y credenciales al finalizar.
+        </p>
       </div>
+    </div>
+
+    <!-- Right Column: Form -->
+    <div class="lg:col-span-8 p-8 sm:p-12 bg-[#0C0C0B]">
+      <ContactForm client:load />
     </div>
   </section>
 </Layout>

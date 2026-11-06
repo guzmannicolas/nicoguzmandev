@@ -5,319 +5,280 @@ import AiChatSimulator from '../components/AiChatSimulator.tsx';
 import ErpMetricsSimulator from '../components/ErpMetricsSimulator.tsx';
 import ShowroomGrid from '../components/ShowroomGrid.astro';
 import ContactForm from '../components/ContactForm.tsx';
-import { ArrowRight, Sparkles, CheckCircle2, Shield, Zap, Globe, Bot, Layers, ArrowUpRight } from 'lucide-react';
 ---
 
 <Layout
-  title="Nicolás Guzmán — Software Engineering, AI Automation & Web Solutions"
-  description="Estudio de desarrollo de alto impacto: Sitios web para comercios locales en 48hs, bots de IA y turneros de WhatsApp 24/7, y sistemas ERP a medida para pymes."
+  title="Nicolás Guzmán — Ingeniería de Software, Automatización & Sistemas"
+  description="Estudio de ingeniería de software y transformación digital. Presencia web comercial de alta conversión, agentes conversacionales de IA y sistemas ERP a medida."
 >
-  <!-- Hero Section -->
-  <section class="relative pt-24 pb-20 md:pt-32 md:pb-28 px-4 overflow-hidden">
-    <div class="max-w-5xl mx-auto text-center relative z-10">
-      <!-- Status Badge -->
-      <div class="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-zinc-900/90 border border-zinc-700/80 text-xs text-zinc-300 mb-6 shadow-sm">
-        <span class="flex h-2 w-2 rounded-full bg-emerald-400 animate-pulse"></span>
-        <span class="font-medium">Ingeniería de Software & Inteligencia Artificial Aplicada</span>
-      </div>
-
-      <!-- Main Headline -->
-      <h1 class="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-black text-white tracking-tight leading-[1.1] mb-6">
-        Convertí más clientes, ahorrá tiempo y <span class="text-gradient-cyan">escalá tu negocio</span> con tecnología moderna.
-      </h1>
-
-      <!-- Subheadline -->
-      <p class="text-lg sm:text-xl text-zinc-400 max-w-3xl mx-auto mb-10 leading-relaxed">
-        Soluciones digitales de alto impacto para negocios y empresas: desde <strong class="text-zinc-200">presencia web profesional en 48hs</strong> hasta <strong class="text-zinc-200">asistentes de IA en WhatsApp</strong> que atienden 24/7 y <strong class="text-zinc-200">sistemas ERP a medida</strong> para pymes en crecimiento.
-      </p>
-
-      <!-- Primary CTAs -->
-      <div class="flex flex-wrap items-center justify-center gap-4 mb-16">
-        <a
-          href="#soluciones"
-          class="inline-flex items-center gap-2 px-7 py-4 rounded-xl font-bold text-sm bg-white text-zinc-950 hover:bg-zinc-200 transition-all shadow-xl shadow-white/10 hover:scale-[1.02] active:scale-[0.98]"
-        >
-          <span>Elegí la Solución para tu Negocio</span>
-          <ArrowRight className="w-4 h-4" />
-        </a>
-
-        <a
-          href="https://templates.nicoguzmandev.com"
-          target="_blank"
-          rel="noopener noreferrer"
-          class="inline-flex items-center gap-2 px-6 py-4 rounded-xl font-semibold text-sm text-sky-400 bg-sky-500/10 hover:bg-sky-500/20 border border-sky-500/30 transition-all hover:scale-[1.02] active:scale-[0.98]"
-        >
-          <span>Ver Showroom de Templates</span>
-          <ArrowUpRight className="w-4 h-4" />
-        </a>
-      </div>
-
-      <!-- Metrics KPI Bar -->
-      <div class="grid grid-cols-2 sm:grid-cols-4 gap-4 p-6 rounded-2xl bg-zinc-900/60 border border-zinc-800/80 backdrop-blur-md max-w-4xl mx-auto">
-        <div class="text-center">
-          <div class="text-2xl sm:text-3xl font-extrabold text-white">8+</div>
-          <div class="text-xs text-zinc-400 mt-1">Templates comerciales listos</div>
-        </div>
-        <div class="text-center">
-          <div class="text-2xl sm:text-3xl font-extrabold text-emerald-400">24/7</div>
-          <div class="text-xs text-zinc-400 mt-1">Atención automatizada por IA</div>
-        </div>
-        <div class="text-center">
-          <div class="text-2xl sm:text-3xl font-extrabold text-purple-400">100%</div>
-          <div class="text-xs text-zinc-400 mt-1">Código propio sin ataduras</div>
-        </div>
-        <div class="text-center">
-          <div class="text-2xl sm:text-3xl font-extrabold text-sky-400">&lt; 1s</div>
-          <div class="text-xs text-zinc-400 mt-1">Velocidad de carga en móvil</div>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- Section: Diagnostic Selector (The 3 Pillars) -->
-  <section id="soluciones" class="py-20 px-4 scroll-mt-24 border-t border-white/5 relative">
-    <div class="max-w-7xl mx-auto">
-      <div class="text-center max-w-3xl mx-auto mb-14">
-        <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-indigo-500/10 border border-indigo-500/20 text-xs font-semibold text-indigo-400 mb-3">
-          <Sparkles className="w-3.5 h-3.5" />
-          <span>Diagnóstico Inicial</span>
-        </div>
-        <h2 class="text-3xl md:text-5xl font-extrabold text-white tracking-tight mb-4">
-          Tres Ramas Especializadas Según la Etapa de tu Negocio
-        </h2>
-        <p class="text-base text-zinc-400">
-          Seleccioná cuál es tu situación actual para conocer la propuesta, tiempos de entrega y entregables específicos:
-        </p>
-      </div>
-
-      <DiagnosticSelector client:load />
-    </div>
-  </section>
-
-  <!-- Deep Dive: Rama 1 (Webs para Locales & Showroom) -->
-  <section id="webs" class="py-24 px-4 border-t border-white/5 bg-zinc-950/40 relative">
-    <div class="max-w-7xl mx-auto">
-      <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center mb-16">
-        <div class="lg:col-span-6 space-y-6">
-          <div class="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-sky-500/10 border border-sky-500/20 text-xs font-semibold text-sky-400">
-            <Globe className="w-4 h-4" />
-            <span>Rama 1 • Comercios & Profesionales</span>
+  <!-- Hero Section: Architectural Asymmetric Grid -->
+  <section class="border-b border-[#222220]">
+    <div class="grid grid-cols-1 lg:grid-cols-12 divide-y lg:divide-y-0 lg:divide-x divide-[#222220]">
+      <!-- Main Hero Statement (8 Columns) -->
+      <div class="lg:col-span-8 p-8 sm:p-12 md:p-16 lg:p-20 flex flex-col justify-between">
+        <div>
+          <div class="font-mono-tech text-[11px] tracking-[0.18em] text-[#5E5D59] uppercase mb-8">
+            ESTUDIO DE INGENIERÍA DE SOFTWARE &amp; AUTOMATIZACIÓN OPERATIVA
           </div>
-          <h2 class="text-3xl md:text-4xl font-extrabold text-white leading-tight">
-            Webs de Alto Impacto para Negocios Locales
-          </h2>
-          <p class="text-zinc-400 text-base leading-relaxed">
-            Muchos comercios dependen exclusivamente de Instagram o tienen un sitio viejo y lento en WordPress. El resultado: clientes que buscan en Google se van con la competencia, y quienes visitan el perfil no encuentran precios ni ubicación clara.
+
+          <h1 class="text-4xl sm:text-5xl md:text-6xl font-normal tracking-[-0.03em] text-[#EDEDEC] leading-[1.08] mb-8">
+            Infraestructura digital para captar clientes, <span class="font-serif-editorial italic font-normal text-[#EDEDEC]">automatizar la atención</span> y centralizar el control de su empresa.
+          </h1>
+
+          <p class="text-base sm:text-lg text-[#9A9994] max-w-2xl leading-relaxed font-light">
+            Desarrollamos tecnología comercial sin intermediarios ni software enlatado genérico. Estructuramos nuestra práctica en tres divisiones especializadas según el estadio operativo de cada organización.
           </p>
-
-          <div class="space-y-3 pt-2">
-            <div class="flex items-start gap-3">
-              <CheckCircle2 className="w-5 h-5 text-sky-400 shrink-0 mt-0.5" />
-              <div class="text-sm text-zinc-300">
-                <strong class="text-white">Carga instantánea en celulares:</strong> Construido con Astro sin scripts innecesarios para que nadie abandone por demora.
-              </div>
-            </div>
-            <div class="flex items-start gap-3">
-              <CheckCircle2 className="w-5 h-5 text-sky-400 shrink-0 mt-0.5" />
-              <div class="text-sm text-zinc-300">
-                <strong class="text-white">Botón directo a WhatsApp:</strong> Tus clientes consultan o piden con un solo toque sin fricción.
-              </div>
-            </div>
-            <div class="flex items-start gap-3">
-              <CheckCircle2 className="w-5 h-5 text-sky-400 shrink-0 mt-0.5" />
-              <div class="text-sm text-zinc-300">
-                <strong class="text-white">SEO Local & Google Maps:</strong> Tu dirección, horarios y fotos listos para posicionar en búsquedas de cercanía.
-              </div>
-            </div>
-          </div>
-
-          <div class="pt-4 flex flex-wrap gap-4">
-            <a
-              href="https://templates.nicoguzmandev.com"
-              target="_blank"
-              rel="noopener noreferrer"
-              class="inline-flex items-center gap-2 px-6 py-3.5 rounded-xl font-bold text-sm bg-sky-500 text-white hover:bg-sky-400 transition-colors shadow-lg shadow-sky-500/20"
-            >
-              <span>Explorar el Showroom Completo</span>
-              <ArrowUpRight className="w-4 h-4" />
-            </a>
-            <a
-              href="https://wa.me/5491100000000?text=Hola%20Nico!%20Me%20interesa%20una%20web%20para%20mi%20local."
-              target="_blank"
-              rel="noopener noreferrer"
-              class="inline-flex items-center gap-2 px-5 py-3.5 rounded-xl font-medium text-sm text-zinc-300 bg-zinc-900 hover:bg-zinc-800 border border-zinc-700/80 transition-colors"
-            >
-              <span>Cotizar mi Web (48hs)</span>
-            </a>
-          </div>
         </div>
 
-        <div class="lg:col-span-6">
-          <div class="p-6 rounded-3xl glass-card border border-sky-500/20 relative">
-            <div class="text-xs uppercase tracking-wider text-sky-400 font-semibold mb-2">Showroom Interactivo</div>
-            <h3 class="text-xl font-bold text-white mb-4">8 Templates Adaptados a Cada Industria</h3>
-            <p class="text-xs text-zinc-400 mb-6">
-              Cada diseño fue estructurado con navegación fluida, diseño responsive y componentes listos para producción. Hacé clic para abrir la demostración en vivo.
+        <div class="pt-12 mt-12 border-t border-[#222220] flex flex-col sm:flex-row items-stretch sm:items-center gap-4">
+          <a
+            href="#areas-de-practica"
+            class="px-8 py-4 bg-[#EDEDEC] text-[#0C0C0B] text-xs font-medium tracking-[0.04em] hover:bg-white transition-colors flex items-center justify-between gap-8"
+          >
+            <span>EVALUAR SOLUCIÓN SEGÚN ETAPA</span>
+            <span class="font-mono-tech">—</span>
+          </a>
+
+          <a
+            href="https://templates.nicoguzmandev.com"
+            target="_blank"
+            rel="noopener noreferrer"
+            class="px-8 py-4 border border-[#363632] text-[#EDEDEC] font-mono-tech text-[11px] tracking-[0.08em] hover:bg-[#141412] transition-colors flex items-center justify-between gap-8"
+          >
+            <span>CATÁLOGO DE 08 DEMOS WEB</span>
+            <span>/</span>
+          </a>
+        </div>
+      </div>
+
+      <!-- Right Column: Index of Divisions (4 Columns) -->
+      <div class="lg:col-span-4 divide-y divide-[#222220] flex flex-col justify-between bg-[#0E0E0D]">
+        <div class="p-8 md:p-10 flex-1 flex flex-col justify-between hover:bg-[#131311] transition-colors">
+          <div class="flex items-baseline justify-between mb-4">
+            <span class="font-mono-tech text-[10px] tracking-[0.16em] text-[#5E5D59] uppercase">
+              DIVISIÓN 01
+            </span>
+            <span class="font-serif-editorial italic text-2xl text-[#9A9994]">I</span>
+          </div>
+          <div>
+            <h2 class="text-lg font-medium text-[#EDEDEC] mb-2">
+              Presencia Web para Locales
+            </h2>
+            <p class="text-xs text-[#9A9994] leading-relaxed mb-4">
+              Para negocios sin sitio web o que dependen únicamente de redes sociales. Entrega llave en mano en 48 a 72 horas.
             </p>
-            <div class="grid grid-cols-2 gap-3 text-xs">
-              <a href="https://templates.nicoguzmandev.com/preview/barbershop" target="_blank" rel="noopener noreferrer" class="p-3 rounded-xl bg-zinc-900/80 border border-zinc-800 hover:border-sky-500/40 text-zinc-200 hover:text-white transition-colors flex items-center justify-between">
-                <span>💈 Barbería & Salón</span>
-                <ArrowUpRight className="w-3.5 h-3.5 text-sky-400" />
-              </a>
-              <a href="https://templates.nicoguzmandev.com/preview/restaurant" target="_blank" rel="noopener noreferrer" class="p-3 rounded-xl bg-zinc-900/80 border border-zinc-800 hover:border-sky-500/40 text-zinc-200 hover:text-white transition-colors flex items-center justify-between">
-                <span>🍽️ Restaurante & Menú</span>
-                <ArrowUpRight className="w-3.5 h-3.5 text-sky-400" />
-              </a>
-              <a href="https://templates.nicoguzmandev.com/preview/coffee-shop" target="_blank" rel="noopener noreferrer" class="p-3 rounded-xl bg-zinc-900/80 border border-zinc-800 hover:border-sky-500/40 text-zinc-200 hover:text-white transition-colors flex items-center justify-between">
-                <span>☕ Café de Especialidad</span>
-                <ArrowUpRight className="w-3.5 h-3.5 text-sky-400" />
-              </a>
-              <a href="https://templates.nicoguzmandev.com/preview/hardware-store" target="_blank" rel="noopener noreferrer" class="p-3 rounded-xl bg-zinc-900/80 border border-zinc-800 hover:border-sky-500/40 text-zinc-200 hover:text-white transition-colors flex items-center justify-between">
-                <span>🔩 Ferretería & Catálogo</span>
-                <ArrowUpRight className="w-3.5 h-3.5 text-sky-400" />
-              </a>
-            </div>
+            <a href="/webs" class="font-mono-tech text-[10px] tracking-[0.14em] text-[#EDEDEC] uppercase hover:underline">
+              ESPECIFICACIÓN TÉCNICA —
+            </a>
+          </div>
+        </div>
+
+        <div class="p-8 md:p-10 flex-1 flex flex-col justify-between hover:bg-[#131311] transition-colors">
+          <div class="flex items-baseline justify-between mb-4">
+            <span class="font-mono-tech text-[10px] tracking-[0.16em] text-[#5E5D59] uppercase">
+              DIVISIÓN 02
+            </span>
+            <span class="font-serif-editorial italic text-2xl text-[#9A9994]">II</span>
+          </div>
+          <div>
+            <h2 class="text-lg font-medium text-[#EDEDEC] mb-2">
+              Automatización &amp; Agentes IA
+            </h2>
+            <p class="text-xs text-[#9A9994] leading-relaxed mb-4">
+              Para empresas con flujo activo de consultas que pierden ventas por demoras en responder o agendamiento manual.
+            </p>
+            <a href="/automatizacion" class="font-mono-tech text-[10px] tracking-[0.14em] text-[#EDEDEC] uppercase hover:underline">
+              ESPECIFICACIÓN TÉCNICA —
+            </a>
+          </div>
+        </div>
+
+        <div class="p-8 md:p-10 flex-1 flex flex-col justify-between hover:bg-[#131311] transition-colors">
+          <div class="flex items-baseline justify-between mb-4">
+            <span class="font-mono-tech text-[10px] tracking-[0.16em] text-[#5E5D59] uppercase">
+              DIVISIÓN 03
+            </span>
+            <span class="font-serif-editorial italic text-2xl text-[#9A9994]">III</span>
+          </div>
+          <div>
+            <h2 class="text-lg font-medium text-[#EDEDEC] mb-2">
+              Consultoría &amp; Sistemas ERP
+            </h2>
+            <p class="text-xs text-[#9A9994] leading-relaxed mb-4">
+              Para pymes con múltiples sucursales, control de inventario crítico o procesos que superaron las planillas de cálculo.
+            </p>
+            <a href="/erp" class="font-mono-tech text-[10px] tracking-[0.14em] text-[#EDEDEC] uppercase hover:underline">
+              ESPECIFICACIÓN TÉCNICA —
+            </a>
           </div>
         </div>
       </div>
-
-      <!-- Live Showroom Grid Component -->
-      <ShowroomGrid />
     </div>
-  </section>
 
-  <!-- Deep Dive: Rama 2 (Automatización & Agentes IA) -->
-  <section id="demo-ia" class="py-24 px-4 border-t border-white/5 relative">
-    <div class="max-w-7xl mx-auto">
-      <div class="text-center max-w-3xl mx-auto mb-14">
-        <div class="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-emerald-500/10 border border-emerald-500/20 text-xs font-semibold text-emerald-400 mb-3">
-          <Bot className="w-4 h-4" />
-          <span>Rama 2 • Atención & Ventas 24/7</span>
+    <!-- Bottom Telemetry Strip -->
+    <div class="grid grid-cols-2 md:grid-cols-4 divide-y md:divide-y-0 divide-x divide-[#222220] border-t border-[#222220] bg-[#0C0C0B]">
+      <div class="p-6 md:px-10">
+        <div class="font-mono-tech text-[10px] tracking-[0.14em] text-[#5E5D59] uppercase mb-1">
+          MATRICES SECTORIALES
         </div>
-        <h2 class="text-3xl md:text-5xl font-extrabold text-white tracking-tight mb-4">
-          Automatización Inteligente en WhatsApp & Web
-        </h2>
-        <p class="text-base text-zinc-400 leading-relaxed">
-          Para negocios que <strong class="text-zinc-200">ya tienen presencia en redes o web</strong>, pero sufren cuellos de botella: mensajes que se acumulan por horas, citas que se agendan en papel y ventas perdidas los fines de semana.
-        </p>
+        <div class="font-mono-tech text-xl text-[#EDEDEC]">08 EN PRODUCCIÓN</div>
       </div>
-
-      <!-- Live Interactive Chat Simulator -->
-      <AiChatSimulator client:load />
-
-      <div class="grid grid-cols-1 md:grid-cols-3 gap-6 max-w-5xl mx-auto mt-12">
-        <div class="p-5 rounded-2xl bg-zinc-900/60 border border-zinc-800">
-          <div class="text-emerald-400 font-bold text-sm mb-1">Cero Demora en Respuesta</div>
-          <p class="text-xs text-zinc-400 leading-relaxed">
-            El 78% de los prospectos compra al primer negocio que responde. Tu bot contesta al instante, de día y de noche.
-          </p>
+      <div class="p-6 md:px-10">
+        <div class="font-mono-tech text-[10px] tracking-[0.14em] text-[#5E5D59] uppercase mb-1">
+          DISPONIBILIDAD OPERATIVA IA
         </div>
-        <div class="p-5 rounded-2xl bg-zinc-900/60 border border-zinc-800">
-          <div class="text-emerald-400 font-bold text-sm mb-1">Agenda Sincronizada</div>
-          <p class="text-xs text-zinc-400 leading-relaxed">
-            Se integra con Google Calendar o tu sistema de turnos. Evita solapamientos y confirma turnos automáticamente.
-          </p>
-        </div>
-        <div class="p-5 rounded-2xl bg-zinc-900/60 border border-zinc-800">
-          <div class="text-emerald-400 font-bold text-sm mb-1">Inteligencia Real, No Menús</div>
-          <p class="text-xs text-zinc-400 leading-relaxed">
-            Entrenado específicamente con el tono, precios y restricciones de tu negocio. Si una duda es compleja, deriva a un humano.
-          </p>
-        </div>
+        <div class="font-mono-tech text-xl text-[#EDEDEC]">24H / 365 DÍAS</div>
       </div>
-    </div>
-  </section>
-
-  <!-- Deep Dive: Rama 3 (Consultoría & Sistemas ERP) -->
-  <section id="erp" class="py-24 px-4 border-t border-white/5 bg-zinc-950/40 relative">
-    <div class="max-w-7xl mx-auto">
-      <div class="text-center max-w-3xl mx-auto mb-14">
-        <div class="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-purple-500/10 border border-purple-500/20 text-xs font-semibold text-purple-400 mb-3">
-          <Layers className="w-4 h-4" />
-          <span>Rama 3 • Pymes & Gestión de Sucursales</span>
+      <div class="p-6 md:px-10">
+        <div class="font-mono-tech text-[10px] tracking-[0.14em] text-[#5E5D59] uppercase mb-1">
+          PROPIEDAD INTELECTUAL
         </div>
-        <h2 class="text-3xl md:text-5xl font-extrabold text-white tracking-tight mb-4">
-          Consultoría de Software & Sistemas ERP a Medida
-        </h2>
-        <p class="text-base text-zinc-400 leading-relaxed">
-          Diseñado para pymes que crecieron y cuyas planillas de Excel o sistemas genéricos ya no alcanzan. Unificamos inventario, cajas, facturación y reportes en una sola plataforma segura.
-        </p>
+        <div class="font-mono-tech text-xl text-[#EDEDEC]">100% DEL CLIENTE</div>
       </div>
-
-      <!-- Live ERP Metrics Simulator -->
-      <ErpMetricsSimulator client:load />
-
-      <div class="mt-12 text-center">
-        <a
-          href="https://wa.me/5491100000000?text=Hola%20Nico!%20Quiero%20consultar%20por%20un%20sistema%20ERP%20a%20medida%20para%20mi%20empresa."
-          target="_blank"
-          rel="noopener noreferrer"
-          class="inline-flex items-center gap-2 px-6 py-3.5 rounded-xl font-bold text-sm bg-purple-600 text-white hover:bg-purple-500 transition-colors shadow-lg shadow-purple-600/20"
-        >
-          <span>Solicitar Diagnóstico Técnico de ERP</span>
-          <ArrowRight className="w-4 h-4" />
-        </a>
+      <div class="p-6 md:px-10">
+        <div class="font-mono-tech text-[10px] tracking-[0.14em] text-[#5E5D59] uppercase mb-1">
+          TIEMPO DE RESPUESTA WEB
+        </div>
+        <div class="font-mono-tech text-xl text-[#EDEDEC]">&lt; 400 MILISEGUNDOS</div>
       </div>
     </div>
   </section>
 
-  <!-- Comparison Section -->
-  <section class="py-20 px-4 border-t border-white/5 relative">
-    <div class="max-w-5xl mx-auto">
-      <div class="text-center mb-12">
-        <h2 class="text-3xl font-extrabold text-white mb-3">
-          ¿Por Qué Elegir Este Estudio?
-        </h2>
-        <p class="text-sm text-zinc-400">
-          La diferencia entre soluciones improvisadas y verdadero desarrollo de ingeniería:
-        </p>
+  <!-- Section 01: Interactive Diagnostic Matrix -->
+  <section id="areas-de-practica" class="p-8 sm:p-12 md:p-16 border-b border-[#222220] scroll-mt-16">
+    <div class="max-w-3xl mb-12">
+      <div class="font-mono-tech text-[10px] tracking-[0.18em] text-[#5E5D59] uppercase mb-3">
+        SECCIÓN 01 — MATRIZ DE DIAGNÓSTICO
       </div>
-
-      <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
-        <div class="p-6 rounded-2xl glass-card border border-white/10">
-          <div class="w-10 h-10 rounded-xl bg-sky-500/15 text-sky-400 flex items-center justify-center font-bold mb-4">
-            <Zap className="w-5 h-5" />
-          </div>
-          <h3 class="font-bold text-white text-base mb-2">Trato Directo sin Burocracia</h3>
-          <p class="text-xs text-zinc-400 leading-relaxed">
-            Hablás directamente con el ingeniero de software que programa y diseña tu solución. Cero intermediarios, cambios rápidos y respuestas certeras.
-          </p>
-        </div>
-
-        <div class="p-6 rounded-2xl glass-card border border-white/10">
-          <div class="w-10 h-10 rounded-xl bg-emerald-500/15 text-emerald-400 flex items-center justify-center font-bold mb-4">
-            <Shield className="w-5 h-5" />
-          </div>
-          <h3 class="font-bold text-white text-base mb-2">Código Propio, Cero Ataduras</h3>
-          <p class="text-xs text-zinc-400 leading-relaxed">
-            Sos el dueño absoluto de tu web, base de datos y configuraciones. No dependés de licencias abusivas por usuario ni suscripciones ocultas.
-          </p>
-        </div>
-
-        <div class="p-6 rounded-2xl glass-card border border-white/10">
-          <div class="w-10 h-10 rounded-xl bg-purple-500/15 text-purple-400 flex items-center justify-center font-bold mb-4">
-            <Sparkles className="w-5 h-5" />
-          </div>
-          <h3 class="font-bold text-white text-base mb-2">Escalabilidad Garantizada</h3>
-          <p class="text-xs text-zinc-400 leading-relaxed">
-            Si empezás con una web para tu local, podés sumarle automatización en WhatsApp mañana o un sistema de stock completo pasado mañana sin rehacer nada.
-          </p>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- Contact & Diagnostic Form -->
-  <section id="contacto" class="py-24 px-4 border-t border-white/5 bg-zinc-950/60 relative scroll-mt-20">
-    <div class="max-w-4xl mx-auto text-center mb-12">
-      <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-emerald-500/10 border border-emerald-500/20 text-xs font-semibold text-emerald-400 mb-3">
-        <span>Cotización Rápida & Diagnóstico</span>
-      </div>
-      <h2 class="text-3xl md:text-5xl font-extrabold text-white tracking-tight mb-4">
-        Contame Sobre Tu Proyecto
+      <h2 class="text-3xl sm:text-4xl font-normal tracking-[-0.02em] text-[#EDEDEC] leading-[1.15] mb-4">
+        Seleccione la situación operativa actual de su organización
       </h2>
-      <p class="text-base text-zinc-400 max-w-2xl mx-auto">
-        Completá los datos y te contacto en menos de 2 horas con una propuesta clara, o escribime directo por WhatsApp para coordinar de inmediato.
+      <p class="text-sm text-[#9A9994] leading-relaxed">
+        Cada rama responde a un cuello de botella comercial específico, con plazos de ejecución cerrados y entregables auditables.
+      </p>
+    </div>
+
+    <DiagnosticSelector client:load />
+  </section>
+
+  <!-- Section 02: Division I — Commercial Websites & Showroom -->
+  <section id="webs" class="p-8 sm:p-12 md:p-16 border-b border-[#222220]">
+    <div class="grid grid-cols-1 lg:grid-cols-12 gap-10 mb-14 items-end">
+      <div class="lg:col-span-7">
+        <div class="font-mono-tech text-[10px] tracking-[0.18em] text-[#5E5D59] uppercase mb-3">
+          DIVISIÓN 01 — INFRAESTRUCTURA WEB PARA COMERCIOS
+        </div>
+        <h2 class="text-3xl sm:text-4xl font-normal tracking-[-0.02em] text-[#EDEDEC] leading-[1.15]">
+          Presencia comercial propia, <span class="font-serif-editorial italic">diseñada para convertir</span> búsquedas en ventas.
+        </h2>
+      </div>
+      <div class="lg:col-span-5">
+        <p class="text-xs text-[#9A9994] leading-relaxed">
+          Desarrollamos plataformas web sobre arquitectura estática de última generación. Sin plantillas pesadas de WordPress ni costos mensuales de mantenimiento forzado.
+        </p>
+      </div>
+    </div>
+
+    <ShowroomGrid />
+  </section>
+
+  <!-- Section 03: Division II — Conversational AI & Booking -->
+  <section id="protocolo-ia" class="p-8 sm:p-12 md:p-16 border-b border-[#222220] scroll-mt-16">
+    <div class="grid grid-cols-1 lg:grid-cols-12 gap-10 mb-14 items-end">
+      <div class="lg:col-span-7">
+        <div class="font-mono-tech text-[10px] tracking-[0.18em] text-[#5E5D59] uppercase mb-3">
+          DIVISIÓN 02 — AUTOMATIZACIÓN COMERCIAL &amp; TURNOS
+        </div>
+        <h2 class="text-3xl sm:text-4xl font-normal tracking-[-0.02em] text-[#EDEDEC] leading-[1.15]">
+          Atención inmediata y agendamiento autónomo <span class="font-serif-editorial italic">las 24 horas</span> en WhatsApp.
+        </h2>
+      </div>
+      <div class="lg:col-span-5">
+        <p class="text-xs text-[#9A9994] leading-relaxed">
+          Para organizaciones que ya invierten en publicidad o redes sociales pero sufren fugas de clientes por demoras en la respuesta o gestión manual de su agenda.
+        </p>
+      </div>
+    </div>
+
+    <AiChatSimulator client:load />
+  </section>
+
+  <!-- Section 04: Division III — Enterprise ERP & Multi-Branch Control -->
+  <section id="sistema-erp" class="p-8 sm:p-12 md:p-16 border-b border-[#222220] scroll-mt-16">
+    <div class="grid grid-cols-1 lg:grid-cols-12 gap-10 mb-14 items-end">
+      <div class="lg:col-span-7">
+        <div class="font-mono-tech text-[10px] tracking-[0.18em] text-[#5E5D59] uppercase mb-3">
+          DIVISIÓN 03 — INGENIERÍA DE SOFTWARE &amp; ERP A MEDIDA
+        </div>
+        <h2 class="text-3xl sm:text-4xl font-normal tracking-[-0.02em] text-[#EDEDEC] leading-[1.15]">
+          Sistemas de gestión centralizados para <span class="font-serif-editorial italic">operaciones multi-sucursal</span>.
+        </h2>
+      </div>
+      <div class="lg:col-span-5">
+        <p class="text-xs text-[#9A9994] leading-relaxed">
+          Reemplazamos la fragmentación de planillas de cálculo por software propietario adaptado exactamente a la estructura de depósitos, cajas y permisos de su empresa.
+        </p>
+      </div>
+    </div>
+
+    <ErpMetricsSimulator client:load />
+  </section>
+
+  <!-- Section 05: Principles of Execution -->
+  <section class="border-b border-[#222220]">
+    <div class="px-8 sm:px-12 md:px-16 py-10 border-b border-[#222220]">
+      <div class="font-mono-tech text-[10px] tracking-[0.18em] text-[#5E5D59] uppercase mb-2">
+        SECCIÓN 05 — CRITERIOS DE INGENIERÍA
+      </div>
+      <h2 class="text-2xl sm:text-3xl font-normal tracking-[-0.02em] text-[#EDEDEC]">
+        Ventajas Estructurales Frente a Agencias Tradicionales
+      </h2>
+    </div>
+
+    <div class="grid grid-cols-1 md:grid-cols-3 divide-y md:divide-y-0 md:divide-x divide-[#222220]">
+      <div class="p-8 sm:p-12">
+        <div class="font-mono-tech text-[11px] text-[#5E5D59] mb-4">[01 / TRATO DIRECTO]</div>
+        <h3 class="text-lg font-medium text-[#EDEDEC] mb-3">
+          Interlocución Técnica sin Intermediarios
+        </h3>
+        <p class="text-xs text-[#9A9994] leading-relaxed">
+          Cada relevamiento, decisión de arquitectura e implementación es ejecutada de forma directa por el ingeniero responsable del sistema, eliminando teléfonos descompuestos y sobrecostos de estructura comercial.
+        </p>
+      </div>
+
+      <div class="p-8 sm:p-12">
+        <div class="font-mono-tech text-[11px] text-[#5E5D59] mb-4">[02 / SOBERANÍA TECNOLÓGICA]</div>
+        <h3 class="text-lg font-medium text-[#EDEDEC] mb-3">
+          Propiedad Absoluta del Código y Datos
+        </h3>
+        <p class="text-xs text-[#9A9994] leading-relaxed">
+          No comercializamos alquileres forzados ni cobramos cánones por usuario adicional. El cliente recibe la titularidad íntegra de sus repositorios, bases de datos y dominios.
+        </p>
+      </div>
+
+      <div class="p-8 sm:p-12">
+        <div class="font-mono-tech text-[11px] text-[#5E5D59] mb-4">[03 / ESCALABILIDAD CONTINUA]</div>
+        <h3 class="text-lg font-medium text-[#EDEDEC] mb-3">
+          Evolución Modular Progresiva
+        </h3>
+        <p class="text-xs text-[#9A9994] leading-relaxed">
+          Una empresa puede iniciar con su presencia web comercial en 48 horas, integrar atención automatizada con IA el mes siguiente y acoplar su sistema de inventario sin reconstruir lo anterior.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Section 06: Consultation & Technical Briefing -->
+  <section id="contacto" class="p-8 sm:p-12 md:p-16 scroll-mt-16">
+    <div class="max-w-2xl mb-12">
+      <div class="font-mono-tech text-[10px] tracking-[0.18em] text-[#5E5D59] uppercase mb-3">
+        SECCIÓN 06 — APERTURA DE EXPEDIENTE / CONSULTA
+      </div>
+      <h2 class="text-3xl sm:text-4xl font-normal tracking-[-0.02em] text-[#EDEDEC] leading-[1.15] mb-4">
+        Solicitar Evaluación Técnica y Presupuesto
+      </h2>
+      <p class="text-xs text-[#9A9994] leading-relaxed">
+        Complete los parámetros básicos de su organización para recibir una propuesta formal con plazos y costos cerrados, o inicie comunicación directa vía WhatsApp.
       </p>
     </div>
 
