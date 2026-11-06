@@ -2,40 +2,40 @@
 
 @layer base {
   :root {
-    --bg-canvas: #0C0C0B;
-    --bg-surface: #121210;
-    --bg-elevated: #171715;
-    --border-hairline: #222220;
-    --border-strong: #363632;
-    --text-bone: #EDEDEC;
-    --text-muted: #9A9994;
-    --text-dim: #5E5D59;
+    --paper: #F7F7F5;
+    --pure-white: #FFFFFF;
+    --ink: #0A0A0A;
+    --cobalt: #002FA7;
+    --cobalt-dark: #00227A;
+    --neutral-mid: #52524E;
+    --line: #0A0A0A;
+    --line-subtle: #D8D8D2;
   }
 
   html {
     scroll-behavior: smooth;
-    color-scheme: dark;
-    background-color: #0C0C0B;
-    color: #EDEDEC;
-    font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+    background-color: #F7F7F5;
+    color: #0A0A0A;
+    font-family: 'Plus Jakarta Sans', 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
   }
 
   body {
-    background-color: #0C0C0B;
-    color: #EDEDEC;
+    background-color: #F7F7F5;
+    color: #0A0A0A;
     overflow-x: hidden;
   }
 
   ::selection {
-    background-color: #EDEDEC;
-    color: #0C0C0B;
+    background-color: #002FA7;
+    color: #FFFFFF;
   }
 }
 
-.font-serif-editorial {
-  font-family: 'Instrument Serif', Georgia, serif;
+.font-display {
+  font-family: 'Plus Jakarta Sans', 'Inter', sans-serif;
+  letter-spacing: -0.04em;
 }
 
 .font-mono-tech {
@@ -43,6 +43,18 @@
   font-variant-numeric: tabular-nums;
 }
 
-.tabular-nums {
-  font-variant-numeric: tabular-nums;
+/* Locomotive-style kinetic marquee */
+@keyframes marqueeScroll {
+  0% { transform: translateX(0%); }
+  100% { transform: translateX(-50%); }
+}
+
+.animate-marquee {
+  display: flex;
+  width: max-content;
+  animation: marqueeScroll 28s linear infinite;
+}
+
+.animate-marquee:hover {
+  animation-play-state: paused;
 }

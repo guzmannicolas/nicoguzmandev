@@ -5,107 +5,128 @@ import ContactForm from '../components/ContactForm.tsx';
 ---
 
 <Layout
-  title="División 03: Consultoría & Sistemas ERP a Medida — Nicolás Guzmán"
-  description="Ingeniería de software empresarial, control de inventario multi-sucursal y sistemas ERP personalizados para pequeñas y medianas empresas."
+  title="(03) Consultoría & Sistemas ERP a Medida para Pymes en Argentina — Nicolás Guzmán"
+  description="Sistemas de gestión, control de stock multi-sucursal, cajas y facturación ARCA/AFIP hechos a medida para pymes en Argentina. Sin pagar licencias por empleado."
 >
-  <!-- Header Section -->
-  <section class="border-b border-[#222220] p-8 sm:p-12 md:p-20">
-    <div class="max-w-4xl">
-      <div class="font-mono-tech text-[11px] tracking-[0.18em] text-[#5E5D59] uppercase mb-6">
-        DIVISIÓN 03 / CONSULTORÍA DE SOFTWARE &amp; SISTEMAS ERP
+  <!-- Hero Split -->
+  <section class="border-b-2 border-[#0A0A0A] grid grid-cols-1 lg:grid-cols-12">
+    <div class="lg:col-span-7 p-8 sm:p-12 md:p-20 bg-white border-b-2 lg:border-b-0 lg:border-r-2 border-[#0A0A0A]">
+      <div class="font-mono-tech text-xs font-bold tracking-[0.16em] text-white bg-[#002FA7] px-3 py-1 inline-block uppercase mb-6">
+        RAMA 03 — PYMES, DISTRIBUIDORAS Y MULTI-SUCURSAL
       </div>
-      <h1 class="text-4xl sm:text-5xl md:text-6xl font-normal tracking-[-0.03em] text-[#EDEDEC] leading-[1.08] mb-8">
-        Control operativo centralizado para empresas que <span class="font-serif-editorial italic">superaron las planillas de cálculo</span>.
+      <h1 class="font-display text-4xl sm:text-6xl font-extrabold uppercase tracking-[-0.045em] leading-[0.94] text-[#0A0A0A] mb-8">
+        CONTROLÁ TU STOCK Y TUS SUCURSALES SIN PLANILLAS DE EXCEL.
       </h1>
-      <p class="text-base sm:text-lg text-[#9A9994] max-w-2xl leading-relaxed font-light mb-10">
-        Desarrollamos sistemas de gestión propietarios para pymes con múltiples sucursales, depósitos o circuitos logísticos propios. Unifique inventario, facturación, cajas y reportes ejecutivos sin pagar cánones mensuales por cantidad de usuarios.
+      <p class="text-sm sm:text-base text-[#52524E] leading-relaxed max-w-2xl mb-10 font-medium">
+        Cuando tu empresa suma sucursales, vendedores o un depósito aparte, las planillas de Excel se rompen y los sistemas enlatados no se adaptan a tu forma real de trabajar. Construimos tu propio sistema ERP a medida: stock en vivo, cierres de caja, cuentas corrientes y facturación, sin cobrarte licencias mensuales por usuario.
       </p>
 
-      <div class="flex flex-col sm:flex-row items-stretch sm:items-center gap-4">
+      <div class="flex flex-col sm:flex-row gap-4">
         <a
-          href="#tablero-erp"
-          class="px-8 py-4 bg-[#EDEDEC] text-[#0C0C0B] text-xs font-medium tracking-[0.04em] hover:bg-white transition-colors flex items-center justify-between gap-8"
+          href="#tablero"
+          class="px-8 py-4 bg-[#002FA7] text-white hover:bg-[#0A0A0A] transition-colors font-display text-xs font-extrabold uppercase tracking-[0.04em] flex items-center justify-between gap-8"
         >
-          <span>INSPECCIONAR TABLERO OPERATIVO</span>
-          <span class="font-mono-tech">—</span>
+          <span>VER TABLERO INTERACTIVO</span>
+          <span class="font-mono-tech">[DEMO]</span>
         </a>
         <a
-          href="https://wa.me/5491100000000?text=Hola%20Nicol%C3%A1s.%20Necesito%20consultor%C3%ADa%20para%20un%20sistema%20ERP%20a%20medida%20(Divisi%C3%B3n%2003)."
+          href="https://wa.me/5491100000000?text=Hola%20Nico!%20Tengo%20una%20pyme%20y%20quiero%20consultar%20por%20un%20sistema%20ERP%20a%20medida%20(Rama%2003)."
           target="_blank"
           rel="noopener noreferrer"
-          class="px-8 py-4 border border-[#363632] text-[#EDEDEC] font-mono-tech text-[11px] tracking-[0.08em] hover:bg-[#141412] transition-colors flex items-center justify-between gap-8"
+          class="px-8 py-4 border-2 border-[#0A0A0A] text-[#0A0A0A] hover:bg-[#0A0A0A] hover:text-white transition-colors font-mono-tech text-xs font-bold uppercase flex items-center justify-between gap-8"
         >
-          <span>AGENDAR RELEVAMIENTO TÉCNICO</span>
-          <span>/</span>
+          <span>AGENDAR LLAMADA TÉCNICA</span>
+          <span>—</span>
         </a>
       </div>
     </div>
-  </section>
 
-  <!-- Core Modules 4-Column Grid -->
-  <section class="border-b border-[#222220] grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 divide-y md:divide-y-0 md:divide-x divide-[#222220]">
-    <div class="p-8 sm:p-10">
-      <div class="font-mono-tech text-[10px] tracking-[0.16em] text-[#5E5D59] uppercase mb-3">
-        MÓDULO 01 — LOGÍSTICA
+    <div class="lg:col-span-5 bg-[#002FA7] text-white p-8 sm:p-12 md:p-16 flex flex-col justify-between">
+      <div class="font-display text-7xl sm:text-8xl font-extrabold tracking-tighter leading-none">
+        03.
       </div>
-      <h2 class="text-base font-medium text-[#EDEDEC] mb-2.5">
-        Stock Multi-Sucursal
-      </h2>
-      <p class="text-xs text-[#9A9994] leading-relaxed">
-        Trazabilidad exacta de mercadería entre depósitos y locales, remitos internos auditados y alertas automáticas de punto de pedido.
-      </p>
-    </div>
-
-    <div class="p-8 sm:p-10">
-      <div class="font-mono-tech text-[10px] tracking-[0.16em] text-[#5E5D59] uppercase mb-3">
-        MÓDULO 02 — TESORERÍA
+      <div class="space-y-6 pt-8 border-t border-white/25">
+        <div class="font-mono-tech text-xs font-bold uppercase tracking-[0.14em] text-white/80">
+          VENTAJAS PARA TU EMPRESA
+        </div>
+        <div class="space-y-3 text-xs font-mono-tech">
+          <div class="flex justify-between border-b border-white/20 pb-2">
+            <span>CANTIDAD DE EMPLEADOS</span>
+            <span class="font-bold">ILIMITADOS ($0 POR USUARIO)</span>
+          </div>
+          <div class="flex justify-between border-b border-white/20 pb-2">
+            <span>SUCURSALES Y DEPÓSITOS</span>
+            <span class="font-bold">CONECTADOS EN VIVO</span>
+          </div>
+          <div class="flex justify-between border-b border-white/20 pb-2">
+            <span>FACTURACIÓN ARGENTINA</span>
+            <span class="font-bold">INTEGRACIÓN ARCA / AFIP</span>
+          </div>
+          <div class="flex justify-between pb-1">
+            <span>PROPIEDAD DEL SISTEMA</span>
+            <span class="font-bold">100% DE TU PYME</span>
+          </div>
+        </div>
       </div>
-      <h2 class="text-base font-medium text-[#EDEDEC] mb-2.5">
-        Facturación &amp; Cajas
-      </h2>
-      <p class="text-xs text-[#9A9994] leading-relaxed">
-        Consolidación de ventas de mostrador y mayoristas, cuentas corrientes de clientes/proveedores y conciliación diaria por terminal.
-      </p>
-    </div>
-
-    <div class="p-8 sm:p-10">
-      <div class="font-mono-tech text-[10px] tracking-[0.16em] text-[#5E5D59] uppercase mb-3">
-        MÓDULO 03 — SEGURIDAD
-      </div>
-      <h2 class="text-base font-medium text-[#EDEDEC] mb-2.5">
-        Roles y Auditoría
-      </h2>
-      <p class="text-xs text-[#9A9994] leading-relaxed">
-        Permisos granulares según jerarquía operativa. Cada modificación de stock o precio queda registrada con fecha, hora y usuario.
-      </p>
-    </div>
-
-    <div class="p-8 sm:p-10">
-      <div class="font-mono-tech text-[10px] tracking-[0.16em] text-[#5E5D59] uppercase mb-3">
-        MÓDULO 04 — DIRECCIÓN
-      </div>
-      <h2 class="text-base font-medium text-[#EDEDEC] mb-2.5">
-        Reportes Ejecutivos
-      </h2>
-      <p class="text-xs text-[#9A9994] leading-relaxed">
-        Métricas de rentabilidad por línea de producto, rotación de inventario y estados de resultados exportables en tiempo real.
-      </p>
     </div>
   </section>
 
-  <!-- Live ERP Ledger -->
-  <section id="tablero-erp" class="p-8 sm:p-12 md:p-16 border-b border-[#222220]">
+  <!-- 4 Modules Grid -->
+  <section class="border-b-2 border-[#0A0A0A] grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 divide-y-2 md:divide-y-0 md:divide-x-2 divide-[#0A0A0A] bg-[#F7F7F5]">
+    <div class="p-8 sm:p-10">
+      <div class="font-display text-4xl font-extrabold text-[#002FA7] tracking-tighter mb-3">01.</div>
+      <h2 class="font-display text-base font-extrabold uppercase tracking-tight mb-2.5">
+        STOCK MULTI-SUCURSAL
+      </h2>
+      <p class="text-xs text-[#52524E] leading-relaxed">
+        Controlá mercadería entre el galpón y cada local con remitos internos, código de barras y avisos antes de quedarte sin productos clave.
+      </p>
+    </div>
+
+    <div class="p-8 sm:p-10">
+      <div class="font-display text-4xl font-extrabold text-[#002FA7] tracking-tighter mb-3">02.</div>
+      <h2 class="font-display text-base font-extrabold uppercase tracking-tight mb-2.5">
+        CAJAS Y CUENTAS CORRIENTES
+      </h2>
+      <p class="text-xs text-[#52524E] leading-relaxed">
+        Seguimiento exacto de cobros en efectivo, transferencia, cheques y tarjetas, más saldos de clientes mayoristas y proveedores.
+      </p>
+    </div>
+
+    <div class="p-8 sm:p-10">
+      <div class="font-display text-4xl font-extrabold text-[#002FA7] tracking-tighter mb-3">03.</div>
+      <h2 class="font-display text-base font-extrabold uppercase tracking-tight mb-2.5">
+        PERMISOS POR EMPLEADO
+      </h2>
+      <p class="text-xs text-[#52524E] leading-relaxed">
+        El cajero solo ve su mostrador, el encargado su sucursal y vos tenés el control completo con historial de quién modificó cada dato.
+      </p>
+    </div>
+
+    <div class="p-8 sm:p-10">
+      <div class="font-display text-4xl font-extrabold text-[#002FA7] tracking-tighter mb-3">04.</div>
+      <h2 class="font-display text-base font-extrabold uppercase tracking-tight mb-2.5">
+        REPORTES PARA EL DUEÑO
+      </h2>
+      <p class="text-xs text-[#52524E] leading-relaxed">
+        Mirás desde el celular cuánto vendió cada local hoy, cuál es tu ganancia real limpia y qué mercadería tiene mayor rotación.
+      </p>
+    </div>
+  </section>
+
+  <!-- ERP Simulator -->
+  <section id="tablero" class="p-6 sm:p-12 md:p-16 lg:p-20 border-b-2 border-[#0A0A0A] bg-white">
     <ErpMetricsSimulator client:load />
   </section>
 
-  <!-- Briefing Form -->
-  <section class="p-8 sm:p-12 md:p-16">
+  <!-- Contact Form -->
+  <section class="p-6 sm:p-12 md:p-16 lg:p-20 bg-[#F7F7F5]">
     <div class="max-w-2xl mb-10">
-      <div class="font-mono-tech text-[10px] tracking-[0.18em] text-[#5E5D59] uppercase mb-2">
-        ARQUITECTURA EMPRESARIAL
+      <div class="font-mono-tech text-xs font-bold tracking-[0.14em] text-[#002FA7] uppercase mb-2">
+        ORDENÁ TU OPERACIÓN
       </div>
-      <h2 class="text-2xl sm:text-3xl font-normal tracking-[-0.02em] text-[#EDEDEC]">
-        Solicitar Diagnóstico de Ingeniería ERP
+      <h2 class="font-display text-3xl sm:text-5xl font-extrabold uppercase tracking-[-0.04em]">
+        PEDÍ UN RELEVAMIENTO PARA TU PYME
       </h2>
     </div>
     <ContactForm client:load />

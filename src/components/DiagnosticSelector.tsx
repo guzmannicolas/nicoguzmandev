@@ -1,292 +1,288 @@
 import React, { useState } from 'react';
 
-interface PracticeArea {
+interface BranchItem {
   id: 'webs' | 'ai' | 'erp';
-  numeral: string;
-  code: string;
-  label: string;
-  title: string;
-  subtitle: string;
-  clientProfile: string;
-  diagnosis: string;
-  architecture: string;
-  deliverables: { index: string; title: string; spec: string }[];
+  num: string;
+  tag: string;
+  shortTitle: string;
+  headline: string;
+  summary: string;
+  targetAudience: string;
+  painPoint: string;
+  solution: string;
+  deliverables: { code: string; title: string; desc: string }[];
   timeline: string;
-  primaryCtaText: string;
-  primaryCtaLink: string;
-  whatsappMessage: string;
+  ctaLabel: string;
+  ctaUrl: string;
+  waText: string;
 }
 
-const AREAS: PracticeArea[] = [
+const BRANCHES: BranchItem[] = [
   {
     id: 'webs',
-    numeral: 'I',
-    code: '01 / PRESENCIA WEB COMERCIAL',
-    label: 'Comercios & Profesionales',
-    title: 'Infraestructura Web de Alta Conversión para Negocios Físicos y Servicios',
-    subtitle: 'Para empresas y locales comerciales que carecen de presencia propia en buscadores o dependen exclusivamente de redes sociales.',
-    clientProfile: 'Gastronomía, estudios profesionales, comercios minoristas, inmobiliarias y servicios técnicos.',
-    diagnosis: 'La dependencia exclusiva de Instagram o de sitios obsoletos impide captar la demanda activa en Google. Cuando un potencial cliente busca un servicio en su zona y no encuentra información estructurada, precios ni contacto inmediato, la venta se transfiere a la competencia.',
-    architecture: 'Implementamos sitios estáticos de respuesta instantánea bajo arquitectura Astro. Diseñados para dispositivos móviles, estructurados para posicionamiento local en Google Maps y vinculados directamente al canal de cierre en WhatsApp.',
+    num: '01',
+    tag: 'RAMA 01 — COMERCIOS Y LOCALES',
+    shortTitle: 'WEBS PARA LOCALES',
+    headline: 'TU NEGOCIO NO PUEDE DEPENDER SOLO DE UN PERFIL DE INSTAGRAM.',
+    summary: 'Para locales, comercios, gastronomía y profesionales que todavía no tienen web propia o tienen una página vieja que tarda en cargar.',
+    targetAudience: 'Barberías, restaurantes, cafeterías, ferreterías, talleres mecánicos, inmobiliarias, estudios de tatuajes y profesionales.',
+    painPoint: 'Cuando alguien busca tu rubro en Google en tu zona y no tenés web, le termina comprando al local de la otra cuadra. Y en Instagram los clientes se cansan de preguntar precios o horarios que no están a la vista.',
+    solution: 'Te armamos una web ultrarrápida, pensada 100% para el celular, con tu carta o catálogo de precios, ubicación en Google Maps y botón directo para que te pidan o reserven por WhatsApp.',
     deliverables: [
       {
-        index: '01',
-        title: 'Arquitectura Sectorial Probada',
-        spec: 'Adaptación sobre 8 matrices comerciales diseñadas específicamente según los flujos de compra de cada rubro.'
+        code: '01',
+        title: 'DISEÑO POR RUBRO PROBADO',
+        desc: 'Trabajamos sobre 8 estructuras comerciales listas para personalizar con tu marca, fotos y lista de precios.'
       },
       {
-        index: '02',
-        title: 'Rendimiento Sub-Segundo',
-        spec: 'Carga inmediata en redes móviles sin bases de datos vulnerables ni mantenimiento de plugins.'
+        code: '02',
+        title: 'CARGA EN MENOS DE 1 SEGUNDO',
+        desc: 'Programada en Astro (sin WordPress pesado ni plugins que se rompen). Abre al instante en cualquier celular.'
       },
       {
-        index: '03',
-        title: 'Indexación Local & Catálogo',
-        spec: 'Estructura semántica para buscadores, integración cartográfica, horarios operativos y carta/catálogo digital.'
+        code: '03',
+        title: 'POSICIONAMIENTO EN GOOGLE MAPS',
+        desc: 'Configurada para que te encuentren cuando busquen tu servicio o comercio en tu barrio o ciudad.'
       },
       {
-        index: '04',
-        title: 'Despliegue Llave en Mano',
-        spec: 'Configuración integral de dominio propio, certificados de seguridad SSL y distribución global en Vercel.'
+        code: '04',
+        title: 'DOMINIO .COM / .COM.AR INCLUIDO',
+        desc: 'Nos ocupamos de todo el alta técnica, certificado de seguridad y servidor de alta velocidad en Vercel.'
       }
     ],
-    timeline: '48 A 72 HORAS HÁBILES',
-    primaryCtaText: 'EXPLORAR CATÁLOGO DE DEMOS',
-    primaryCtaLink: 'https://templates.nicoguzmandev.com',
-    whatsappMessage: 'Hola Nicolás. Me interesa implementar una web comercial para mi negocio (Rama 01).'
+    timeline: 'LISTA EN 48 A 72 HORAS',
+    ctaLabel: 'VER EL SHOWROOM DE 8 DEMOS',
+    ctaUrl: 'https://templates.nicoguzmandev.com',
+    waText: 'Hola Nico! Me interesa hacer la web para mi local/comercio (Rama 01).'
   },
   {
     id: 'ai',
-    numeral: 'II',
-    code: '02 / AUTOMATIZACIÓN & AGENTES IA',
-    label: 'Atención & Agenda 24/7',
-    title: 'Sistemas Conversacionales y Gestión Autónoma de Turnos sobre WhatsApp',
-    subtitle: 'Para negocios con flujo constante de consultas en redes o web que pierden cierres por demoras en la atención o coordinación manual.',
-    clientProfile: 'Clínicas, centros de estética, estudios, talleres, comercios con alto volumen de consulta diaria.',
-    diagnosis: 'El 78% de las operaciones comerciales se concretan con el primer proveedor que responde con precisión. Demorar horas en contestar mensajes, cotizar manualmente o coordinar horarios de forma artesanal genera una pérdida silenciosa de facturación todos los días.',
-    architecture: 'Desplegamos agentes de inteligencia artificial entrenados sobre la base de conocimiento real del negocio. Operan las 24 horas en WhatsApp con lenguaje natural, resuelven consultas comerciales, cotizan servicios y registran reservas en Google Calendar sin intervención humana.',
+    num: '02',
+    tag: 'RAMA 02 — ATENCIÓN Y TURNOS 24/7',
+    shortTitle: 'AUTOMATIZACIÓN & IA',
+    headline: 'SI TARDÁS DOS HORAS EN RESPONDER UN MENSAJE, EL CLIENTE YA COMPRÓ EN OTRO LADO.',
+    summary: 'Para negocios que SÍ tienen web o Instagram activo con consultas todos los días, pero no dan abasto para contestar rápido o agendar turnos.',
+    targetAudience: 'Consultorios, estéticas, peluquerías, inmobiliarias, talleres y comercios con alto volumen de mensajes diarios.',
+    painPoint: 'Contestás mensajes a las apuradas mientras atendés, perdés ventas los domingos o a la noche, y perdés horas anotando turnos a mano o recordándole a la gente que no falte.',
+    solution: 'Implementamos un agente con Inteligencia Artificial en tu WhatsApp que responde en segundos las 24hs, pasa presupuestos según tu lista de precios y agenda turnos solo en tu Google Calendar.',
     deliverables: [
       {
-        index: '01',
-        title: 'Entrenamiento con Datos Propios',
-        spec: 'Configuración del modelo sobre tarifas, condiciones comerciales, catálogo y criterios reales de la empresa.'
+        code: '01',
+        title: 'AGENTE IA EN WHATSAPP 24/7',
+        desc: 'No es un menú rígido de "marcá 1 o 2". Entiende mensajes escritos y audios como una recepcionista real.'
       },
       {
-        index: '02',
-        title: 'Sincronización de Agenda en Vivo',
-        spec: 'Lectura de disponibilidad y creación automática de eventos en Google Calendar con confirmación instantánea.'
+        code: '02',
+        title: 'TURNERO CON GOOGLE CALENDAR',
+        desc: 'Revisa qué horarios tenés libres en tiempo real, agenda al cliente y bloquea el hueco automáticamente.'
       },
       {
-        index: '03',
-        title: 'Atención en Lenguaje Natural',
-        spec: 'Comprensión contextual avanzada que reemplaza los antiguos menús numéricos rígidos y frustrantes.'
+        code: '03',
+        title: 'RECORDATORIOS ANTI-AUSENCIA',
+        desc: 'Le avisa al cliente antes del turno por WhatsApp para confirmar asistencia y evitar huecos vacíos.'
       },
       {
-        index: '04',
-        title: 'Protocolo de Derivación Humana',
-        spec: 'Transferencia ordenada al equipo comercial cuando una operación requiere intervención personalizada.'
+        code: '04',
+        title: 'DERIVACIÓN A HUMANO',
+        desc: 'Cuando un cliente hace una consulta compleja o quiere cerrar algo especial, te pasa la charla limpia a vos.'
       }
     ],
-    timeline: '5 A 7 DÍAS HÁBILES',
-    primaryCtaText: 'VER TRANSCRIPCIÓN OPERATIVA',
-    primaryCtaLink: '#protocolo-ia',
-    whatsappMessage: 'Hola Nicolás. Quiero evaluar la automatización de atención y agenda con IA en WhatsApp (Rama 02).'
+    timeline: 'ACTIVO EN 5 A 7 DÍAS',
+    ctaLabel: 'PROBAR SIMULADOR DE WHATSAPP IA',
+    ctaUrl: '#simulador-ia',
+    waText: 'Hola Nico! Quiero automatizar las respuestas y turnos de mi negocio por WhatsApp con IA (Rama 02).'
   },
   {
     id: 'erp',
-    numeral: 'III',
-    code: '03 / CONSULTORÍA & SISTEMAS ERP',
-    label: 'Pymes & Multi-Sucursal',
-    title: 'Ingeniería de Software a Medida y Control Operativo Centralizado',
-    subtitle: 'Para pequeñas y medianas empresas con múltiples sucursales, depósitos o procesos críticos donde las planillas de cálculo resultan inviables.',
-    clientProfile: 'Distribuidoras, cadenas comerciales, industrias ligeras, logística y empresas de servicios con personal en campo.',
-    diagnosis: 'A medida que una empresa escala en volumen o puntos de venta, el uso de planillas aisladas y software enlatado rígido produce diferencias de inventario, falta de trazabilidad en caja y ceguera gerencial para tomar decisiones.',
-    architecture: 'Diseñamos y construimos sistemas de gestión (ERP / CRM / Intranets) adaptados exactamente a la lógica operativa de su organización. Propiedad total del código fuente, sin costos de licencias mensuales por cantidad de usuarios.',
+    num: '03',
+    tag: 'RAMA 03 — PYMES Y MULTI-SUCURSAL',
+    shortTitle: 'CONSULTORÍA & ERP',
+    headline: 'CUANDO TU PYME CRECE, LAS PLANILLAS DE EXCEL SE CONVIERTEN EN UN PELIGRO.',
+    summary: 'Para empresas con varias sucursales, depósito o equipo de trabajo donde el control de stock, caja y cuentas corrientes necesita orden real.',
+    targetAudience: 'Distribuidoras, cadenas de locales, mayoristas, ferreterías grandes, logística y pymes en expansión.',
+    painPoint: 'Mercadería que no coincide entre el depósito y el mostrador, empleados pisando fórmulas en Excel, cierres de caja confusos y sistemas enlatados que te cobran fortuna por cada usuario.',
+    solution: 'Desarrollamos tu propio sistema de gestión (ERP) 100% a la medida de cómo trabaja tu empresa. Controlás stock, sucursales, facturación ARCA/AFIP y permisos desde el celular o la computadora.',
     deliverables: [
       {
-        index: '01',
-        title: 'Control de Stock Multi-Depósito',
-        spec: 'Trazabilidad exacta de mercadería, transferencias internas, alertas de reposición y auditoría de movimientos.'
+        code: '01',
+        title: 'STOCK MULTI-SUCURSAL EN VIVO',
+        desc: 'Sabés exactamente cuánta mercadería hay en cada local o galpón, con alertas antes de quedarte sin stock.'
       },
       {
-        index: '02',
-        title: 'Gestión Comercial y Tesorería',
-        spec: 'Consolidación de órdenes de venta, cuentas corrientes de clientes/proveedores y arqueos de caja por sucursal.'
+        code: '02',
+        title: 'CAJAS, VENTAS Y FACTURACIÓN',
+        desc: 'Arqueos de caja por turno, cuentas corrientes de clientes y proveedores, y conexión con facturación electrónica.'
       },
       {
-        index: '03',
-        title: 'Permisos y Roles Jerárquicos',
-        spec: 'Vistas restringidas según función operativa: operadores de mostrador, encargados de planta y dirección general.'
+        code: '03',
+        title: 'ROLES Y PERMISOS POR EMPLEADO',
+        desc: 'Cada vendedor o cajero ve únicamente lo que le corresponde; vos tenés el tablero gerencial completo.'
       },
       {
-        index: '04',
-        title: 'Tablero Ejecutivo en Tiempo Real',
-        spec: 'Métricas financieras, rentabilidad por línea de producto y reportes exportables para contabilidad.'
+        code: '04',
+        title: 'SIN LICENCIAS MENSUALES POR USUARIO',
+        desc: 'El sistema es propiedad de tu empresa. Podés sumar 5 o 50 empleados sin pagar alquiler por cabeza.'
       }
     ],
-    timeline: 'SPRINTS DE 2 A 4 SEMANAS',
-    primaryCtaText: 'EXAMINAR ARQUITECTURA ERP',
-    primaryCtaLink: '#sistema-erp',
-    whatsappMessage: 'Hola Nicolás. Necesito consultoría para desarrollar un sistema de gestión / ERP a medida (Rama 03).'
+    timeline: 'ENTREGAS EN 2 A 4 SEMANAS',
+    ctaLabel: 'VER TABLERO MULTI-SUCURSAL',
+    ctaUrl: '#tablero-erp',
+    waText: 'Hola Nico! Tengo una pyme y necesito consultoría para armar un sistema de gestión / ERP a medida (Rama 03).'
   }
 ];
 
 export default function DiagnosticSelector() {
-  const [selectedId, setSelectedId] = useState<'webs' | 'ai' | 'erp'>('webs');
-  const current = AREAS.find(a => a.id === selectedId) || AREAS[0];
+  const [selected, setSelected] = useState<'webs' | 'ai' | 'erp'>('webs');
+  const current = BRANCHES.find((b) => b.id === selected) || BRANCHES[0];
 
   return (
-    <div className="w-full border border-[#222220] bg-[#0C0C0B]">
-      {/* Top Selector Bar */}
-      <div className="grid grid-cols-1 md:grid-cols-3 divide-y md:divide-y-0 md:divide-x divide-[#222220] border-b border-[#222220]">
-        {AREAS.map((area) => {
-          const isActive = area.id === selectedId;
+    <div className="w-full border-2 border-[#0A0A0A] bg-white">
+      {/* Top 3 Brutalist Tabs */}
+      <div className="grid grid-cols-1 md:grid-cols-3 divide-y-2 md:divide-y-0 md:divide-x-2 divide-[#0A0A0A] border-b-2 border-[#0A0A0A]">
+        {BRANCHES.map((item) => {
+          const isActive = item.id === selected;
           return (
             <button
-              key={area.id}
+              key={item.id}
               type="button"
-              onClick={() => setSelectedId(area.id)}
-              className={`p-6 md:p-8 text-left transition-colors cursor-pointer relative ${
-                isActive ? 'bg-[#141412]' : 'bg-[#0C0C0B] hover:bg-[#111110]'
+              onClick={() => setSelected(item.id)}
+              className={`p-6 md:p-8 text-left transition-colors duration-200 cursor-pointer flex flex-col justify-between min-h-[140px] ${
+                isActive
+                  ? 'bg-[#002FA7] text-white'
+                  : 'bg-[#F7F7F5] text-[#0A0A0A] hover:bg-[#0A0A0A] hover:text-white'
               }`}
             >
-              {isActive && (
-                <div className="absolute top-0 left-0 right-0 h-[2px] bg-[#EDEDEC]" />
-              )}
-              <div className="flex items-baseline justify-between mb-3">
-                <span className="font-mono-tech text-[11px] tracking-[0.14em] text-[#9A9994]">
-                  {area.code}
+              <div className="flex items-baseline justify-between w-full mb-4">
+                <span className="font-mono-tech text-xs font-bold tracking-[0.14em] uppercase opacity-80">
+                  {item.tag}
                 </span>
-                <span className="font-serif-editorial italic text-xl text-[#5E5D59]">
-                  {area.numeral}
+                <span className="font-display text-4xl md:text-5xl font-extrabold tracking-tighter leading-none">
+                  {item.num}
                 </span>
               </div>
-              <div className="text-base font-medium text-[#EDEDEC] tracking-[-0.01em]">
-                {area.label}
+              <div className="font-display text-xl md:text-2xl font-extrabold uppercase tracking-tight">
+                {item.shortTitle}
               </div>
             </button>
           );
         })}
       </div>
 
-      {/* Main Dossier Body */}
-      <div className="grid grid-cols-1 lg:grid-cols-12 divide-y lg:divide-y-0 lg:divide-x divide-[#222220]">
-        {/* Left Column: Summary & Metadata */}
-        <div className="lg:col-span-5 p-8 md:p-12 flex flex-col justify-between bg-[#0C0C0B]">
+      {/* Main Content Split */}
+      <div className="grid grid-cols-1 lg:grid-cols-12 divide-y-2 lg:divide-y-0 lg:divide-x-2 divide-[#0A0A0A]">
+        {/* Left Cobalt / Stark Column (5 cols) */}
+        <div className="lg:col-span-5 p-8 md:p-12 bg-[#0A0A0A] text-white flex flex-col justify-between">
           <div>
-            <div className="flex items-baseline justify-between border-b border-[#222220] pb-4 mb-8">
-              <span className="font-mono-tech text-[11px] tracking-[0.14em] text-[#5E5D59] uppercase">
-                ESPECIFICACIÓN DE ÁREA
+            <div className="flex items-center justify-between border-b border-white/20 pb-4 mb-8">
+              <span className="font-mono-tech text-xs font-bold tracking-[0.12em] text-white/70">
+                DIAGNÓSTICO DE ETAPA [{current.num}/03]
               </span>
-              <span className="font-mono-tech text-[11px] tracking-[0.1em] text-[#EDEDEC]">
-                {current.code.split(' ')[0]} / 03
+              <span className="font-mono-tech text-xs font-bold bg-[#002FA7] text-white px-2.5 py-1">
+                {current.timeline}
               </span>
             </div>
 
-            <h3 className="text-2xl md:text-3xl font-normal tracking-[-0.02em] text-[#EDEDEC] leading-[1.2] mb-5">
-              {current.title}
+            <h3 className="font-display text-2xl sm:text-3xl md:text-4xl font-extrabold uppercase tracking-[-0.03em] leading-[1.02] mb-6">
+              {current.headline}
             </h3>
 
-            <p className="text-sm text-[#9A9994] leading-relaxed mb-8">
-              {current.subtitle}
+            <p className="text-sm text-[#D4D4CE] leading-relaxed mb-8">
+              {current.summary}
             </p>
 
-            <div className="border-t border-[#222220] pt-6 space-y-4">
-              <div>
-                <div className="font-mono-tech text-[10px] tracking-[0.14em] text-[#5E5D59] uppercase mb-1">
-                  PERFIL DE IMPLEMENTACIÓN
-                </div>
-                <div className="text-xs text-[#EDEDEC]">
-                  {current.clientProfile}
-                </div>
+            <div className="border-t border-white/20 pt-6">
+              <div className="font-mono-tech text-[10px] font-bold tracking-[0.16em] text-white/60 uppercase mb-2">
+                IDEAL PARA:
               </div>
-              <div>
-                <div className="font-mono-tech text-[10px] tracking-[0.14em] text-[#5E5D59] uppercase mb-1">
-                  TIEMPO ESTIMADO DE PUESTA EN MARCHA
-                </div>
-                <div className="font-mono-tech text-xs text-[#EDEDEC]">
-                  {current.timeline}
-                </div>
-              </div>
+              <p className="text-xs text-white leading-relaxed font-medium">
+                {current.targetAudience}
+              </p>
             </div>
           </div>
 
-          <div className="pt-10 mt-10 border-t border-[#222220] space-y-3">
+          <div className="pt-10 mt-10 border-t border-white/20 space-y-3">
             <a
-              href={`https://wa.me/5491100000000?text=${encodeURIComponent(current.whatsappMessage)}`}
+              href={`https://wa.me/5491100000000?text=${encodeURIComponent(current.waText)}`}
               target="_blank"
               rel="noopener noreferrer"
-              className="flex items-center justify-between w-full px-6 py-4 bg-[#EDEDEC] text-[#0C0C0B] text-xs font-medium tracking-[0.04em] hover:bg-white transition-colors"
+              className="w-full py-4 px-6 bg-[#002FA7] text-white hover:bg-white hover:text-[#0A0A0A] transition-colors duration-200 flex items-center justify-between font-display text-xs font-extrabold uppercase tracking-[0.04em]"
             >
-              <span>SOLICITAR PROPUESTA POR WHATSAPP</span>
-              <span className="font-mono-tech">—</span>
+              <span>PEDIR PRESUPUESTO POR WHATSAPP</span>
+              <span className="font-mono-tech">[DIRECTO]</span>
             </a>
 
             <a
-              href={current.primaryCtaLink}
-              target={current.primaryCtaLink.startsWith('http') ? '_blank' : '_self'}
+              href={current.ctaUrl}
+              target={current.ctaUrl.startsWith('http') ? '_blank' : '_self'}
               rel="noopener noreferrer"
-              className="flex items-center justify-between w-full px-6 py-4 border border-[#363632] text-[#EDEDEC] text-xs font-mono-tech tracking-[0.08em] hover:bg-[#141412] transition-colors"
+              className="w-full py-4 px-6 border border-white/30 text-white hover:bg-white hover:text-[#0A0A0A] transition-colors duration-200 flex items-center justify-between font-mono-tech text-xs font-bold uppercase tracking-[0.06em]"
             >
-              <span>{current.primaryCtaText}</span>
-              <span>/</span>
+              <span>{current.ctaLabel}</span>
+              <span>—</span>
             </a>
           </div>
         </div>
 
-        {/* Right Column: Diagnosis, Architecture & Deliverables */}
-        <div className="lg:col-span-7 divide-y divide-[#222220] bg-[#0C0C0B]">
-          {/* Problem vs Solution */}
-          <div className="grid grid-cols-1 md:grid-cols-2 divide-y md:divide-y-0 md:divide-x divide-[#222220]">
-            <div className="p-8 md:p-10">
-              <div className="font-mono-tech text-[10px] tracking-[0.16em] text-[#5E5D59] uppercase mb-3">
-                A. DIAGNÓSTICO DE SITUACIÓN
+        {/* Right Specification Column (7 cols) */}
+        <div className="lg:col-span-7 divide-y-2 divide-[#0A0A0A] bg-white text-[#0A0A0A]">
+          {/* Pain vs Solution */}
+          <div className="grid grid-cols-1 md:grid-cols-2 divide-y-2 md:divide-y-0 md:divide-x-2 divide-[#0A0A0A]">
+            <div className="p-8 md:p-10 bg-[#F7F7F5]">
+              <div className="font-mono-tech text-xs font-bold tracking-[0.14em] text-[#52524E] uppercase mb-3">
+                [A] EL PROBLEMA HOY
               </div>
-              <p className="text-xs text-[#9A9994] leading-relaxed">
-                {current.diagnosis}
+              <p className="text-xs sm:text-sm text-[#0A0A0A] leading-relaxed">
+                {current.painPoint}
               </p>
             </div>
-            <div className="p-8 md:p-10 bg-[#111110]">
-              <div className="font-mono-tech text-[10px] tracking-[0.16em] text-[#EDEDEC] uppercase mb-3">
-                B. ARQUITECTURA DE SOLUCIÓN
+            <div className="p-8 md:p-10 bg-[#002FA7] text-white">
+              <div className="font-mono-tech text-xs font-bold tracking-[0.14em] text-white/80 uppercase mb-3">
+                [B] CÓMO LO RESOLVEMOS
               </div>
-              <p className="text-xs text-[#EDEDEC] leading-relaxed">
-                {current.architecture}
+              <p className="text-xs sm:text-sm text-white leading-relaxed font-medium">
+                {current.solution}
               </p>
             </div>
           </div>
 
-          {/* Deliverables 2x2 Grid */}
+          {/* 2x2 Deliverables Grid */}
           <div>
-            <div className="px-8 py-4 border-b border-[#222220] font-mono-tech text-[10px] tracking-[0.16em] text-[#5E5D59] uppercase">
-              ALCANCE TÉCNICO Y ENTREGABLES
+            <div className="px-8 py-4 border-b-2 border-[#0A0A0A] bg-[#F7F7F5] flex items-center justify-between">
+              <span className="font-mono-tech text-xs font-bold tracking-[0.14em] text-[#0A0A0A] uppercase">
+                QUÉ INCLUYE ESTA IMPLEMENTACIÓN
+              </span>
+              <span className="font-mono-tech text-xs font-bold text-[#002FA7]">
+                04 ENTREGABLES CLAVE
+              </span>
             </div>
-            <div className="grid grid-cols-1 sm:grid-cols-2 divide-y sm:divide-y-0 sm:divide-x divide-[#222220]">
-              {current.deliverables.slice(0, 2).map((item) => (
-                <div key={item.index} className="p-8">
-                  <div className="font-mono-tech text-[11px] text-[#5E5D59] mb-2">
-                    [{item.index}]
+
+            <div className="grid grid-cols-1 sm:grid-cols-2 divide-y-2 sm:divide-y-0 sm:divide-x-2 divide-[#0A0A0A]">
+              {current.deliverables.slice(0, 2).map((d) => (
+                <div key={d.code} className="p-8 hover:bg-[#F7F7F5] transition-colors">
+                  <div className="font-display text-3xl font-extrabold text-[#002FA7] tracking-tighter mb-2">
+                    {d.code}.
                   </div>
-                  <div className="text-sm font-medium text-[#EDEDEC] mb-2">
-                    {item.title}
+                  <div className="font-display text-sm font-extrabold uppercase tracking-tight text-[#0A0A0A] mb-2">
+                    {d.title}
                   </div>
-                  <p className="text-xs text-[#9A9994] leading-relaxed">
-                    {item.spec}
+                  <p className="text-xs text-[#52524E] leading-relaxed">
+                    {d.desc}
                   </p>
                 </div>
               ))}
             </div>
-            <div className="grid grid-cols-1 sm:grid-cols-2 divide-y sm:divide-y-0 sm:divide-x divide-[#222220] border-t border-[#222220]">
-              {current.deliverables.slice(2, 4).map((item) => (
-                <div key={item.index} className="p-8">
-                  <div className="font-mono-tech text-[11px] text-[#5E5D59] mb-2">
-                    [{item.index}]
+
+            <div className="grid grid-cols-1 sm:grid-cols-2 divide-y-2 sm:divide-y-0 sm:divide-x-2 divide-[#0A0A0A] border-t-2 border-[#0A0A0A]">
+              {current.deliverables.slice(2, 4).map((d) => (
+                <div key={d.code} className="p-8 hover:bg-[#F7F7F5] transition-colors">
+                  <div className="font-display text-3xl font-extrabold text-[#002FA7] tracking-tighter mb-2">
+                    {d.code}.
                   </div>
-                  <div className="text-sm font-medium text-[#EDEDEC] mb-2">
-                    {item.title}
+                  <div className="font-display text-sm font-extrabold uppercase tracking-tight text-[#0A0A0A] mb-2">
+                    {d.title}
                   </div>
-                  <p className="text-xs text-[#9A9994] leading-relaxed">
-                    {item.spec}
+                  <p className="text-xs text-[#52524E] leading-relaxed">
+                    {d.desc}
                   </p>
                 </div>
               ))}

@@ -2,173 +2,129 @@
 const TEMPLATES = [
   {
     index: '01',
-    slug: 'barbershop',
-    name: 'Vintage Barbershop',
-    vertical: 'Cuidado Personal & Estética',
-    structure: 'Multipágina (4 Vistas)',
-    desc: 'Editorial oscura para barberías y estudios de autor. Cuadro tarifario, galería de trabajos y módulo de reserva.',
+    name: 'BARBERÍA & SALÓN DE AUTOR',
+    rubro: 'ESTÉTICA & GROOMING',
+    estructura: 'MULTIPÁGINA (4 VISTAS)',
+    desc: 'Cortes, lista de precios actualizada, galería de trabajos y reserva directa por WhatsApp.',
     previewUrl: 'https://templates.nicoguzmandev.com/preview/barbershop'
   },
   {
     index: '02',
-    slug: 'restaurant',
-    name: 'Gourmet Bistro & Restaurant',
-    vertical: 'Gastronomía & Hospitalidad',
-    structure: 'Multipágina (3 Vistas)',
-    desc: 'Composición tipográfica clásica para restaurantes y bares. Carta digital estructurada por tiempos, historia y reservas.',
+    name: 'RESTAURANTE & BISTRÓ',
+    rubro: 'GASTRONOMÍA & BARES',
+    estructura: 'MULTIPÁGINA (3 VISTAS)',
+    desc: 'Carta digital dividida por entradas, platos principales y bebidas, fotos de salón y reserva de mesas.',
     previewUrl: 'https://templates.nicoguzmandev.com/preview/restaurant'
   },
   {
     index: '03',
-    slug: 'coffee-shop',
-    name: 'Artisan Coffee Roasters',
-    vertical: 'Cafetería de Especialidad',
-    structure: 'Multipágina (4 Vistas)',
-    desc: 'Diseño cálido para tostadores y cafeterías. Trazabilidad de granos, menú de barra, ubicaciones y horarios.',
+    name: 'CAFETERÍA DE ESPECIALIDAD',
+    rubro: 'CAFÉ & PASTELERÍA',
+    estructura: 'MULTIPÁGINA (4 VISTAS)',
+    desc: 'Menú de cafetería y pastelería, historia del tostado, horarios y mapa de sucursales.',
     previewUrl: 'https://templates.nicoguzmandev.com/preview/coffee-shop'
   },
   {
     index: '04',
-    slug: 'hardware-store',
-    name: 'Industrial Hardware & Supplies',
-    vertical: 'Ferretería Industrial & Insumos',
-    structure: 'Multipágina (4 Vistas)',
-    desc: 'Catálogo estructurado para provisión industrial y corralones. Líneas comerciales, solicitud de cotización mayorista.',
+    name: 'FERRETERÍA INDUSTRIAL & CORRALÓN',
+    rubro: 'HERRAMIENTAS & INSUMOS',
+    estructura: 'MULTIPÁGINA (4 VISTAS)',
+    desc: 'Catálogo de rubros industriales, marcas trabajadas y pedido de cotización para gremio o particulares.',
     previewUrl: 'https://templates.nicoguzmandev.com/preview/hardware-store'
   },
   {
     index: '05',
-    slug: 'auto-repair',
-    name: 'Precision Auto Service',
-    vertical: 'Mecánica & Diagnóstico Automotriz',
-    structure: 'Multipágina (4 Vistas)',
-    desc: 'Plataforma técnica para talleres especializados. Detalle de servicios preventivos, diagnóstico electrónico y turnos.',
+    name: 'TALLER MECÁNICO & DIAGNÓSTICO',
+    rubro: 'SERVICIO AUTOMOTRIZ',
+    estructura: 'MULTIPÁGINA (4 VISTAS)',
+    desc: 'Servicios de mantenimiento, diagnóstico computarizado, solicitud de presupuesto y turnos de taller.',
     previewUrl: 'https://templates.nicoguzmandev.com/preview/auto-repair'
   },
   {
     index: '06',
-    slug: 'real-estate',
-    name: 'Prime Real Estate & Living',
-    vertical: 'Desarrollos & Comercialización Inmobiliaria',
-    structure: 'Landing Page Ejecutiva',
-    desc: 'Presentación de unidades residenciales y comerciales. Fichas técnicas de propiedades, tasaciones y contacto de asesores.',
+    name: 'INMOBILIARIA & DESARROLLOS',
+    rubro: 'PROPIEDADES & ALQUILERES',
+    estructura: 'LANDING PAGE EJECUTIVA',
+    desc: 'Unidades destacadas en venta y alquiler, tasaciones y contacto directo con corredores inmobiliarios.',
     previewUrl: 'https://templates.nicoguzmandev.com/preview/real-estate'
   },
   {
     index: '07',
-    slug: 'photography',
-    name: 'Studio & Portrait Photography',
-    vertical: 'Dirección de Arte & Fotografía',
-    structure: 'Landing Page Editorial',
-    desc: 'Porfolio visual de alto contraste con grilla fotográfica, especificación de paquetes comerciales y agenda de sesiones.',
+    name: 'ESTUDIO DE FOTOGRAFÍA & PRODUCTORA',
+    rubro: 'IMAGEN & AUDIOVISUAL',
+    estructura: 'LANDING PAGE EDITORIAL',
+    desc: 'Porfolio fotográfico a pantalla completa, packs de sesiones comerciales y agenda de fechas.',
     previewUrl: 'https://templates.nicoguzmandev.com/preview/photography'
   },
   {
     index: '08',
-    slug: 'tattoo',
-    name: 'Ink & Needle Tattoo Studio',
-    vertical: 'Estudio de Tatuajes & Galería',
-    structure: 'Landing Page de Autor',
-    desc: 'Presentación de artistas residentes, catálogo de estilos, condiciones higiénicas y formulario de cotización de piezas.',
+    name: 'ESTUDIO DE TATUAJES & ARTE',
+    rubro: 'TATTOO STUDIO',
+    estructura: 'LANDING PAGE DE AUTOR',
+    desc: 'Trabajos por artista, estilos disponibles, cuidados post-sesión y cotizador rápido por WhatsApp.',
     previewUrl: 'https://templates.nicoguzmandev.com/preview/tattoo'
   }
 ];
 ---
 
-<div class="w-full border border-[#222220] bg-[#0C0C0B]">
-  <!-- Header Bar -->
-  <div class="p-8 md:p-10 border-b border-[#222220] flex flex-col md:flex-row md:items-end justify-between gap-6">
+<div class="w-full border-2 border-[#0A0A0A] bg-white">
+  <!-- Header Banner -->
+  <div class="p-8 md:p-12 border-b-2 border-[#0A0A0A] bg-[#0A0A0A] text-white flex flex-col md:flex-row md:items-end justify-between gap-6">
     <div>
-      <div class="font-mono-tech text-[10px] tracking-[0.16em] text-[#5E5D59] uppercase mb-3">
-        CATÁLOGO DE ARQUITECTURAS BASE — 08 VERTICALES
+      <div class="font-mono-tech text-xs font-bold tracking-[0.16em] text-[#002FA7] bg-white px-2.5 py-1 inline-block uppercase mb-4">
+        SHOWROOM EN VIVO — 08 RUBROS ARGENTINOS
       </div>
-      <h3 class="text-2xl md:text-3xl font-normal tracking-[-0.02em] text-[#EDEDEC]">
-        Matrices Comerciales en Producción
+      <h3 class="font-display text-3xl sm:text-4xl md:text-5xl font-extrabold uppercase tracking-[-0.04em] leading-none">
+        DEMOS LISTAS PARA TU RUBRO
       </h3>
     </div>
     <a
       href="https://templates.nicoguzmandev.com"
       target="_blank"
       rel="noopener noreferrer"
-      class="inline-flex items-center justify-between gap-8 px-6 py-3.5 border border-[#363632] font-mono-tech text-[11px] tracking-[0.1em] text-[#EDEDEC] hover:bg-[#EDEDEC] hover:text-[#0C0C0B] transition-colors"
+      class="px-7 py-4 bg-[#002FA7] text-white hover:bg-white hover:text-[#0A0A0A] transition-colors duration-200 font-display text-xs font-extrabold uppercase tracking-[0.04em] flex items-center justify-between gap-8"
     >
-      <span>ABRIR SHOWROOM COMPLETO</span>
-      <span>/</span>
+      <span>ABRIR CATÁLOGO COMPLETO</span>
+      <span class="font-mono-tech">[08]</span>
     </a>
   </div>
 
-  <!-- 8-Cell Architectural Grid -->
-  <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 divide-y md:divide-y-0 border-b border-[#222220]">
-    {TEMPLATES.slice(0, 4).map((t, i) => (
-      <div class={`p-8 flex flex-col justify-between bg-[#0C0C0B] hover:bg-[#131311] transition-colors ${i < 3 ? 'lg:border-r border-[#222220]' : ''} ${i % 2 === 0 ? 'md:border-r border-[#222220]' : ''} border-b lg:border-b-0 border-[#222220]`}>
-        <div>
-          <div class="flex items-baseline justify-between border-b border-[#1C1C1A] pb-3 mb-5">
-            <span class="font-mono-tech text-[11px] text-[#5E5D59]">[{t.index}]</span>
-            <span class="font-mono-tech text-[10px] tracking-[0.08em] text-[#9A9994] uppercase">{t.structure}</span>
-          </div>
+  <!-- Locomotive Interactive Index List -->
+  <div class="divide-y-2 divide-[#0A0A0A]">
+    {TEMPLATES.map((t) => (
+      <a
+        href={t.previewUrl}
+        target="_blank"
+        rel="noopener noreferrer"
+        class="grid grid-cols-1 lg:grid-cols-12 items-center p-6 md:px-10 md:py-7 bg-white text-[#0A0A0A] hover:bg-[#002FA7] hover:text-white transition-colors duration-200 group"
+      >
+        <div class="lg:col-span-1 font-display text-3xl md:text-4xl font-extrabold tracking-tighter text-[#002FA7] group-hover:text-white mb-2 lg:mb-0">
+          {t.index}
+        </div>
 
-          <div class="font-mono-tech text-[10px] tracking-[0.12em] text-[#5E5D59] uppercase mb-1.5">
-            {t.vertical}
-          </div>
-
-          <h4 class="text-lg font-medium text-[#EDEDEC] tracking-[-0.01em] mb-3">
+        <div class="lg:col-span-4 mb-2 lg:mb-0">
+          <div class="font-display text-lg md:text-xl font-extrabold uppercase tracking-tight group-hover:translate-x-3 transition-transform duration-200">
             {t.name}
-          </h4>
-
-          <p class="text-xs text-[#9A9994] leading-relaxed mb-8">
-            {t.desc}
-          </p>
-        </div>
-
-        <div class="pt-4 border-t border-[#1C1C1A]">
-          <a
-            href={t.previewUrl}
-            target="_blank"
-            rel="noopener noreferrer"
-            class="flex items-center justify-between font-mono-tech text-[11px] tracking-[0.1em] text-[#EDEDEC] hover:text-white group"
-          >
-            <span>EJECUTAR DEMO</span>
-            <span class="text-[#5E5D59] group-hover:text-[#EDEDEC] transition-colors">—</span>
-          </a>
-        </div>
-      </div>
-    ))}
-  </div>
-
-  <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 divide-y md:divide-y-0">
-    {TEMPLATES.slice(4, 8).map((t, i) => (
-      <div class={`p-8 flex flex-col justify-between bg-[#0C0C0B] hover:bg-[#131311] transition-colors ${i < 3 ? 'lg:border-r border-[#222220]' : ''} ${i % 2 === 0 ? 'md:border-r border-[#222220]' : ''}`}>
-        <div>
-          <div class="flex items-baseline justify-between border-b border-[#1C1C1A] pb-3 mb-5">
-            <span class="font-mono-tech text-[11px] text-[#5E5D59]">[{t.index}]</span>
-            <span class="font-mono-tech text-[10px] tracking-[0.08em] text-[#9A9994] uppercase">{t.structure}</span>
           </div>
-
-          <div class="font-mono-tech text-[10px] tracking-[0.12em] text-[#5E5D59] uppercase mb-1.5">
-            {t.vertical}
+          <div class="font-mono-tech text-[10px] font-bold tracking-[0.14em] text-[#52524E] group-hover:text-white/80 uppercase mt-0.5">
+            {t.rubro}
           </div>
-
-          <h4 class="text-lg font-medium text-[#EDEDEC] tracking-[-0.01em] mb-3">
-            {t.name}
-          </h4>
-
-          <p class="text-xs text-[#9A9994] leading-relaxed mb-8">
-            {t.desc}
-          </p>
         </div>
 
-        <div class="pt-4 border-t border-[#1C1C1A]">
-          <a
-            href={t.previewUrl}
-            target="_blank"
-            rel="noopener noreferrer"
-            class="flex items-center justify-between font-mono-tech text-[11px] tracking-[0.1em] text-[#EDEDEC] hover:text-white group"
-          >
-            <span>EJECUTAR DEMO</span>
-            <span class="text-[#5E5D59] group-hover:text-[#EDEDEC] transition-colors">—</span>
-          </a>
+        <div class="lg:col-span-4 text-xs text-[#52524E] group-hover:text-white/90 leading-relaxed mb-4 lg:mb-0 lg:pr-6">
+          {t.desc}
         </div>
-      </div>
+
+        <div class="lg:col-span-2 font-mono-tech text-[10px] font-bold tracking-[0.1em] uppercase text-[#52524E] group-hover:text-white/80 mb-3 lg:mb-0">
+          {t.estructura}
+        </div>
+
+        <div class="lg:col-span-1 lg:text-right font-mono-tech text-xs font-bold uppercase tracking-wider">
+          <span class="inline-block border-2 border-[#0A0A0A] group-hover:border-white px-3 py-1.5 group-hover:bg-white group-hover:text-[#002FA7] transition-colors">
+            VER DEMO
+          </span>
+        </div>
+      </a>
     ))}
   </div>
 </div>

@@ -1,93 +1,94 @@
 import React, { useState } from 'react';
 
 export default function ContactForm() {
-  const [division, setDivision] = useState<'webs' | 'ai' | 'erp' | 'custom'>('webs');
-  const [name, setName] = useState('');
-  const [company, setCompany] = useState('');
-  const [contact, setContact] = useState('');
-  const [scope, setScope] = useState('');
-  const [submitted, setSubmitted] = useState(false);
+  const [rama, setRama] = useState<'webs' | 'ai' | 'erp' | 'custom'>('webs');
+  const [nombre, setNombre] = useState('');
+  const [negocio, setNegocio] = useState('');
+  const [telefono, setTelefono] = useState('');
+  const [mensaje, setMensaje] = useState('');
+  const [enviado, setEnviado] = useState(false);
 
-  const divisionLabels = {
-    webs: '01 / Presencia Web Comercial (48-72h)',
-    ai: '02 / Automatización & Agentes IA (WhatsApp / Turnos)',
-    erp: '03 / Consultoría & Sistemas ERP a Medida',
-    custom: '04 / Ingeniería de Software Especializada'
+  const ramaTitulos = {
+    webs: '01. WEB PARA LOCAL / COMERCIO (48-72HS)',
+    ai: '02. AUTOMATIZACIÓN & BOT IA WHATSAPP',
+    erp: '03. SISTEMA DE GESTIÓN / ERP PARA PYME',
+    custom: '04. OTRO PROYECTO A MEDIDA'
   };
 
-  const buildWhatsAppUrl = () => {
-    const body = [
-      `Hola Nicolás. Solicito relevamiento técnico desde nicoguzmandev.com`,
-      `— Área: ${divisionLabels[division]}`,
-      `— Nombre: ${name || 'A confirmar'}`,
-      `— Empresa / Rubro: ${company || 'A confirmar'}`,
-      `— Detalle: ${scope || 'Coordinar evaluación inicial.'}`
+  const armarLinkWhatsApp = () => {
+    const texto = [
+      `Hola Nico! Te escribo desde nicoguzmandev.com`,
+      `— Me interesa: ${ramaTitulos[rama]}`,
+      `— Nombre: ${nombre || 'Sin completar'}`,
+      `— Negocio / Rubro: ${negocio || 'Sin completar'}`,
+      `— Consulta: ${mensaje || 'Quiero pedirte presupuesto.'}`
     ].join('\n');
-    return `https://wa.me/5491100000000?text=${encodeURIComponent(body)}`;
+    return `https://wa.me/5491100000000?text=${encodeURIComponent(texto)}`;
   };
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
-    setSubmitted(true);
+    setEnviado(true);
   };
 
   return (
-    <div className="w-full border border-[#222220] bg-[#0C0C0B]">
-      {submitted ? (
-        <div className="p-12 md:p-16 text-center space-y-6">
-          <div className="font-mono-tech text-[11px] tracking-[0.16em] text-[#9A9994] uppercase">
-            SOLICITUD REGISTRADA CORRECTAMENTE
+    <div className="w-full border-2 border-[#0A0A0A] bg-white">
+      {enviado ? (
+        <div className="p-12 md:p-16 text-center bg-[#002FA7] text-white space-y-6">
+          <div className="font-mono-tech text-xs font-bold tracking-[0.16em] uppercase bg-[#0A0A0A] text-white px-3 py-1 inline-block">
+            CONSULTA LISTA PARA ENVIAR
           </div>
-          <h3 className="text-2xl md:text-3xl font-normal tracking-[-0.02em] text-[#EDEDEC]">
-            Relevamiento en Proceso de Revisión
+          <h3 className="font-display text-3xl sm:text-4xl font-extrabold uppercase tracking-tight">
+            ¡PERFECTO! CONTINUEMOS POR WHATSAPP
           </h3>
-          <p className="text-xs text-[#9A9994] max-w-md mx-auto leading-relaxed">
-            Su consulta ha sido ingresada. Si desea iniciar la conversación de forma inmediata con los parámetros cargados, utilice el canal directo de WhatsApp a continuación.
+          <p className="text-sm text-white/90 max-w-md mx-auto leading-relaxed">
+            Hacé clic en el botón de abajo para abrir el chat con todos los datos que acabás de cargar y te respondo en el día.
           </p>
           <div className="pt-4">
             <a
-              href={buildWhatsAppUrl()}
+              href={armarLinkWhatsApp()}
               target="_blank"
               rel="noopener noreferrer"
-              className="inline-flex items-center justify-between gap-12 px-8 py-4 bg-[#EDEDEC] text-[#0C0C0B] text-xs font-medium tracking-[0.04em] hover:bg-white transition-colors"
+              className="inline-flex items-center justify-between gap-10 px-8 py-5 bg-white text-[#0A0A0A] hover:bg-[#0A0A0A] hover:text-white transition-colors font-display text-xs font-extrabold uppercase tracking-[0.04em]"
             >
-              <span>CONTINUAR EN WHATSAPP EJECUTIVO</span>
-              <span className="font-mono-tech">—</span>
+              <span>ABRIR CHAT EN WHATSAPP AHORA</span>
+              <span className="font-mono-tech">[DIRECTO]</span>
             </a>
           </div>
         </div>
       ) : (
-        <form onSubmit={handleSubmit} className="divide-y divide-[#222220]">
-          {/* Section 1: Division Selector */}
-          <div className="p-8 md:p-10">
-            <div className="font-mono-tech text-[10px] tracking-[0.16em] text-[#5E5D59] uppercase mb-5">
-              01. SELECCIONE EL ÁREA DE INTERVENCIÓN
+        <form onSubmit={handleSubmit} className="divide-y-2 divide-[#0A0A0A]">
+          {/* Paso 1: Elegir Rama */}
+          <div className="p-8 md:p-10 bg-[#F7F7F5]">
+            <div className="font-mono-tech text-xs font-bold tracking-[0.14em] text-[#0A0A0A] uppercase mb-4">
+              (01) ELEGÍ QUÉ NECESITA TU NEGOCIO HOY:
             </div>
-            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 border border-[#222220] divide-y sm:divide-y-0 sm:divide-x divide-[#222220]">
+            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 border-2 border-[#0A0A0A] divide-y-2 sm:divide-y-0 sm:divide-x-2 divide-[#0A0A0A] bg-white">
               {[
-                { id: 'webs', num: '01', title: 'Presencia Web', sub: 'Comercios & Locales' },
-                { id: 'ai', num: '02', title: 'Automatización IA', sub: 'WhatsApp & Agenda' },
-                { id: 'erp', num: '03', title: 'Sistemas & ERP', sub: 'Pymes & Sucursales' },
-                { id: 'custom', num: '04', title: 'Desarrollo a Medida', sub: 'Arquitectura Especial' }
+                { id: 'webs', num: '01', title: 'WEB PARA LOCAL', sub: 'Lista en 48 a 72 hs' },
+                { id: 'ai', num: '02', title: 'BOT IA & TURNERO', sub: 'WhatsApp 24/7' },
+                { id: 'erp', num: '03', title: 'SISTEMA ERP PYME', sub: 'Stock y sucursales' },
+                { id: 'custom', num: '04', title: 'A MEDIDA', sub: 'Desarrollo especial' }
               ].map((opt) => {
-                const isSelected = division === opt.id;
+                const isSelected = rama === opt.id;
                 return (
                   <button
                     key={opt.id}
                     type="button"
-                    onClick={() => setDivision(opt.id as any)}
-                    className={`p-5 text-left transition-colors cursor-pointer relative ${
-                      isSelected ? 'bg-[#161614]' : 'bg-[#0C0C0B] hover:bg-[#111110]'
+                    onClick={() => setRama(opt.id as any)}
+                    className={`p-5 text-left transition-colors duration-200 cursor-pointer ${
+                      isSelected
+                        ? 'bg-[#002FA7] text-white'
+                        : 'bg-white text-[#0A0A0A] hover:bg-[#0A0A0A] hover:text-white'
                     }`}
                   >
-                    {isSelected && <div className="absolute top-0 left-0 right-0 h-[2px] bg-[#EDEDEC]" />}
-                    <div className="font-mono-tech text-[10px] text-[#5E5D59] mb-2">
-                      [{opt.num}]
+                    <div className="font-display text-2xl font-extrabold tracking-tighter mb-2">
+                      {opt.num}.
                     </div>
-                    <div className="text-xs font-medium text-[#EDEDEC]">
+                    <div className="font-display text-xs font-extrabold uppercase tracking-tight">
                       {opt.title}
                     </div>
-                    <div className="text-[11px] text-[#9A9994] mt-0.5">
+                    <div className="text-[11px] opacity-80 mt-0.5">
                       {opt.sub}
                     </div>
                   </button>
@@ -96,87 +97,87 @@ export default function ContactForm() {
             </div>
           </div>
 
-          {/* Section 2: Client Identification */}
-          <div className="grid grid-cols-1 md:grid-cols-3 divide-y md:divide-y-0 md:divide-x divide-[#222220]">
+          {/* Paso 2: Datos de contacto */}
+          <div className="grid grid-cols-1 md:grid-cols-3 divide-y-2 md:divide-y-0 md:divide-x-2 divide-[#0A0A0A] bg-white">
             <div className="p-8">
-              <label className="block font-mono-tech text-[10px] tracking-[0.16em] text-[#5E5D59] uppercase mb-3">
-                02. NOMBRE Y APELLIDO
+              <label className="block font-mono-tech text-xs font-bold tracking-[0.12em] text-[#0A0A0A] uppercase mb-3">
+                (02) TU NOMBRE
               </label>
               <input
                 type="text"
                 required
-                value={name}
-                onChange={(e) => setName(e.target.value)}
-                placeholder="Ej. Martín Alcorta"
-                className="w-full bg-transparent border-b border-[#2A2A27] py-2.5 text-sm text-[#EDEDEC] placeholder-[#484844] focus:outline-none focus:border-[#EDEDEC] transition-colors"
+                value={nombre}
+                onChange={(e) => setNombre(e.target.value)}
+                placeholder="Ej. Martín Gómez"
+                className="w-full bg-transparent border-b-2 border-[#0A0A0A] py-3 text-sm font-bold text-[#0A0A0A] placeholder-[#8A8A84] focus:outline-none focus:border-[#002FA7]"
               />
             </div>
 
             <div className="p-8">
-              <label className="block font-mono-tech text-[10px] tracking-[0.16em] text-[#5E5D59] uppercase mb-3">
-                03. EMPRESA O RUBRO COMERCIAL
+              <label className="block font-mono-tech text-xs font-bold tracking-[0.12em] text-[#0A0A0A] uppercase mb-3">
+                (03) RUBRO O NOMBRE DEL LOCAL
               </label>
               <input
                 type="text"
-                value={company}
-                onChange={(e) => setCompany(e.target.value)}
-                placeholder="Ej. Distribuidora Norte S.R.L."
-                className="w-full bg-transparent border-b border-[#2A2A27] py-2.5 text-sm text-[#EDEDEC] placeholder-[#484844] focus:outline-none focus:border-[#EDEDEC] transition-colors"
+                value={negocio}
+                onChange={(e) => setNegocio(e.target.value)}
+                placeholder="Ej. Ferretería San Martín / Estética"
+                className="w-full bg-transparent border-b-2 border-[#0A0A0A] py-3 text-sm font-bold text-[#0A0A0A] placeholder-[#8A8A84] focus:outline-none focus:border-[#002FA7]"
               />
             </div>
 
             <div className="p-8">
-              <label className="block font-mono-tech text-[10px] tracking-[0.16em] text-[#5E5D59] uppercase mb-3">
-                04. TELÉFONO / WHATSAPP
+              <label className="block font-mono-tech text-xs font-bold tracking-[0.12em] text-[#0A0A0A] uppercase mb-3">
+                (04) TU WHATSAPP
               </label>
               <input
                 type="tel"
                 required
-                value={contact}
-                onChange={(e) => setContact(e.target.value)}
-                placeholder="+54 9 11 0000-0000"
-                className="w-full bg-transparent border-b border-[#2A2A27] py-2.5 text-sm text-[#EDEDEC] placeholder-[#484844] focus:outline-none focus:border-[#EDEDEC] transition-colors"
+                value={telefono}
+                onChange={(e) => setTelefono(e.target.value)}
+                placeholder="Ej. 11 2345-6789"
+                className="w-full bg-transparent border-b-2 border-[#0A0A0A] py-3 text-sm font-bold text-[#0A0A0A] placeholder-[#8A8A84] focus:outline-none focus:border-[#002FA7]"
               />
             </div>
           </div>
 
-          {/* Section 3: Technical Scope */}
-          <div className="p-8 md:p-10">
-            <label className="block font-mono-tech text-[10px] tracking-[0.16em] text-[#5E5D59] uppercase mb-3">
-              05. DESCRIPCIÓN DEL REQUERIMIENTO OPERATIVO
+          {/* Paso 3: Mensaje */}
+          <div className="p-8 md:p-10 bg-white">
+            <label className="block font-mono-tech text-xs font-bold tracking-[0.12em] text-[#0A0A0A] uppercase mb-3">
+              (05) CONTAME BREVEMENTE QUÉ BUSCÁS RESOLVER
             </label>
             <textarea
               rows={3}
-              value={scope}
-              onChange={(e) => setScope(e.target.value)}
-              placeholder="Describa brevemente la situación actual de su negocio, volumen de operaciones o el objetivo que busca resolver..."
-              className="w-full bg-[#111110] border border-[#222220] p-4 text-sm text-[#EDEDEC] placeholder-[#484844] focus:outline-none focus:border-[#EDEDEC] transition-colors resize-none"
+              value={mensaje}
+              onChange={(e) => setMensaje(e.target.value)}
+              placeholder="Ej. Quiero armar la web de mi negocio, o necesito un bot que conteste precios y agende turnos solo..."
+              className="w-full bg-[#F7F7F5] border-2 border-[#0A0A0A] p-4 text-sm font-medium text-[#0A0A0A] placeholder-[#8A8A84] focus:outline-none focus:border-[#002FA7] resize-none"
             />
           </div>
 
-          {/* Section 4: Actions */}
-          <div className="grid grid-cols-1 md:grid-cols-12 divide-y md:divide-y-0 md:divide-x divide-[#222220] bg-[#111110]">
-            <div className="md:col-span-5 p-6 px-8 flex items-center font-mono-tech text-[11px] text-[#5E5D59]">
-              RESPUESTA DIRECTA EN MENOS DE 2 HORAS HÁBILES
+          {/* Paso 4: Botones de acción */}
+          <div className="grid grid-cols-1 md:grid-cols-12 divide-y-2 md:divide-y-0 md:divide-x-2 divide-[#0A0A0A]">
+            <div className="md:col-span-5 p-6 px-8 bg-[#0A0A0A] text-white flex items-center font-mono-tech text-xs font-bold">
+              TRATO DIRECTO — TE RESPONDO EN MENOS DE 2 HS
             </div>
-            <div className="md:col-span-3">
+            <div className="md:col-span-3 bg-white">
               <a
-                href={buildWhatsAppUrl()}
+                href={armarLinkWhatsApp()}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="w-full h-full py-5 px-6 flex items-center justify-between font-mono-tech text-[11px] tracking-[0.08em] text-[#EDEDEC] hover:bg-[#191917] transition-colors"
+                className="w-full h-full py-5 px-6 flex items-center justify-between font-mono-tech text-xs font-bold uppercase text-[#0A0A0A] hover:bg-[#0A0A0A] hover:text-white transition-colors"
               >
-                <span>VÍA WHATSAPP</span>
+                <span>MANDAR POR WHATSAPP</span>
                 <span>/</span>
               </a>
             </div>
             <div className="md:col-span-4">
               <button
                 type="submit"
-                className="w-full h-full py-5 px-8 flex items-center justify-between bg-[#EDEDEC] text-[#0C0C0B] text-xs font-medium tracking-[0.04em] hover:bg-white transition-colors cursor-pointer"
+                className="w-full h-full py-5 px-8 flex items-center justify-between bg-[#002FA7] text-white hover:bg-[#0A0A0A] transition-colors font-display text-xs font-extrabold uppercase tracking-[0.04em] cursor-pointer"
               >
-                <span>ENVIAR ESPECIFICACIÓN</span>
-                <span className="font-mono-tech">—</span>
+                <span>PEDIR PRESUPUESTO</span>
+                <span className="font-mono-tech">[ENVIAR]</span>
               </button>
             </div>
           </div>

@@ -10,8 +10,8 @@ interface Props {
 }
 
 const {
-  title = "Nicolás Guzmán — Ingeniería de Software, Automatización & Sistemas",
-  description = "Estudio de ingeniería de software y transformación digital. Desarrollo de presencia web comercial, sistemas de automatización conversacional con IA y arquitecturas ERP a medida.",
+  title = "NICOLÁS GUZMÁN — Estudio de Ingeniería Web, Automatización IA & Sistemas ERP",
+  description = "Estudio argentino de ingeniería de software y digitalización comercial. Sitios web para locales en 48hs, bots de IA y turneros en WhatsApp 24/7, y sistemas ERP a medida para pymes.",
   ogImage = "/og-image.png"
 } = Astro.props;
 
@@ -20,7 +20,7 @@ const canonicalUrl = new URL(Astro.url.pathname, siteUrl).toString();
 ---
 
 <!doctype html>
-<html lang="es" class="scroll-smooth">
+<html lang="es-AR" class="scroll-smooth">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -28,11 +28,11 @@ const canonicalUrl = new URL(Astro.url.pathname, siteUrl).toString();
     <meta name="description" content={description} />
     <link rel="canonical" href={canonicalUrl} />
 
-    <!-- Google Fonts: Inter, Instrument Serif, JetBrains Mono -->
+    <!-- Google Fonts: Plus Jakarta Sans & JetBrains Mono -->
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
-      href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Inter:wght@300;400;500;600&family=JetBrains+Mono:wght@400;500&display=swap"
+      href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;700&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap"
       rel="stylesheet"
     />
 
@@ -53,14 +53,11 @@ const canonicalUrl = new URL(Astro.url.pathname, siteUrl).toString();
 
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
   </head>
-  <body class="bg-[#0C0C0B] text-[#EDEDEC] min-h-screen flex flex-col">
-    <!-- Architectural Outer Shell -->
-    <div class="w-full max-w-[1320px] mx-auto border-x border-[#222220] min-h-screen flex flex-col">
-      <Navbar />
-      <main class="flex-1">
-        <slot />
-      </main>
-      <Footer />
-    </div>
+  <body class="bg-[#F7F7F5] text-[#0A0A0A] min-h-screen flex flex-col">
+    <Navbar />
+    <main class="flex-1">
+      <slot />
+    </main>
+    <Footer />
   </body>
 </html>

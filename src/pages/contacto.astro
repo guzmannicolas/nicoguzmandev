@@ -4,82 +4,47 @@ import ContactForm from '../components/ContactForm.tsx';
 ---
 
 <Layout
-  title="Contacto & Relevamiento Técnico — Nicolás Guzmán"
-  description="Canal directo de contacto para evaluación técnica y cotización de proyectos web, automatización con inteligencia artificial y sistemas ERP."
+  title="Contacto & Presupuestos — Nicolás Guzmán (Argentina)"
+  description="Contacto directo por WhatsApp o formulario para cotizar sitios web para locales, bots de IA y sistemas ERP a medida en Argentina."
 >
-  <section class="border-b border-[#222220] p-8 sm:p-12 md:p-20">
-    <div class="max-w-3xl">
-      <div class="font-mono-tech text-[11px] tracking-[0.18em] text-[#5E5D59] uppercase mb-6">
-        CANAL EJECUTIVO DE CONSULTA
+  <section class="border-b-2 border-[#0A0A0A] grid grid-cols-1 lg:grid-cols-12">
+    <div class="lg:col-span-8 p-8 sm:p-12 md:p-20 bg-white border-b-2 lg:border-b-0 lg:border-r-2 border-[#0A0A0A]">
+      <div class="font-mono-tech text-xs font-bold tracking-[0.16em] text-white bg-[#002FA7] px-3 py-1 inline-block uppercase mb-6">
+        CONTACTO DIRECTO — ARGENTINA
       </div>
-      <h1 class="text-4xl sm:text-5xl font-normal tracking-[-0.03em] text-[#EDEDEC] leading-[1.08] mb-6">
-        Relevamiento técnico y <span class="font-serif-editorial italic">presupuesto formal</span>.
+      <h1 class="font-display text-4xl sm:text-6xl font-extrabold uppercase tracking-[-0.045em] leading-[0.94] text-[#0A0A0A] mb-6">
+        HABLEMOS DE TU PROYECTO.
       </h1>
-      <p class="text-base text-[#9A9994] leading-relaxed font-light">
-        Todas las consultas son evaluadas directamente sin intermediarios comerciales. Complete el formulario de especificación o inicie una conversación por WhatsApp para coordinar una reunión de diagnóstico.
+      <p class="text-sm sm:text-base text-[#52524E] leading-relaxed max-w-2xl font-medium">
+        Completá los datos abajo o escribime directamente por WhatsApp. Te respondo yo mismo en menos de 2 horas con un diagnóstico claro y presupuesto cerrado.
       </p>
+    </div>
+
+    <div class="lg:col-span-4 bg-[#002FA7] text-white p-8 sm:p-12 flex flex-col justify-between">
+      <div>
+        <div class="font-mono-tech text-xs font-bold uppercase tracking-[0.14em] text-white/80 mb-3">
+          CANAL MÁS RÁPIDO
+        </div>
+        <h2 class="font-display text-2xl font-extrabold uppercase tracking-tight mb-3">
+          WHATSAPP DIRECTO
+        </h2>
+        <p class="text-xs text-white/90 leading-relaxed mb-8">
+          Podés mandarme un texto o un audio contándome qué rubro tenés y qué necesitás resolver.
+        </p>
+      </div>
+      <a
+        href="https://wa.me/5491100000000?text=Hola%20Nico!%20Te%20escribo%20desde%20nicoguzmandev.com%20para%20pedirte%20presupuesto."
+        target="_blank"
+        rel="noopener noreferrer"
+        class="w-full py-5 px-6 bg-white text-[#0A0A0A] hover:bg-[#0A0A0A] hover:text-white transition-colors font-display text-xs font-extrabold uppercase tracking-[0.04em] flex items-center justify-between"
+      >
+        <span>ABRIR CHAT DE WHATSAPP</span>
+        <span class="font-mono-tech">[AHORA]</span>
+      </a>
     </div>
   </section>
 
-  <section class="grid grid-cols-1 lg:grid-cols-12 divide-y lg:divide-y-0 lg:divide-x divide-[#222220]">
-    <!-- Left Column: Direct Parameters -->
-    <div class="lg:col-span-4 divide-y divide-[#222220] bg-[#0E0E0D]">
-      <div class="p-8 md:p-10 space-y-4">
-        <div class="font-mono-tech text-[10px] tracking-[0.16em] text-[#5E5D59] uppercase">
-          COMUNICACIÓN INMEDIATA
-        </div>
-        <h2 class="text-lg font-medium text-[#EDEDEC]">
-          WhatsApp Directo
-        </h2>
-        <p class="text-xs text-[#9A9994] leading-relaxed">
-          Para consultas urgentes, envío de requerimientos por audio o coordinación directa de llamadas técnicas.
-        </p>
-        <div class="pt-3">
-          <a
-            href="https://wa.me/5491100000000?text=Hola%20Nicol%C3%A1s.%20Me%20contacto%20desde%20nicoguzmandev.com%20para%20evaluar%20un%20proyecto."
-            target="_blank"
-            rel="noopener noreferrer"
-            class="flex items-center justify-between w-full px-6 py-4 bg-[#EDEDEC] text-[#0C0C0B] text-xs font-medium tracking-[0.04em] hover:bg-white transition-colors"
-          >
-            <span>ABRIR WHATSAPP</span>
-            <span class="font-mono-tech">—</span>
-          </a>
-        </div>
-      </div>
-
-      <div class="p-8 md:p-10 space-y-4">
-        <div class="font-mono-tech text-[10px] tracking-[0.16em] text-[#5E5D59] uppercase">
-          PLAZOS DE REFERENCIA
-        </div>
-        <div class="space-y-3 text-xs">
-          <div class="flex justify-between border-b border-[#1C1C1A] pb-2">
-            <span class="text-[#9A9994]">01. Presencia Web</span>
-            <span class="font-mono-tech text-[#EDEDEC]">48 A 72 HORAS</span>
-          </div>
-          <div class="flex justify-between border-b border-[#1C1C1A] pb-2">
-            <span class="text-[#9A9994]">02. Agentes IA WhatsApp</span>
-            <span class="font-mono-tech text-[#EDEDEC]">5 A 7 DÍAS</span>
-          </div>
-          <div class="flex justify-between pb-1">
-            <span class="text-[#9A9994]">03. Sistemas ERP</span>
-            <span class="font-mono-tech text-[#EDEDEC]">2 A 4 SEMANAS</span>
-          </div>
-        </div>
-      </div>
-
-      <div class="p-8 md:p-10 space-y-2">
-        <div class="font-mono-tech text-[10px] tracking-[0.16em] text-[#5E5D59] uppercase">
-          MODALIDAD DE TRABAJO
-        </div>
-        <p class="text-xs text-[#9A9994] leading-relaxed">
-          Presupuestos cerrados por objetivo, entregas parciales auditables y transferencia total de código y credenciales al finalizar.
-        </p>
-      </div>
-    </div>
-
-    <!-- Right Column: Form -->
-    <div class="lg:col-span-8 p-8 sm:p-12 bg-[#0C0C0B]">
-      <ContactForm client:load />
-    </div>
+  <section class="p-6 sm:p-12 md:p-16 lg:p-20 bg-[#F7F7F5]">
+    <ContactForm client:load />
   </section>
 </Layout>
