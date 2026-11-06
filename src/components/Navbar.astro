@@ -1,0 +1,66 @@
+---
+import { ArrowUpRight, MessageSquare, Menu, X } from 'lucide-react';
+---
+
+<header class="sticky top-0 z-50 w-full border-b border-white/5 bg-zinc-950/80 backdrop-blur-xl transition-all">
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-20 flex items-center justify-between">
+    <!-- Brand / Logo -->
+    <a href="/" class="flex items-center gap-3 group">
+      <div class="w-10 h-10 rounded-xl bg-gradient-to-br from-sky-500 to-indigo-600 flex items-center justify-center text-white font-black text-lg shadow-lg shadow-sky-500/20 group-hover:scale-105 transition-transform">
+        NG
+      </div>
+      <div>
+        <div class="font-bold text-sm tracking-tight text-white group-hover:text-sky-300 transition-colors">
+          Nicolás Guzmán
+        </div>
+        <div class="text-[11px] text-zinc-400 flex items-center gap-1.5">
+          <span class="w-2 h-2 rounded-full bg-emerald-400 animate-pulse"></span>
+          <span>Dev & Automation Studio</span>
+        </div>
+      </div>
+    </a>
+
+    <!-- Desktop Navigation Links -->
+    <nav class="hidden md:flex items-center gap-1 text-xs font-medium text-zinc-300">
+      <a href="/#soluciones" class="px-3.5 py-2 rounded-lg hover:text-white hover:bg-zinc-800/60 transition-colors">
+        Soluciones
+      </a>
+      <a href="/webs" class="px-3.5 py-2 rounded-lg hover:text-white hover:bg-zinc-800/60 transition-colors flex items-center gap-1.5">
+        <span class="w-1.5 h-1.5 rounded-full bg-sky-400"></span>
+        Webs Locales
+      </a>
+      <a href="/automatizacion" class="px-3.5 py-2 rounded-lg hover:text-white hover:bg-zinc-800/60 transition-colors flex items-center gap-1.5">
+        <span class="w-1.5 h-1.5 rounded-full bg-emerald-400"></span>
+        Automatización & IA
+      </a>
+      <a href="/erp" class="px-3.5 py-2 rounded-lg hover:text-white hover:bg-zinc-800/60 transition-colors flex items-center gap-1.5">
+        <span class="w-1.5 h-1.5 rounded-full bg-purple-400"></span>
+        Consultoría & ERP
+      </a>
+      <a href="https://templates.nicoguzmandev.com" target="_blank" rel="noopener noreferrer" class="px-3.5 py-2 rounded-lg text-sky-400 hover:text-sky-300 hover:bg-sky-500/10 transition-colors inline-flex items-center gap-1">
+        <span>Templates</span>
+        <ArrowUpRight className="w-3.5 h-3.5" />
+      </a>
+    </nav>
+
+    <!-- Right Actions -->
+    <div class="flex items-center gap-3">
+      <a
+        href="https://wa.me/5491100000000?text=Hola%20Nico!%20Vi%20tu%20sitio%20web%20y%20me%20gustar%C3%ADa%20hacerte%20una%20consulta."
+        target="_blank"
+        rel="noopener noreferrer"
+        class="hidden sm:inline-flex items-center gap-2 px-4 py-2.5 rounded-xl text-xs font-semibold bg-emerald-500/10 text-emerald-400 hover:bg-emerald-500/20 border border-emerald-500/30 transition-colors shadow-sm"
+      >
+        <MessageSquare className="w-3.5 h-3.5" />
+        <span>WhatsApp Directo</span>
+      </a>
+
+      <a
+        href="/#contacto"
+        class="inline-flex items-center gap-2 px-4 py-2.5 rounded-xl text-xs font-semibold bg-white text-zinc-950 hover:bg-zinc-200 transition-colors shadow-lg shadow-white/5"
+      >
+        <span>Cotizar Proyecto</span>
+      </a>
+    </div>
+  </div>
+</header>

@@ -1,34 +1,31 @@
 ---
 import '../styles/global.css';
-import '../styles/scroll-reveal.css';
-import Navigation from '../components/Navigation.astro';
-import Breadcrumbs from '../components/Breadcrumbs.astro';
+import Navbar from '../components/Navbar.astro';
 import Footer from '../components/Footer.astro';
-import ParticlesBackground from '../components/ParticlesBackground.astro';
+import { MessageSquare } from 'lucide-react';
 
 interface Props {
-  title: string;
+  title?: string;
   description?: string;
-  lang: 'es' | 'en';
   ogImage?: string;
 }
 
 const {
-  title,
-  description = 'Nicolás Guzmán Dev - Diseño, Programación, Automatización y ERP a medida',
-  lang,
-  ogImage = '/og-image.png',
+  title = "Nicolás Guzmán Dev — Software Engineering, AI Automation & Web Solutions",
+  description = "Soluciones digitales de alto impacto: Sitios web para comercios locales, agentes de IA y turneros automáticos 24/7 en WhatsApp, y sistemas ERP a medida para pymes.",
+  ogImage = "/og-image.png"
 } = Astro.props;
 
-const siteUrl = 'https://nicoguzmandev.com';
+const siteUrl = "https://nicoguzmandev.com";
 const canonicalUrl = new URL(Astro.url.pathname, siteUrl).toString();
 ---
 
 <!doctype html>
-<html lang={lang}>
+<html lang="es" class="scroll-smooth">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>{title}</title>
     <meta name="description" content={description} />
     <link rel="canonical" href={canonicalUrl} />
 
@@ -38,8 +35,8 @@ const canonicalUrl = new URL(Astro.url.pathname, siteUrl).toString();
     <meta property="og:title" content={title} />
     <meta property="og:description" content={description} />
     <meta property="og:image" content={`${siteUrl}${ogImage}`} />
-    <meta property="og:locale" content={lang === 'es' ? 'es_AR' : 'en_US'} />
     <meta property="og:site_name" content="Nicolás Guzmán Dev" />
+    <meta property="og:locale" content="es_AR" />
 
     <!-- Twitter Card -->
     <meta name="twitter:card" content="summary_large_image" />
@@ -47,31 +44,42 @@ const canonicalUrl = new URL(Astro.url.pathname, siteUrl).toString();
     <meta name="twitter:description" content={description} />
     <meta name="twitter:image" content={`${siteUrl}${ogImage}`} />
 
-    <title>{title}</title>
-    <link rel="icon" type="image/x-icon" href="/favicon.ico" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
   </head>
-  <body class="bg-primary text-gray-100 min-h-screen flex flex-col relative">
-    <ParticlesBackground />
-    <Navigation lang={lang} />
-    <Breadcrumbs lang={lang} />
-    <main class="flex-1 relative z-1">
+  <body class="bg-[#090a0f] text-zinc-100 min-h-screen flex flex-col relative selection:bg-sky-500 selection:text-white">
+    <!-- Ambient Background Grids -->
+    <div class="fixed inset-0 pointer-events-none z-0">
+      <div class="absolute inset-0 bg-grid-pattern opacity-[0.25]"></div>
+      <div class="absolute top-0 left-1/2 -translate-x-1/2 w-[1000px] h-[500px] glow-radial-blue opacity-50 blur-3xl"></div>
+    </div>
+
+    <!-- Navigation Header -->
+    <Navbar />
+
+    <!-- Main Content Area -->
+    <main class="flex-1 relative z-10">
       <slot />
     </main>
-    <Footer lang={lang} />
 
-    <script>
-      const observer = new IntersectionObserver(
-        (entries) => {
-          entries.forEach((entry) => {
-            if (entry.isIntersecting) {
-              entry.target.classList.add('visible');
-            }
-          });
-        },
-        { threshold: 0.1 }
-      );
+    <!-- Footer -->
+    <Footer />
 
-      document.querySelectorAll('.reveal').forEach((el) => observer.observe(el));
-    </script>
+    <!-- Floating WhatsApp Action Button -->
+    <aside aria-label="Contacto directo" class="fixed bottom-6 right-6 z-50">
+      <a
+        href="https://wa.me/5491100000000?text=Hola%20Nico!%20Te%20escribo%20desde%20tu%20web%20nicoguzmandev.com%20para%20consultarte%20por%20un%20proyecto."
+        target="_blank"
+        rel="noopener noreferrer"
+        aria-label="Abrir chat de WhatsApp para consulta directa"
+        class="group flex items-center gap-2.5 px-4 py-3 rounded-full bg-emerald-500 text-white font-semibold text-xs shadow-xl shadow-emerald-500/25 hover:bg-emerald-400 hover:scale-105 active:scale-95 transition-all"
+      >
+        <span class="relative flex h-2.5 w-2.5">
+          <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-white opacity-75"></span>
+          <span class="relative inline-flex rounded-full h-2.5 w-2.5 bg-white"></span>
+        </span>
+        <MessageSquare className="w-4 h-4" />
+        <span class="hidden sm:inline">Chatear por WhatsApp</span>
+      </a>
+    </aside>
   </body>
 </html>

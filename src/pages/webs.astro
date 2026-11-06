@@ -1,0 +1,104 @@
+---
+import Layout from '../layouts/Layout.astro';
+import ShowroomGrid from '../components/ShowroomGrid.astro';
+import ContactForm from '../components/ContactForm.tsx';
+import { Globe, ArrowRight, CheckCircle2, Zap, Smartphone, Search, MessageSquare, ArrowUpRight } from 'lucide-react';
+---
+
+<Layout
+  title="Webs para Negocios y Locales Comerciales — Nicolás Guzmán"
+  description="Desarrollo de sitios web ultrarrápidos para comercios locales. Optimizado para móviles, Google Maps, reservas y catálogo directo a WhatsApp en 48hs."
+>
+  <!-- Hero -->
+  <section class="pt-24 pb-16 px-4">
+    <div class="max-w-4xl mx-auto text-center">
+      <div class="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-sky-500/10 border border-sky-500/20 text-xs font-semibold text-sky-400 mb-6">
+        <Globe className="w-4 h-4" />
+        <span>Rama 1 • Webs para Comercios & Locales</span>
+      </div>
+
+      <h1 class="text-4xl sm:text-5xl md:text-6xl font-black text-white tracking-tight mb-6 leading-tight">
+        Tu Negocio Abierto las 24hs con una <span class="text-gradient-cyan">Web que Realmente Vende</span>
+      </h1>
+
+      <p class="text-lg text-zinc-400 max-w-2xl mx-auto mb-10 leading-relaxed">
+        Basta de depender solo de Instagram o perder ventas por no tener precios, fotos o ubicación clara en Google. Creamos tu sitio web en 48 a 72hs con entrega llave en mano.
+      </p>
+
+      <div class="flex flex-wrap items-center justify-center gap-4">
+        <a
+          href="https://templates.nicoguzmandev.com"
+          target="_blank"
+          rel="noopener noreferrer"
+          class="inline-flex items-center gap-2 px-6 py-3.5 rounded-xl font-bold text-sm bg-sky-500 text-white hover:bg-sky-400 transition-colors shadow-lg shadow-sky-500/20"
+        >
+          <span>Ver Demos en Vivo (Showroom)</span>
+          <ArrowUpRight className="w-4 h-4" />
+        </a>
+
+        <a
+          href="https://wa.me/5491100000000?text=Hola%20Nico!%20Quiero%20cotizar%20una%20web%20para%20mi%20local."
+          target="_blank"
+          rel="noopener noreferrer"
+          class="inline-flex items-center gap-2 px-6 py-3.5 rounded-xl font-semibold text-sm bg-emerald-500/10 text-emerald-400 hover:bg-emerald-500/20 border border-emerald-500/30 transition-colors"
+        >
+          <MessageSquare className="w-4 h-4" />
+          <span>Consultar por WhatsApp</span>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Key Benefits Bento -->
+  <section class="py-16 px-4 border-t border-white/5">
+    <div class="max-w-6xl mx-auto">
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+        <div class="glass-card rounded-2xl p-6 border border-white/10">
+          <div class="w-10 h-10 rounded-xl bg-sky-500/15 text-sky-400 flex items-center justify-center mb-4">
+            <Zap className="w-5 h-5" />
+          </div>
+          <h3 class="text-lg font-bold text-white mb-2">Carga en Menos de 1 Segundo</h3>
+          <p class="text-xs text-zinc-400 leading-relaxed">
+            Nada de WordPress pesado ni plugins rotos. Utilizamos Astro 5, el framework moderno que genera páginas ultra ligeras que cargan de forma instantánea.
+          </p>
+        </div>
+
+        <div class="glass-card rounded-2xl p-6 border border-white/10">
+          <div class="w-10 h-10 rounded-xl bg-emerald-500/15 text-emerald-400 flex items-center justify-center mb-4">
+            <Smartphone className="w-5 h-5" />
+          </div>
+          <h3 class="text-lg font-bold text-white mb-2">Diseñado para Celulares</h3>
+          <p class="text-xs text-zinc-400 leading-relaxed">
+            Más del 85% de tus clientes entra desde su teléfono. Los menús, fotos de productos y botones de contacto están optimizados para el pulgar.
+          </p>
+        </div>
+
+        <div class="glass-card rounded-2xl p-6 border border-white/10">
+          <div class="w-10 h-10 rounded-xl bg-purple-500/15 text-purple-400 flex items-center justify-center mb-4">
+            <Search className="w-5 h-5" />
+          </div>
+          <h3 class="text-lg font-bold text-white mb-2">SEO Local en Google</h3>
+          <p class="text-xs text-zinc-400 leading-relaxed">
+            Configuración técnica completa para que tu negocio aparezca cuando busquen "corte de pelo cerca", "ferretería en [tu barrio]" o "restaurante hoy".
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Showcase Templates -->
+  <section class="py-16 px-4 border-t border-white/5 bg-zinc-950/40">
+    <div class="max-w-7xl mx-auto">
+      <ShowroomGrid />
+    </div>
+  </section>
+
+  <!-- Contact Form -->
+  <section class="py-20 px-4 border-t border-white/5">
+    <div class="max-w-4xl mx-auto text-center mb-10">
+      <h2 class="text-3xl font-extrabold text-white mb-3">Pedí tu Web Hoy</h2>
+      <p class="text-sm text-zinc-400">Entrega en 48 a 72hs con todo configurado y listo para recibir pedidos o clientes.</p>
+    </div>
+    <ContactForm client:load />
+  </section>
+</Layout>
